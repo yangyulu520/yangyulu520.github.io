@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>多字段下的excel数据导入 | 杨雨露的博客世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="excel数据导入过程中遇到的各种问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多字段下的excel数据导入">
+<meta property="og:url" content="http://yoursite.com/2017/01/09/多字段下的excel数据导入/index.html">
+<meta property="og:site_name" content="杨雨露的博客世界">
+<meta property="og:description" content="excel数据导入过程中遇到的各种问题">
+<meta property="og:updated_time" content="2017-01-10T08:20:26.997Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="多字段下的excel数据导入">
+<meta name="twitter:description" content="excel数据导入过程中遇到的各种问题">
+  
+    <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">yangyl</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/H1/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/easyUI/" style="font-size: 10px;">easyUI</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java虚拟机/" style="font-size: 12.5px;">java虚拟机</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/技巧/" style="font-size: 12.5px;">技巧</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">主题来源</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯种野生的一头攻城狮。众多缤纷世界,还是喜欢安静的学习新的知识，慢慢摸索前进的路</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">yangyl</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">yangyl</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/H1/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-多字段下的excel数据导入" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/09/多字段下的excel数据导入/" class="article-date">
+      <time datetime="2017-01-09T05:31:45.000Z" itemprop="datePublished">2017-01-09</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多字段下的excel数据导入
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这几天因为要做一个excel的数据导入，才有了和json和对象，三者之间的恩怨情仇。如果导入的仅仅是几个字段，那很easy，直接通过poi来取字段值，然后塞进对象里就ok了，然而这次要导入的字段有50多个，我敢肯定，这是我碰到的最多字段的表，如果按照常规的方式来做，就相当于要取50次，塞50次，不敢想象这个工作量有多少，所以只能换一种方式。</p>
+<p>我采用的方式是：先把excel的数据转换成json数据，然后再把json数据转换成对象。通过这样的方式来达到excel数据的读取，先会叙述过程中遇到的各种问题及处理，最后会贴出自己的代码，毕竟没有实践谈理论，都是扯淡。</p>
+<h2 id="excel数据转换成json数据"><a href="#excel数据转换成json数据" class="headerlink" title="excel数据转换成json数据"></a>excel数据转换成json数据</h2><p>对于excel的解析，目前普遍采用的是apache的poi。由于之前还做过数据的导出，用的也是这个包，为了以后碰到数据的导入和导出都能够得心应手，就直接把poi封装了一个工具类，放在了我的工具类包中，该类中主要包含excel的读取和写入这两个。</p>
+<p>对于excel的读取，比较常规的办法是：</p>
+<ol>
+<li>map(代表sheet中的每行数据)中的表头由自己传字段，目的是为了后面json转对象时能根据属性名进行自动映射。一般excel表头都是中文，而我需要映射的话，需要表头为英文</li>
+<li>将excel的数据每个sheet，读取放入到一个List<map>中。</map></li>
+<li>将刚刚得到的每个sheet的list放入到一个map中，该map的key是excel的每个sheet的名字，value则是每个excel的sheet对应的内容的json串。</li>
+<li>最终返回一个存放了每个sheet内容的map</li>
+</ol>
+<p>注：</p>
+<ul>
+<li>每个excel的sheet对应内容的json串，就需要用到json解析技术，将list转换成json</li>
+<li>excel转换成json数据，要考虑到两个特殊的元素，一个是日期，一个是空的单元格。</li>
+<li>由于json转换的使用的频繁，我也把json的相关操作，封装进了我的工具类包中，在包中，则对日期和空单元格做了处理。</li>
+</ul>
+<h2 id="json数据转换成对象"><a href="#json数据转换成对象" class="headerlink" title="json数据转换成对象"></a>json数据转换成对象</h2><p>将excel数据转换成json只是完成了导入的前一半，json再转换成我们需要的对象，则是后一半。在转换的过程中，发现对于json的解析技术有好几种，json-lib、fastjson、jackson、gson。当时差点晕过去，后来在咨询老大及各个博主，群牛下，选择了Jackson作为解析。json串要转换成对象，需要处理好两个东西。<br>一个是日期的转换，一个是枚举的转换。<br>json中的日期是串，格式也不统一，而java中的日期一般是java.util.Date.所幸jackson中也考虑到了这个因素，提供了一个设置<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">SimpleDateFormat formatter = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);  </div><div class="line">objectMapper.setDateFormat(formatter);</div></pre></td></tr></table></figure></p>
+<p>来设置好json中的日期格式，进行自动转换。<br>json中需要映射成枚举属性的值，困扰了我很久。因为，如果说，在对象中，使用了枚举属性，枚举中一般都是用英文来表示其枚举意义。而在excel中存储的一般都是中文。这就涉及到如何将中文的值，映射到英文的枚举上。我百度了好久，都没有找到枚举转换方面遇到的问题的处理。在老大的帮助下包括陆续的咨询，现提供以下三个解决方案：</p>
+<ol>
+<li><p>枚举属性的set方法，把枚举转换成String，通过对String的判断来插入对应的枚举值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">//使用switch，逻辑更清晰点</div><div class="line">public void setIdentityType(String identityType) &#123;</div><div class="line">       if (identityType.equals(&quot;身份证&quot;) || identityType.equals(&quot;IDENTITY&quot;)) &#123;</div><div class="line">           this.identityType = IdentityType.IDENTITY;</div><div class="line">       &#125; else if (identityType.equals(&quot;护照&quot;) || identityType.equals(&quot;PASSPORT&quot;)) &#123;</div><div class="line">           this.identityType = IdentityType.PASSPORT;</div><div class="line">       &#125; else if (identityType.equals(&quot;户口本&quot;) || identityType.equals(&quot;HOUSEHOLD&quot;)) &#123;</div><div class="line">           this.identityType = IdentityType.HOUSEHOLD;</div><div class="line">       &#125;else if (identityType.equals(&quot;军人证&quot;) || identityType.equals(&quot;SOLDIER&quot;)) &#123;</div><div class="line">           this.identityType = IdentityType.SOLDIER;</div><div class="line">       &#125; else if (identityType.equals(&quot;港澳通行证&quot;) || identityType.equals(&quot;PASSER&quot;))&#123;</div><div class="line">           this.identityType = IdentityType.PASSER;</div><div class="line">       &#125;</div><div class="line">       </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>在构建表结构的时候，不采用枚举，使用int的值来表示，每个值代表一个含义，这样就避免了枚举的转换。</p>
+</li>
+<li>如果枚举不多的情况下，通过新建一个String的属性接收中文值，然后在转换成对象后，再通过这个属性来设置对应枚举属性的值。</li>
+</ol>
+<p>这里推荐第一种的做法。</p>
+<h2 id="常规的javabean的设计注意点"><a href="#常规的javabean的设计注意点" class="headerlink" title="常规的javabean的设计注意点"></a>常规的javabean的设计注意点</h2><ul>
+<li>一般表的基础字段在开发过程中，难免会出现对于表字段的扩展，一定要注意扩展的字段，之前的数据记录中该字段的值是空的，在使用过程中，会报空的错误。所以，如果需要添加字段，一个是把该字段的的基础数据类型变为对象数据类型，二是在该属性的get方法中添加对于空的处理</li>
+</ul>
+<h2 id="excel数据转换成json数据对应的工具代码"><a href="#excel数据转换成json数据对应的工具代码" class="headerlink" title="excel数据转换成json数据对应的工具代码"></a>excel数据转换成json数据对应的工具代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line">    * 解决思路：采用Apache的POI的API来操作Excel，读取内容后保存到List中，再将List转Json（推荐Linked，增删快，与Excel表顺序保持一致）</div><div class="line">    * @param inputStream 为了便于解析本地url和网络url，统一使用input流</div><div class="line">    * @param FileName 文件名，通过文件名的后缀来判断是什么格式的excel</div><div class="line">    * @param headers 给定表格的头部。。list,如果时String数组--&gt;Arrays.asList();</div><div class="line">    * @return Map  一个线性HashMap，以Excel的sheet表顺序，并以sheet表明作为key，sheet表转换json后的字符串作为value</div><div class="line">    * @throws IOException</div><div class="line">    */</div><div class="line">   public static Map&lt;String,String&gt; excel2json(InputStream inputStream, String fileName, List&lt;String&gt; headers) throws IOException &#123;</div><div class="line"></div><div class="line">       System.out.println(&quot;excel2json方法执行....&quot;);</div><div class="line"></div><div class="line">       // 返回的map</div><div class="line">       Map&lt;String,String&gt; excelMap = new LinkedHashMap&lt;&gt;();</div><div class="line"></div><div class="line">       // Excel列的样式，主要是为了解决Excel数字科学计数的问题</div><div class="line">       CellStyle cellStyle;</div><div class="line">       // 根据Excel构成的对象</div><div class="line">       Workbook wb;</div><div class="line">       // 如果是2007及以上版本，则使用想要的Workbook以及CellStyle</div><div class="line">       if(fileName.endsWith(&quot;xlsx&quot;))&#123;</div><div class="line">           System.out.println(&quot;是2007及以上版本  xlsx&quot;);</div><div class="line">           wb = new XSSFWorkbook(inputStream);</div><div class="line">           XSSFDataFormat dataFormat = (XSSFDataFormat) wb.createDataFormat();</div><div class="line">           cellStyle = wb.createCellStyle();</div><div class="line">           // 设置Excel列的样式为文本</div><div class="line">           cellStyle.setDataFormat(dataFormat.getFormat(&quot;@&quot;));</div><div class="line">       &#125;else&#123;</div><div class="line">           System.out.println(&quot;是2007以下版本  xls&quot;);</div><div class="line">           POIFSFileSystem fs = new POIFSFileSystem(inputStream);</div><div class="line">           wb = new HSSFWorkbook(fs);</div><div class="line">           HSSFDataFormat dataFormat = (HSSFDataFormat) wb.createDataFormat();</div><div class="line">           cellStyle = wb.createCellStyle();</div><div class="line">           // 设置Excel列的样式为文本</div><div class="line">           cellStyle.setDataFormat(dataFormat.getFormat(&quot;@&quot;));</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       // sheet表个数</div><div class="line">       int sheetsCounts = wb.getNumberOfSheets();</div><div class="line">       // 遍历每一个sheet</div><div class="line">       for (int i = 0; i &lt; sheetsCounts; i++) &#123;</div><div class="line">           Sheet sheet = wb.getSheetAt(i);</div><div class="line">           System.out.println(&quot;第&quot; + i + &quot;个sheet:&quot; + sheet.toString());</div><div class="line"></div><div class="line">           // 一个sheet表对于一个List</div><div class="line">           List list = new LinkedList();</div><div class="line"></div><div class="line">           // 取第一行列的值作为key</div><div class="line">           Row fisrtRow = sheet.getRow(0);</div><div class="line">           // 如果第一行就为空，则是空sheet表，该表跳过</div><div class="line">           if(null == fisrtRow)&#123;</div><div class="line">               continue;</div><div class="line">           &#125;</div><div class="line">           // 得到第一行有多少列</div><div class="line">           int curCellNum = fisrtRow.getLastCellNum();</div><div class="line">           System.out.println(&quot;第一行的列数：&quot; + curCellNum);</div><div class="line">           </div><div class="line">           // 从第二行起遍历每一行</div><div class="line">           int rowNum = sheet.getLastRowNum();</div><div class="line">           System.out.println(&quot;总共有 &quot; + rowNum + &quot; 行&quot;);</div><div class="line">           for (int j = 1; j &lt; rowNum; j++) &#123;</div><div class="line">               // 一行数据对于一个Map</div><div class="line">               LinkedHashMap rowMap = new LinkedHashMap();</div><div class="line">               // 取得某一行</div><div class="line">               Row row = sheet.getRow(j);</div><div class="line">               int cellNum = row.getLastCellNum();</div><div class="line">               // 遍历每一列</div><div class="line">               for (int k = 0; k &lt; cellNum; k++) &#123;</div><div class="line">                   Cell cell = row.getCell(k);</div><div class="line">                   // 保存该单元格的数据到该行中</div><div class="line">                   rowMap.put(headers.get(k),getCellValue(cell));</div><div class="line">               &#125;</div><div class="line">               // 保存该行的数据到该表的List中</div><div class="line">               list.add(rowMap);</div><div class="line">           &#125;</div><div class="line">           // 将该sheet表的表名为key，List转为json后的字符串为Value进行存储</div><div class="line">           excelMap.put(sheet.getSheetName(),JsonUtils_Jackson.bean2Json(list));</div><div class="line">       &#125;</div><div class="line"></div><div class="line">       System.out.println(&quot;excel2json方法结束....&quot;);</div><div class="line"></div><div class="line">       return excelMap;</div><div class="line">   &#125;</div><div class="line"></div><div class="line">       /**</div><div class="line">    * 处理掉了excel空格的问题</div><div class="line">    * @param cell</div><div class="line">    * @return</div><div class="line">    */</div><div class="line">   private static String getCellValue(Cell cell) &#123;   </div><div class="line">       String cellValue = &quot;&quot;;   </div><div class="line">       DecimalFormat df = new DecimalFormat(&quot;#&quot;);   </div><div class="line">       if(cell==null || &quot;&quot;.equals(cell) || cell.getCellType() == Cell.CELL_TYPE_BLANK) &#123;</div><div class="line">           System.out.println(cellValue);</div><div class="line">           return cellValue;</div><div class="line">       &#125;</div><div class="line">       switch (cell.getCellType()) &#123;   </div><div class="line">           case Cell.CELL_TYPE_STRING:   </div><div class="line">               cellValue =cell.getRichStringCellValue().getString().trim();   </div><div class="line">               break;   </div><div class="line">           case Cell.CELL_TYPE_NUMERIC:  </div><div class="line">               if (DateUtil.isCellDateFormatted(cell)) &#123;</div><div class="line">                   cellValue = cell.getDateCellValue().toString();</div><div class="line">               &#125; else &#123;</div><div class="line">                   cellValue = df.format(cell.getNumericCellValue()).toString();</div><div class="line">               &#125;  </div><div class="line">               break;   </div><div class="line">           case Cell.CELL_TYPE_BOOLEAN:   </div><div class="line">               cellValue =String.valueOf(cell.getBooleanCellValue()).trim();   </div><div class="line">               break;     </div><div class="line">           default:   </div><div class="line">               cellValue = &quot;&quot;;   </div><div class="line">       &#125;   </div><div class="line">       return cellValue;   </div><div class="line">   &#125;</div></pre></td></tr></table></figure>
+<h2 id="json数据转换成对象对应的工具代码"><a href="#json数据转换成对象对应的工具代码" class="headerlink" title="json数据转换成对象对应的工具代码"></a>json数据转换成对象对应的工具代码</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 把json格式的ListString转换为java对象列表</div><div class="line"> * @param objectListString 目标对象列表的json串</div><div class="line"> * @param clazz 目标对象</div><div class="line"> * @return List 对象集合</div><div class="line"> */</div><div class="line">public static &lt;T&gt; List&lt;T&gt; json2List(String json, Class&lt;T&gt; beanClass) &#123;  </div><div class="line">    try &#123;  </div><div class="line">        objectMapper.configure(Feature.ALLOW_SINGLE_QUOTES, true);//设置可用单引号  </div><div class="line">        objectMapper.configure(Feature.ALLOW_UNQUOTED_FIELD_NAMES, true);//设置字段可以不用双引号包括 </div><div class="line">        return (List&lt;T&gt;)objectMapper.readValue(json, getCollectionType(List.class, beanClass));  </div><div class="line">    &#125; catch (Exception e) &#123;  </div><div class="line">        e.printStackTrace();  </div><div class="line">    &#125;  </div><div class="line">    return null;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
+        <p><span>发布时间:</span>2017年01月09日 - 13时31分</p>
+        <p><span>最后更新:</span>2017年01月10日 - 16时20分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/09/多字段下的excel数据导入/" title="多字段下的excel数据导入">http://yoursite.com/2017/01/09/多字段下的excel数据导入/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/09/多字段下的excel数据导入/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/01/10/java中的jdk版本/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          java中的jdk版本
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/06/拥有你的博客/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">拥有你的博客</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#excel数据转换成json数据"><span class="toc-number">2.</span> <span class="toc-text">excel数据转换成json数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json数据转换成对象"><span class="toc-number">3.</span> <span class="toc-text">json数据转换成对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常规的javabean的设计注意点"><span class="toc-number">4.</span> <span class="toc-text">常规的javabean的设计注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#excel数据转换成json数据对应的工具代码"><span class="toc-number">5.</span> <span class="toc-text">excel数据转换成json数据对应的工具代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#json数据转换成对象对应的工具代码"><span class="toc-number">6.</span> <span class="toc-text">json数据转换成对象对应的工具代码</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/01/09/多字段下的excel数据导入/" data-title="多字段下的excel数据导入" data-url="http://yoursite.com/2017/01/09/多字段下的excel数据导入/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangyl"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/10/java中的jdk版本/" title="上一篇: java中的jdk版本">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/01/06/拥有你的博客/" title="下一篇: 拥有你的博客">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 yangyl
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java编程规范 | 杨雨露的博客世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="基于已有的规范，记录下很容易忘记或者混淆的开发规范，让代码更加艺术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java编程规范">
+<meta property="og:url" content="http://yoursite.com/2017/01/10/java编程规范/index.html">
+<meta property="og:site_name" content="杨雨露的博客世界">
+<meta property="og:description" content="基于已有的规范，记录下很容易忘记或者混淆的开发规范，让代码更加艺术">
+<meta property="og:image" content="http://yoursite.com/img/map.png">
+<meta property="og:updated_time" content="2017-01-10T09:15:35.388Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java编程规范">
+<meta name="twitter:description" content="基于已有的规范，记录下很容易忘记或者混淆的开发规范，让代码更加艺术">
+<meta name="twitter:image" content="http://yoursite.com/img/map.png">
+  
+    <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">yangyl</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/H1/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/easyUI/" style="font-size: 10px;">easyUI</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java虚拟机/" style="font-size: 12.5px;">java虚拟机</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/技巧/" style="font-size: 12.5px;">技巧</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">主题来源</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯种野生的一头攻城狮。众多缤纷世界,还是喜欢安静的学习新的知识，慢慢摸索前进的路</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">yangyl</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">yangyl</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/H1/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-java编程规范" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/10/java编程规范/" class="article-date">
+      <time datetime="2017-01-10T08:21:34.000Z" itemprop="datePublished">2017-01-10</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java编程规范
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="命名规约"><a href="#命名规约" class="headerlink" title="命名规约"></a>命名规约</h2><ol>
+<li><p>常量命名全部大写，单词间用下划线隔开，力求语意表达完整清楚，不要嫌名字长</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//正例</div><div class="line">MAX_STOCK_COUNT</div><div class="line">//反例</div><div class="line">MAX_COUNT</div></pre></td></tr></table></figure>
+</li>
+<li><p>抽象类命名使用Abstract或Base开头；异常类命名用Exception结尾；测试类命名以它要测试的类的名称开始，以Test结尾。</p>
+</li>
+<li><p>中括号是数组类型的一部分，数组定义如下：String[] args; 反例：请勿使用String args[]的方式来定义</p>
+</li>
+<li><p>POJO 类中的任何布尔类型的变量，都不要加is，否则部分框架解析会引起序列化错误。</p>
+</li>
+<li><p>接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//例如</div><div class="line">void f();</div></pre></td></tr></table></figure>
+</li>
+<li><p>枚举类名建议带上Enum后缀，枚举成员名称需要全大写，单词间用下划线隔开。<br>说明：枚举其实就是特殊的常量类，且构造方法被默认强制是私有。 正例：枚举名字：DealStatusEnum；成员名称：SUCCESS / UNKOWN_REASON。</p>
+</li>
+<li><p>各层命名规范</p>
+</li>
+</ol>
+<ul>
+<li>Service/DAO层方法命名规约</li>
+</ul>
+<ol>
+<li>获取单个对象的方法用get做前缀。</li>
+<li>获取多个对象的方法用list做前缀。</li>
+<li>获取统计值的方法用count做前缀。</li>
+<li>插入的方法用save（推荐）或insert做前缀。</li>
+<li>删除的方法用remove（推荐）或delete做前缀。</li>
+<li>修改的方法用update做前缀。</li>
+</ol>
+<ul>
+<li>领域模型命名规约</li>
+</ul>
+<ol>
+<li>数据对象：xxxDO，xxx即为数据表名。</li>
+<li>数据传输对象：xxxDTO，xxx为业务领域相关的名称。</li>
+<li>展示对象：xxxVO，xxx一般为网页名称。</li>
+<li>POJO是DO/DTO/BO/VO的统称，禁止命名成xxxPOJO。</li>
+</ol>
+<h2 id="常量定义"><a href="#常量定义" class="headerlink" title="常量定义"></a>常量定义</h2><ol>
+<li><p>long或者Long初始赋值时，必须使用大写的L，不能是小写的l，小写容易跟数字1混淆，造成误解。</p>
+</li>
+<li><p>不要使用一个常量类维护所有常量，应该按常量功能进行归类，分开维护。如：缓存相关的常量放在类：CacheConsts下；系统配置相关的常量放在类：ConfigConsts下。</p>
+</li>
+</ol>
+<h2 id="格式规约"><a href="#格式规约" class="headerlink" title="格式规约"></a>格式规约</h2><ol>
+<li>大括号的使用约定。如果是大括号内为空，则简洁地写成{}即可，不需要换行；如果是非空代码块则</li>
+</ol>
+<ul>
+<li>左大括号前不换行。</li>
+<li>左大括号后换行。</li>
+<li>右大括号前换行。</li>
+<li>右大括号后还有else等代码则不换行;表示终止右大括号后必须换行.</li>
+</ul>
+<ol>
+<li><p>左括号和后一个字符之间不出现空格；同样，右括号和前一个字符之间也不出现空格。</p>
+</li>
+<li><p>if/for/while/switch/do等保留字与左右括号之间都必须加空格。</p>
+</li>
+<li><p>代码块缩进4个空格，如果使用tab缩进，请设置成1个tab为4个空格。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">public static void main(String args[]) &#123; </div><div class="line">    // 缩进4个空格 </div><div class="line"></div><div class="line">    String say = &quot;hello&quot;; </div><div class="line">    // 运算符的左右必须有一个空格 </div><div class="line"></div><div class="line">    int flag = 0; </div><div class="line">    // 关键词if与括号之间必须有一个空格，括号内f与左括号，1与右括号不需要空格</div><div class="line"></div><div class="line">    if (flag == 0) &#123; </div><div class="line">        System.out.println(say); </div><div class="line">    &#125; </div><div class="line">    // 左大括号前加空格且不换行；左大括号后换行 </div><div class="line"></div><div class="line">    if (flag == 1) &#123; </div><div class="line">        System.out.println(&quot;world&quot;); </div><div class="line">    // 右大括号前换行，右大括号后有else，不用换行 </div><div class="line"></div><div class="line">    &#125; else &#123; </div><div class="line">        System.out.println(&quot;ok&quot;); </div><div class="line">    // 右大括号做为结束，必须换行 </div><div class="line">    &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>单行字符数限制不超过120个，超出需要换行，换行时，遵循如下原则：</p>
+</li>
+</ol>
+<ul>
+<li>换行时相对上一行缩进4个空格。</li>
+<li>运算符与下文一起换行。</li>
+<li>方法调用的点符号与下文一起换行。</li>
+<li>在多个参数超长，逗号后进行换行。</li>
+<li>在括号前不要换行.</li>
+</ul>
+<h2 id="OOP-规约"><a href="#OOP-规约" class="headerlink" title="OOP 规约"></a>OOP 规约</h2><ol>
+<li><p>Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;test&quot;.equals(object);</div></pre></td></tr></table></figure>
+</li>
+<li><p>定义DO/DTO/VO等POJO类时，不要设定任何属性默认值。<br>反例：某业务的DO的gmtCreate默认值为newDate();但是这个属性在数据提取时并没有置入具体值，在更新其它字段时又附带更新了此字段，导致创建时间被修改成当前时间。</p>
+</li>
+<li><p>使用索引访问用String的split方法得到的数组时，需做最后一个分隔符后有无内容的检查，否则会有抛IndexOutOfBoundsException的风险。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">String str = &quot;a,b,c,,&quot;; </div><div class="line">String[] ary = str.split(&quot;,&quot;); </div><div class="line">//预期大于3，结果是3 </div><div class="line">System.out.println(ary.length);</div></pre></td></tr></table></figure>
+</li>
+<li><p>循环体内，字符串的联接方式，使用StringBuilder的append方法进行扩展.</p>
+</li>
+</ol>
+<h2 id="集合处理"><a href="#集合处理" class="headerlink" title="集合处理"></a>集合处理</h2><ol>
+<li><p>Map和Set的key为自定义对象时，必须重写hashCode和equals方法。String重写了hashCode和equals方法，所以我们可以非常愉快地使用String对象作为key来使用。</p>
+</li>
+<li><p>不要在foreach循环里进行元素的remove/add操作。remove元素请使用Iterator方式，如果并发操作，需要对Iterator对象加锁。</p>
+</li>
+<li><p>高度注意Map类集合K/V能不能存储null值的情况，如下表格<br><img src="/img/map.png" alt="Markdown"></p>
+</li>
+</ol>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><ol>
+<li><p>推荐尽量少用else， if-else的方式可以改写成：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">if(condition)&#123;</div><div class="line">    … return obj;</div><div class="line">&#125; </div><div class="line"> // 接着写else的业务逻辑代码;</div></pre></td></tr></table></figure>
+</li>
+<li><p>获取当前毫秒数：System.currentTimeMillis(); 而不是new Date().getTime();</p>
+</li>
+<li><p>捕获异常是为了处理它，不要捕获了却什么都不处理而抛弃之，如果不想处理它，请将该异常抛给它的调用者。最外层的业务使用者，必须处理异常，将其转化为用户可以理解的内容。</p>
+</li>
+</ol>
+<h2 id="MySql规约"><a href="#MySql规约" class="headerlink" title="MySql规约"></a>MySql规约</h2><ol>
+<li><p>表达是与否概念的字段，必须使用is_xxx的方式命名，数据类型是unsigned tinyint（ 1表示是，0表示否），此规则同样适用于odps建表。</p>
+</li>
+<li><p>禁用保留字，如desc、range、match、delayed等，参考官方保留字。</p>
+</li>
+<li><p>唯一索引名为uk<em>字段名；普通索引名则为idx</em>字段名。</p>
+</li>
+<li><p>小数类型为decimal，禁止使用float和double。</p>
+</li>
+<li><p>varchar是可变长字符串，不预先分配存储空间，长度不要超过5000，如果存储长度大于此值，定义字段类型为TEXT，独立出来一张表，用主键来对应，避免影响其它字段索引效率。</p>
+</li>
+<li><p>表必备三字段：id, gmt_create, gmt_modified。</p>
+</li>
+<li><p>单表行数超过500万行或者单表容量超过2GB，才推荐进行分库分表。</p>
+</li>
+</ol>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/10/java编程规范/">java编程规范</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
+        <p><span>发布时间:</span>2017年01月10日 - 16时21分</p>
+        <p><span>最后更新:</span>2017年01月10日 - 17时15分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/10/java编程规范/" title="java编程规范">http://yoursite.com/2017/01/10/java编程规范/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/10/java编程规范/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/01/12/hello-vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          hello vue
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/10/java中的jdk版本/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java中的jdk版本</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#命名规约"><span class="toc-number">1.</span> <span class="toc-text">命名规约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#常量定义"><span class="toc-number">2.</span> <span class="toc-text">常量定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式规约"><span class="toc-number">3.</span> <span class="toc-text">格式规约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#OOP-规约"><span class="toc-number">4.</span> <span class="toc-text">OOP 规约</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集合处理"><span class="toc-number">5.</span> <span class="toc-text">集合处理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其他"><span class="toc-number">6.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#MySql规约"><span class="toc-number">7.</span> <span class="toc-text">MySql规约</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/01/10/java编程规范/" data-title="java编程规范" data-url="http://yoursite.com/2017/01/10/java编程规范/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangyl"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/12/hello-vue/" title="上一篇: hello vue">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/01/10/java中的jdk版本/" title="下一篇: java中的jdk版本">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 yangyl
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

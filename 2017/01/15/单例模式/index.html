@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>单例模式 | 杨雨露的博客世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="站在巨人的肩膀上再看单例模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单例模式">
+<meta property="og:url" content="http://yoursite.com/2017/01/15/单例模式/index.html">
+<meta property="og:site_name" content="杨雨露的博客世界">
+<meta property="og:description" content="站在巨人的肩膀上再看单例模式">
+<meta property="og:updated_time" content="2017-01-19T02:50:27.063Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单例模式">
+<meta name="twitter:description" content="站在巨人的肩膀上再看单例模式">
+  
+    <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">yangyl</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/H1/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/easyUI/" style="font-size: 10px;">easyUI</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java虚拟机/" style="font-size: 12.5px;">java虚拟机</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/技巧/" style="font-size: 12.5px;">技巧</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">主题来源</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯种野生的一头攻城狮。众多缤纷世界,还是喜欢安静的学习新的知识，慢慢摸索前进的路</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">yangyl</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">yangyl</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/H1/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-单例模式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/15/单例模式/" class="article-date">
+      <time datetime="2017-01-15T12:11:15.000Z" itemprop="datePublished">2017-01-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      单例模式
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="单例模式"><a href="#单例模式" class="headerlink" title="单例模式"></a>单例模式</h2><p>单例模式是一种对象创建模式，用于产生一个对象的具体实例，它可以确保系统中一个类只产生一个实例。因此对于系统的关键组件和被频繁使用的对象，使用单例模式可以有效的改善系统的性能。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>对于频繁使用的对象，可以省略创建对象所花费的时间，这对于那些重量级对象而言，是非常可观的一笔系统开销</li>
+<li>由于new操作的次数减少，因而对系统内存的使用频率也会降低，这将减轻GC的压力，缩短GC停顿时间</li>
+</ul>
+<h2 id="简单的单例实现"><a href="#简单的单例实现" class="headerlink" title="简单的单例实现"></a>简单的单例实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">public class Singleton &#123;</div><div class="line"></div><div class="line">	private Singleton () &#123;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private static Singleton instance = new Singleton();</div><div class="line">	</div><div class="line">	public static Singleton getInstance() &#123;</div><div class="line">		return instance;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>说明：必须要有一个private的构造函数，只有这样，才不会被外部实例，其次，instance成员变量和getInstance方法必须是static的。<br>不足：无法对instance实例做延迟加载。假如单例的创建过程很慢    </p>
+<h2 id="进阶的单例实现"><a href="#进阶的单例实现" class="headerlink" title="进阶的单例实现"></a>进阶的单例实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class LazySingleton &#123;</div><div class="line"></div><div class="line">	private LazySingleton() &#123;</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private static LazySingleton instance = null;</div><div class="line">	public static synchronized LazySingleton getInstance() &#123;</div><div class="line">		if (instance == null) &#123;</div><div class="line">			instance = new LazySingleton();</div><div class="line">		&#125;</div><div class="line">		return instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="最终的单例实现"><a href="#最终的单例实现" class="headerlink" title="最终的单例实现"></a>最终的单例实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public class StaticSingleton &#123;</div><div class="line"></div><div class="line">	private StaticSingleton() &#123;</div><div class="line">		// TODO Auto-generated constructor stub</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private static class SingletonHolder &#123;</div><div class="line">		private static StaticSingleton instance = new StaticSingleton();</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public static StaticSingleton getInstance() &#123;</div><div class="line">		return SingletonHolder.instance;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/15/单例模式/">单例模式</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
+        <p><span>发布时间:</span>2017年01月15日 - 20时11分</p>
+        <p><span>最后更新:</span>2017年01月19日 - 10时50分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/15/单例模式/" title="单例模式">http://yoursite.com/2017/01/15/单例模式/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/15/单例模式/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/01/19/spring中常用的两种事物配置/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          spring中常用的两种事物配置
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/12/hello-vue/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hello vue</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#单例模式"><span class="toc-number">1.</span> <span class="toc-text">单例模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#优点"><span class="toc-number">2.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单的单例实现"><span class="toc-number">3.</span> <span class="toc-text">简单的单例实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶的单例实现"><span class="toc-number">4.</span> <span class="toc-text">进阶的单例实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最终的单例实现"><span class="toc-number">5.</span> <span class="toc-text">最终的单例实现</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/01/15/单例模式/" data-title="单例模式" data-url="http://yoursite.com/2017/01/15/单例模式/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangyl"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/19/spring中常用的两种事物配置/" title="上一篇: spring中常用的两种事物配置">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/01/12/hello-vue/" title="下一篇: hello vue">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 yangyl
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

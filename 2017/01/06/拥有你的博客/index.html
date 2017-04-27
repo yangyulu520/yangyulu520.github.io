@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>拥有你的博客 | 杨雨露的博客世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="hexo快速搭建好博客，踩下的坑，我来帮你填">
+<meta property="og:type" content="article">
+<meta property="og:title" content="拥有你的博客">
+<meta property="og:url" content="http://yoursite.com/2017/01/06/拥有你的博客/index.html">
+<meta property="og:site_name" content="杨雨露的博客世界">
+<meta property="og:description" content="hexo快速搭建好博客，踩下的坑，我来帮你填">
+<meta property="og:image" content="http://yoursite.com/img/git.png">
+<meta property="og:image" content="http://yoursite.com/img/yuming.png">
+<meta property="og:updated_time" content="2017-01-06T07:15:32.691Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="拥有你的博客">
+<meta name="twitter:description" content="hexo快速搭建好博客，踩下的坑，我来帮你填">
+<meta name="twitter:image" content="http://yoursite.com/img/git.png">
+  
+    <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">yangyl</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/H1/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/easyUI/" style="font-size: 10px;">easyUI</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java虚拟机/" style="font-size: 12.5px;">java虚拟机</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/技巧/" style="font-size: 12.5px;">技巧</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">主题来源</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯种野生的一头攻城狮。众多缤纷世界,还是喜欢安静的学习新的知识，慢慢摸索前进的路</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">yangyl</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">yangyl</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/H1/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-拥有你的博客" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/06/拥有你的博客/" class="article-date">
+      <time datetime="2017-01-06T04:54:31.000Z" itemprop="datePublished">2017-01-06</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      拥有你的博客
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/博客相关/">博客相关</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/blog/">blog</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/qq_15807167/article/details/51601234" title="Blog Link" target="_blank" rel="external">博客搭建整体流程</a><br><a href="http://luuman.github.io/2015/12/27/Hexo/GitHubHexo/" title="Blog Link" target="_blank" rel="external">博客搭建详细参数</a></p>
+<p>快速搭建好自己的博客，其实网上有很多很多的教程，这里，我再写一遍，更多的是关注在，参考别人的经验时，自己搭建过程中碰到的问题。所以这里直接就先贴出我搭建博客时，参考的这篇教程，下面列出过程中碰到的诸多问题。</p>
+<h2 id="github注册"><a href="#github注册" class="headerlink" title="github注册"></a>github注册</h2><p>由于之前就注册了gitHub,但是一直没用，也是因为对英文的一点点反抗，就选择了国内提供的 <a href="https://git.oschina.net/" title="Code Link" target="_blank" rel="external">码云</a>作为自己的代码仓库。这次搭建需要使用github page就好好地弄了下。</p>
+<h3 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h3><ol>
+<li>新建的工程，名字是有格式要求的，必须是 <em>你的用户名.github.io</em> ，默认新建的项目，会自动开启page</li>
+</ol>
+<p>貌似github这块，就碰到了这个问题</p>
+<h2 id="NodeJs的下载和安装"><a href="#NodeJs的下载和安装" class="headerlink" title="NodeJs的下载和安装"></a>NodeJs的下载和安装</h2><p>这个参考文献，基本没啥问题，由于之前已经安装好了nodejs，所以基本这步就是跳过的。</p>
+<h2 id="Git的下载和安装"><a href="#Git的下载和安装" class="headerlink" title="Git的下载和安装"></a>Git的下载和安装</h2><ol>
+<li>由于工作需要，Git早早就安装了，但使用命令行来安装hexo时，缺总是无法识别命令，这个坑了我好久，后来才发现，是安装git时的选择问题，一定要选择命令行模式，即 <br><img src="/img/git.png" alt="Markdown"><br>如果你已经安装了git，请检查是否选择了第二个，还是按照默认安装了第一个。</li>
+<li>新安装的git，是可以复制和通过右键点击粘贴，如果没有，则打开该功能：右击-属性-选项-快速编辑模式</li>
+</ol>
+<h2 id="hexo的配置"><a href="#hexo的配置" class="headerlink" title="hexo的配置"></a>hexo的配置</h2><ol>
+<li><p>关于hexo的配置，首先是安装hexo，对于这个，网上有两三种不同的命令，在尝试后，还是 <br>‘’’$ npm install hexo-cli -g’’’ <br>命令可以。<br>然后就是等着hexo安装完成。</p>
+</li>
+<li><p>如果之后使用过程中碰到了<br> ```python error deployer not found:github ‘’’<br><br>就使用命令 ‘’’ npm install hexo-deployer-git –save ‘’’,然后即可。</p>
+</li>
+<li><p>使用hexo，常用命令为：<br></p>
+</li>
+</ol>
+<ul>
+<li>hexo init 初始化hexo</li>
+<li>hexo g 将md编译成静态页面</li>
+<li>hexo s 开启服务器，之后可以通过localhost://4000 来访问效果页面</li>
+<li>hexo clean 清除编译的静态页面</li>
+<li>hexo d 将本地静态页面上传到git，该命令需要事先配置好_config.yml。–此时不需要用git push</li>
+</ul>
+<ol>
+<li>配置_config.yml来通过 hexo d 上传静态页面，，具体配置参考上面第二个链接</li>
+</ol>
+<p>通过以上步骤基本上一个基本的博客搭建，就没有什么问题了。本人也是小菜，也刚接触hexo的方式来搭建博客，希望想搭建的朋友可以顺利成功。</p>
+<h2 id="附-主题和域名"><a href="#附-主题和域名" class="headerlink" title="附 主题和域名"></a>附 主题和域名</h2><h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>每一个博客都有个默认的主题，如果你不喜欢这个主题，可以到网上找一个自己喜欢的主题，进行替换，具体的流程度娘上一大堆。这儿提供一个我自己的主题切换的说明，个人感觉写的很详细 <a href="http://luuman.github.io/categories/Hexo/" title="changeTheme Link" target="_blank" rel="external">主题切换和插件使用</a><br></p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>看着自己博客访问的网址是 xxx.github.io。心里总觉得有一千只草拟马奔腾，太不喜欢了，那就买个域名，绑定自己的网址，以后通过域名来访问自己的博客<br>。可以通过 <a href="https://sg.godaddy.com/" title="godaddy Link" target="_blank" rel="external">GoDaddy</a>来购买域名，看着美元转换成的高额的人民币，对于个人的博客，我还是最终选择了阿里云来购买自己的域名，3元，你值得拥有。<br>买好了后，需要两步：</p>
+<ol>
+<li><p>在本地博客文件的source目录下，新建一个CNAME的文件。文件的内容只有 : 你的域名地址(例: www.yangyl520.site)</p>
+</li>
+<li><p>在域名设置中，配置域名解析，带www或者不带的都可以解析到你的博客地址，这里不多说，直接贴上我的配置。<br></p>
+</li>
+</ol>
+<p><img src="/img/yuming.png" alt="Markdown"></p>
+<p>到此为止，基本上搭建一个基础博客所涉及到的，都或粗略或详细的说明了下，记录一下两天搭建历程</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/06/拥有你的博客/">拥有你的博客</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
+        <p><span>发布时间:</span>2017年01月06日 - 12时54分</p>
+        <p><span>最后更新:</span>2017年01月06日 - 15时15分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/06/拥有你的博客/" title="拥有你的博客">http://yoursite.com/2017/01/06/拥有你的博客/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/06/拥有你的博客/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/01/09/多字段下的excel数据导入/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          多字段下的excel数据导入
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/01/05/hexo文章-编辑/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">hexo文章-编辑</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">1.</span> <span class="toc-text">参考文献</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#github注册"><span class="toc-number">1.1.</span> <span class="toc-text">github注册</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新建工程"><span class="toc-number">1.1.1.</span> <span class="toc-text">新建工程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#NodeJs的下载和安装"><span class="toc-number">1.2.</span> <span class="toc-text">NodeJs的下载和安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Git的下载和安装"><span class="toc-number">1.3.</span> <span class="toc-text">Git的下载和安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo的配置"><span class="toc-number">1.4.</span> <span class="toc-text">hexo的配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#附-主题和域名"><span class="toc-number">1.5.</span> <span class="toc-text">附 主题和域名</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#主题"><span class="toc-number">1.5.1.</span> <span class="toc-text">主题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#域名"><span class="toc-number">1.5.2.</span> <span class="toc-text">域名</span></a></li></ol></li></ol></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/01/06/拥有你的博客/" data-title="拥有你的博客" data-url="http://yoursite.com/2017/01/06/拥有你的博客/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangyl"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/09/多字段下的excel数据导入/" title="上一篇: 多字段下的excel数据导入">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/01/05/hexo文章-编辑/" title="下一篇: hexo文章-编辑">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 yangyl
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>

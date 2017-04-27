@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>java过滤器和springMVC拦截器 | 杨雨露的博客世界</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="java过滤器和springMVC拦截器">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java过滤器和springMVC拦截器">
+<meta property="og:url" content="http://yoursite.com/2017/02/13/java过滤器和springMVC拦截器/index.html">
+<meta property="og:site_name" content="杨雨露的博客世界">
+<meta property="og:description" content="java过滤器和springMVC拦截器">
+<meta property="og:updated_time" content="2017-02-13T09:10:21.939Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java过滤器和springMVC拦截器">
+<meta name="twitter:description" content="java过滤器和springMVC拦截器">
+  
+    <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/img/favicon.png">
+  
+  
+      <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  
+      <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  
+  <!-- 加载特效 -->
+    <script src="/js/pace.js"></script>
+    <link href="/css/pace/pace-theme-flash.css" rel="stylesheet" />
+  <script>
+      var yiliaConfig = {
+          rootUrl: '/',
+          fancybox: true,
+          animate: true,
+          isHome: false,
+          isPost: true,
+          isArchive: false,
+          isTag: false,
+          isCategory: false,
+          open_in_new: false
+      }
+  </script>
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            
+            <img lazy-src="/img/head.jpg" class="js-avatar">
+            
+        </a>
+
+        <hgroup>
+          <h1 class="header-author"><a href="/" title="Hi Mate">yangyl</a></h1>
+        </hgroup>
+
+        
+        
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/H1/index.html">博客首页</a></li>
+                        
+                            <li><a href="/works">作品展示</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fl mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                            
+                                <a class="fl github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                            
+                                <a class="fl QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <a href="/tags/blog/" style="font-size: 12.5px;">blog</a> <a href="/tags/easyUI/" style="font-size: 10px;">easyUI</a> <a href="/tags/java/" style="font-size: 17.5px;">java</a> <a href="/tags/java虚拟机/" style="font-size: 12.5px;">java虚拟机</a> <a href="/tags/junit/" style="font-size: 10px;">junit</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 15px;">mysql</a> <a href="/tags/nodejs/" style="font-size: 10px;">nodejs</a> <a href="/tags/spring/" style="font-size: 20px;">spring</a> <a href="/tags/vue/" style="font-size: 12.5px;">vue</a> <a href="/tags/web/" style="font-size: 15px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/多线程/" style="font-size: 12.5px;">多线程</a> <a href="/tags/开发工具/" style="font-size: 10px;">开发工具</a> <a href="/tags/技巧/" style="font-size: 12.5px;">技巧</a> <a href="/tags/设计模式/" style="font-size: 12.5px;">设计模式</a>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a target="_blank" class="main-nav-link switch-friends-link" href="http://luuman.github.io/">主题来源</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">纯种野生的一头攻城狮。众多缤纷世界,还是喜欢安静的学习新的知识，慢慢摸索前进的路</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="Me">yangyl</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                
+                    <img lazy-src="/img/head.jpg" class="js-avatar">
+                
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="Me">yangyl</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/H1/index.html">博客首页</a></li>
+                
+                    <li><a href="/works">作品展示</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a class="mail" target="_blank" href="http://mail.qq.com/cgi-bin/qm_share?t=qm_mailme&email=KxoaHhIbExsSGBhrWloFSERG" title="mail">mail</a>
+                    
+                        <a class="github" target="_blank" href="https://github.com/yangyulu520" title="github">github</a>
+                    
+                        <a class="QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1159080933&site=qq&menu=yes" title="QQ">QQ</a>
+                    
+                </div>
+            </nav>
+        </header>                
+    </div>
+</nav>
+      <div class="body-wrap"><article id="post-java过滤器和springMVC拦截器" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/02/13/java过滤器和springMVC拦截器/" class="article-date">
+      <time datetime="2017-02-13T08:15:52.000Z" itemprop="datePublished">2017-02-13</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      java过滤器和springMVC拦截器
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="过滤器-filter-和拦截器-interceptor-的区别"><a href="#过滤器-filter-和拦截器-interceptor-的区别" class="headerlink" title="过滤器(filter)和拦截器(interceptor)的区别"></a>过滤器(filter)和拦截器(interceptor)的区别</h2><p>Spring的拦截器和Servlet的filter有相似之处，比如二者都是AOP编程思想的体现，都能实现权限检查、日志记录等。不同的是：</p>
+<ol>
+<li>使用范围不同：Filter是servlet规范规定的，只能用于web程序中。而拦截器既能用于web程序，也可以用于Application、Swing程序中。</li>
+<li>规范不同：Filter是在Servlet规范中定义的，是Servlet容器支持的。而拦截器是在spring容器内的，是spring框架支持的。</li>
+<li>使用的资源不同：同其他代码块一样，拦截器也是一个spring的组件，归spring管理，配置在spring文件中，因此能使用spring里的任何资源、对象，例如service对象、数据源、事物管理等等，通过IOC注入到拦截器即可 。而Filter则不能。</li>
+<li>深度不同：Filter只能在Servlet前后起作用。而拦截器能够深入到方法前后、异常抛出前后等等，因此拦截器的使用有更大的弹性。</li>
+<li>拦截器是基于Java的反射机制，而过滤器是基于函数的回调。<h2 id="过滤器-filter"><a href="#过滤器-filter" class="headerlink" title="过滤器(filter)"></a>过滤器(filter)</h2>在web.xml中的配置：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 请求url日志记录过滤器 --&gt;  </div><div class="line">    &lt;filter&gt;  </div><div class="line">        &lt;filter-name&gt;logfilter&lt;/filter-name&gt;  </div><div class="line">        &lt;filter-class&gt;com.company.strutstudy.web.servletstudy.filter.LogFilter&lt;/filter-class&gt;  </div><div class="line">    &lt;/filter&gt;  </div><div class="line">    &lt;filter-mapping&gt;  </div><div class="line">        &lt;filter-name&gt;logfilter&lt;/filter-name&gt;  </div><div class="line">        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;  </div><div class="line">    &lt;/filter-mapping&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>编码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line">public class LogFilter implements Filter &#123;  </div><div class="line">    FilterConfig config;  </div><div class="line">   </div><div class="line">    public void destroy() &#123;  </div><div class="line">        this.config = null;  </div><div class="line">    &#125;  </div><div class="line">   </div><div class="line">    public void doFilter(ServletRequest req, ServletResponse res,  </div><div class="line">            FilterChain chain) throws IOException, ServletException &#123;  </div><div class="line">        // 获取ServletContext 对象，用于记录日志  </div><div class="line">        ServletContext context = this.config.getServletContext();  </div><div class="line">        //long before = System.currentTimeMillis();  </div><div class="line">        System.out.println(&quot;before the log filter!&quot;);  </div><div class="line">        //context.log(&quot;开始过滤&quot;);  </div><div class="line">        // 将请求转换成HttpServletRequest 请求  </div><div class="line">        HttpServletRequest hreq = (HttpServletRequest) req;  </div><div class="line">        // 记录日志  </div><div class="line">        System.out.println(&quot;Log Filter已经截获到用户的请求的地址:&quot;+hreq.getServletPath() );  </div><div class="line">        //context.log(&quot;Filter已经截获到用户的请求的地址: &quot; + hreq.getServletPath());  </div><div class="line">        try &#123;  </div><div class="line">            // Filter 只是链式处理，请求依然转发到目的地址。  </div><div class="line">            chain.doFilter(req, res);  </div><div class="line">        &#125; catch (Exception e) &#123;  </div><div class="line">            e.printStackTrace();  </div><div class="line">        &#125;  </div><div class="line">        System.out.println(&quot;after the log filter!&quot;);  </div><div class="line">        //long after = System.currentTimeMillis();  </div><div class="line">        // 记录日志  </div><div class="line">        //context.log(&quot;过滤结束&quot;);  </div><div class="line">        // 再次记录日志  </div><div class="line">        //context.log(&quot; 请求被定位到&quot; + ((HttpServletRequest) req).getRequestURI()  </div><div class="line">        //      + &quot;所花的时间为: &quot; + (after - before));  </div><div class="line">    &#125;  </div><div class="line">   </div><div class="line">    public void init(FilterConfig config) throws ServletException &#123;  </div><div class="line">        System.out.println(&quot;begin do the log filter!&quot;);  </div><div class="line">        this.config = config;  </div><div class="line">    &#125;  </div><div class="line">   </div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>方法说明：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">public void init(FilterConfig filterConfig) throws ServletException;//初始化</div><div class="line">和我们编写的Servlet程序一样，Filter的创建和销毁由WEB服务器负责。 web 应用程序启动时，web 服务器将创建Filter 的实例对象，并调用其init方法，读取web.xml配置，完成对象的初始化功能，从而为后续的用户请求作好拦截的准备工作（filter对象只会创建一次，init方法也只会执行一次）。开发人员通过init方法的参数，可获得代表当前filter配置信息的FilterConfig对象。</div><div class="line"></div><div class="line">public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException;//拦截请求</div><div class="line">这个方法完成实际的过滤操作。当客户请求访问与过滤器关联的URL的时候，Servlet过滤器将先执行doFilter方法。FilterChain参数用于访问后续过滤器。</div><div class="line"></div><div class="line">public void destroy();//销毁</div><div class="line">Filter对象创建后会驻留在内存，当web应用移除或服务器停止时才销毁。在Web容器卸载 Filter 对象之前被调用。该方法在Filter的生命周期中仅执行一次。在这个方法中，可以释放过滤器使用的资源。</div></pre></td></tr></table></figure></p>
+<h2 id="拦截器-interceptor"><a href="#拦截器-interceptor" class="headerlink" title="拦截器(interceptor)"></a>拦截器(interceptor)</h2><p>在springmvc配置文件中配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">&lt;mvc:interceptors&gt;  </div><div class="line">    &lt;!-- 使用bean定义一个Interceptor，直接定义在mvc:interceptors根下面的Interceptor将拦截所有的请求 --&gt;  </div><div class="line">    &lt;bean class=&quot;com.host.app.web.interceptor.AllInterceptor&quot;/&gt;  </div><div class="line">    &lt;mvc:interceptor&gt;  </div><div class="line">        &lt;mvc:mapping path=&quot;/test/number.do&quot;/&gt;  </div><div class="line">        &lt;!-- 定义在mvc:interceptor下面的表示是对特定的请求才进行拦截的 --&gt;  </div><div class="line">        &lt;bean class=&quot;com.host.app.web.interceptor.LoginInterceptor&quot;/&gt;  </div><div class="line">    &lt;/mvc:interceptor&gt;  </div><div class="line">&lt;/mvc:interceptors&gt;</div></pre></td></tr></table></figure></p>
+<p>编码实现：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div></pre></td><td class="code"><pre><div class="line">public class SessionFilter implements HandlerInterceptor &#123;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception &#123;  </div><div class="line">      //  后台session控制  </div><div class="line">        Object user=request.getSession().getAttribute(&quot;username&quot;);  </div><div class="line">        String returnUrl = request.getRequestURI();  </div><div class="line">        if(null==user)&#123;  </div><div class="line">            if(returnUrl.equals(&quot;/public/getImg.shtml&quot;)||returnUrl.equals(&quot;/public/checkLogin.shtml&quot;)||returnUrl.equals(&quot;/public/login.shtml&quot;)||returnUrl.equals(&quot;/public/logOut.shtml&quot;))&#123;  </div><div class="line">                return true;  </div><div class="line">            &#125;else&#123;  </div><div class="line">                response.setContentType(&quot;text/html&quot;);  </div><div class="line">                response.setCharacterEncoding(&quot;utf-8&quot;);  </div><div class="line">                PrintWriter out = response.getWriter();    </div><div class="line">                StringBuilder builder = new StringBuilder();    </div><div class="line">                builder.append(&quot;&lt;script type=\&quot;text/javascript\&quot; charset=\&quot;UTF-8\&quot;&gt;&quot;);    </div><div class="line">                builder.append(&quot;alert(\&quot;请重新登陆！\&quot;);&quot;);    </div><div class="line">                builder.append(&quot;window.location.href=\&quot;/public/login.shtml\&quot;;&quot;);    </div><div class="line">                builder.append(&quot;&lt;/script&gt;&quot;);    </div><div class="line">                out.print(builder.toString());    </div><div class="line">                out.close();    </div><div class="line">                return false;  </div><div class="line">            &#125;  </div><div class="line">        &#125;  </div><div class="line">        return true;  </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o, ModelAndView modelAndView) throws Exception &#123;  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    public void afterCompletion(HttpServletRequest httpServletRequest, HttpServletResponse response, Object o, Exception e) throws Exception &#123;  </div><div class="line">          </div><div class="line">    &#125;  </div><div class="line">  </div><div class="line">  </div><div class="line">    /**  </div><div class="line">     * @param request  </div><div class="line">     * @return Create Date:2013-6-5  </div><div class="line">     * @author Shine  </div><div class="line">     * Description:获取IP  </div><div class="line">     */  </div><div class="line">    private String getIpAddr(HttpServletRequest request) &#123;  </div><div class="line">        String ip = request.getHeader(&quot;x-forwarded-for&quot;);  </div><div class="line">        if (ip == null || ip.length() == 0 || &quot;unknown&quot;.equalsIgnoreCase(ip)) &#123;  </div><div class="line">            ip = request.getHeader(&quot;Proxy-Client-IP&quot;);  </div><div class="line">        &#125;  </div><div class="line">        if (ip == null || ip.length() == 0 || &quot;unknown&quot;.equalsIgnoreCase(ip)) &#123;  </div><div class="line">            ip = request.getHeader(&quot;WL-Proxy-Client-IP&quot;);  </div><div class="line">        &#125;  </div><div class="line">        if (ip == null || ip.length() == 0 || &quot;unknown&quot;.equalsIgnoreCase(ip)) &#123;  </div><div class="line">            ip = request.getRemoteAddr();  </div><div class="line">        &#125;  </div><div class="line">        return ip;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>方法说明：</p>
+<ol>
+<li>preHandle (HttpServletRequest request, HttpServletResponse response, Object handle) 方法，顾名思义，该方法将在请求处理之前进行调用。SpringMVC 中的Interceptor 是链式的调用的，在一个应用中或者说是在一个请求中可以同时存在多个Interceptor 。每个Interceptor 的调用会依据它的声明顺序依次执行，而且最先执行的都是Interceptor 中的preHandle 方法，所以可以在这个方法中进行一些前置初始化操作或者是对当前请求的一个预处理，也可以在这个方法中进行一些判断来决定请求是否要继续进行下去。该方法的返回值是布尔值Boolean 类型的，当它返回为false 时，表示请求结束，后续的Interceptor 和Controller 都不会再执行；当返回值为true 时就会继续调用下一个Interceptor 的preHandle 方法，如果已经是最后一个Interceptor 的时候就会是调用当前请求的Controller 方法。</li>
+<li>postHandle (HttpServletRequest request, HttpServletResponse response, Object handle, ModelAndView modelAndView) 方法，由preHandle 方法的解释我们知道这个方法包括后面要说到的afterCompletion 方法都只能是在当前所属的Interceptor 的preHandle 方法的返回值为true 时才能被调用。postHandle 方法，顾名思义就是在当前请求进行处理之后，也就是Controller 方法调用之后执行，但是它会在DispatcherServlet 进行视图返回渲染之前被调用，所以我们可以在这个方法中对Controller 处理之后的ModelAndView 对象进行操作.</li>
+<li>afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handle, Exception ex) 方法，该方法也是需要当前对应的Interceptor 的preHandle 方法的返回值为true 时才会执行。顾名思义，该方法将在整个请求结束之后，也就是在DispatcherServlet 渲染了对应的视图之后执行。这个方法的主要作用是用于进行资源清理工作的。</li>
+</ol>
+<h2 id="拦截器和springaop切面区别"><a href="#拦截器和springaop切面区别" class="headerlink" title="拦截器和springaop切面区别"></a>拦截器和springaop切面区别</h2><ol>
+<li><p>AOP有更大的自由。举个例子—运动场上一段50m的跑道,如果是自己用AOP实现就是说你随便跑,跑到终点就可以,使用HandlerInterceptor的话就是规定你必须传跑鞋,必须听起跑枪响,必须在第5道跑.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">//在时机上有更多的选择,也更标准</div><div class="line">@Before </div><div class="line">@After </div><div class="line">@AfterReturning </div><div class="line">@AfterThrowing </div><div class="line">@Around</div><div class="line">//Pointcut让你在使用的位置空间上更加自由</div><div class="line">execution</div><div class="line">within </div><div class="line">this</div><div class="line">target</div><div class="line">args </div><div class="line">@target </div><div class="line">@args</div><div class="line">@within</div><div class="line">@annotation</div></pre></td></tr></table></figure>
+</li>
+<li><p>HandlerInterceptor和servlet的Filter比较相似,是一个链式的处理模式,每个请求都会在这个链下跑一遍,实际上很多请求我们是不想去处理的,如果在方法里判断显得很不spring.而自己用AOP实现,一切皆可配置,不需要的方法不去拦截(配合annotation使用).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;aop:config proxy-target-class=&quot;true&quot;&gt;</div><div class="line">  &lt;aop:aspect ref=&quot;cachePointCut&quot;&gt;</div><div class="line">    &lt;aop:pointcut id=&quot;daoCachePointcut&quot; expression=&quot;execution(public !void com.jarvis.cache_example.common.dao..*.*(..)) &amp;amp;&amp;amp; @annotation(cache)&quot; /&gt;</div><div class="line">    &lt;aop:around pointcut-ref=&quot;daoCachePointcut&quot; method=&quot;proceed&quot; /&gt;</div><div class="line">  &lt;/aop:aspect&gt;</div><div class="line">  &lt;aop:aspect ref=&quot;cachePointCut&quot; order=&quot;1000&quot;&gt;</div><div class="line">    &lt;aop:pointcut id=&quot;deleteCachePointcut&quot; expression=&quot;execution(* com.jarvis.cache_example.common.dao..*.*(..)) &amp;amp;&amp;amp; @annotation(cacheDelete)&quot; /&gt;</div><div class="line">    &lt;aop:after-returning pointcut-ref=&quot;deleteCachePointcut&quot; method=&quot;deleteCache&quot; returning=&quot;retVal&quot;/&gt;</div><div class="line">  &lt;/aop:aspect&gt;</div><div class="line">&lt;/aop:config&gt;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>总结：如果是特别简单的功能又是通用的,每个请求都要去处理的,比如判断token是否失效,失效直接返回401可以使用spring自带的HanlderIntercept, 复杂的,比如缓存,需要高度自定义,高度可配置,高度可插拔,非必要拦截,就自己用AOP倒腾</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></p>
+        <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
+        <p><span>发布时间:</span>2017年02月13日 - 16时15分</p>
+        <p><span>最后更新:</span>2017年02月13日 - 17时10分</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/13/java过滤器和springMVC拦截器/" title="java过滤器和springMVC拦截器">http://yoursite.com/2017/02/13/java过滤器和springMVC拦截器/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/13/java过滤器和springMVC拦截器/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script src="/js/clipboard.min.js"></script>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/3.0/cn/" title="中国大陆 (CC BY-NC-SA 3.0 CN)" target = "_blank">"署名-非商用-相同方式共享 3.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+<nav id="article-nav">
+  
+    <a href="/2017/02/22/restful架构/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          restful架构
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/02/12/spring单例与线程安全/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">spring单例与线程安全</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤器-filter-和拦截器-interceptor-的区别"><span class="toc-number">1.</span> <span class="toc-text">过滤器(filter)和拦截器(interceptor)的区别</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过滤器-filter"><span class="toc-number">2.</span> <span class="toc-text">过滤器(filter)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拦截器-interceptor"><span class="toc-number">3.</span> <span class="toc-text">拦截器(interceptor)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#拦截器和springaop切面区别"><span class="toc-number">4.</span> <span class="toc-text">拦截器和springaop切面区别</span></a></li></ol>
+</div>
+<input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+<script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script>
+    var valueHide = "隐藏目录";
+    var valueShow = "显示目录";
+
+    if ($(".left-col").is(":hidden")) {
+        $("#tocButton").attr("value", valueShow);
+    }
+    $("#tocButton").click(function() {
+        if ($("#toc").is(":hidden")) {
+            $("#tocButton").attr("value", valueHide);
+            $("#toc").slideDown(320);
+        }
+        else {
+            $("#tocButton").attr("value", valueShow);
+            $("#toc").slideUp(350);
+        }
+    })
+    if ($(".toc").length < 1) {
+        $("#toc, #tocButton").hide();
+    }
+</script>
+
+
+
+
+
+<div class="bdsharebuttonbox">
+	<a href="#" class="fx fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="fx fa-weixin bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="fx fa-qq bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="fx fa-facebook-official bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+	<a href="#" class="fx fa-twitter bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+	<a href="#" class="fx fa-linkedin bds_linkedin" data-cmd="linkedin" title="分享到linkedin"></a>
+	<a href="#" class="fx fa-files-o bds_copy" data-cmd="copy" title="分享到复制网址"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"2","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+
+
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2017/02/13/java过滤器和springMVC拦截器/" data-title="java过滤器和springMVC拦截器" data-url="http://yoursite.com/2017/02/13/java过滤器和springMVC拦截器/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"yangyl"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '/js/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
+
+    
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/02/22/restful架构/" title="上一篇: restful架构">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+        
+            <a href="/2017/02/12/spring单例与线程安全/" title="下一篇: spring单例与线程安全">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+    <script>
+        $(".post-list").addClass("toc-article");
+        $(".post-list-item a").attr("target","_blank");
+        $("#post-nav-button > a:nth-child(2)").click(function() {
+            $(".fa-bars, .fa-times").toggle();
+            $(".post-list").toggle(300);
+            if ($(".toc").length > 0) {
+                $("#toc, #tocButton").toggle(200, function() {
+                    if ($(".switch-area").is(":visible")) {
+                        $("#tocButton").attr("value", valueHide);
+                        }
+                    })
+            }
+            else {
+            }
+        })
+    </script>
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                &copy; 2017 yangyl
+            </div>
+            
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" >到访数: 
+                            <span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>, </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit">本页阅读量: 
+                            <span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+
+    </div>
+    <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var backgroundnum = 24;
+            var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+            $("#mobile-nav").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+            $(".left-col").css({"background-image": backgroundimg,"background-size": "cover","background-position": "center"});
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    $(document).ready(function() {
+        if ($("#comments").length < 1) {
+            $("#scroll > a:nth-child(2)").hide();
+        };
+    })
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+  <script language="javascript">
+    $(function() {
+        $("a[title]").each(function() {
+            var a = $(this);
+            var title = a.attr('title');
+            if (title == undefined || title == "") return;
+            a.data('title', title).removeAttr('title').hover(
+
+            function() {
+                var offset = a.offset();
+                $("<div id=\"anchortitlecontainer\"></div>").appendTo($("body")).html(title).css({
+                    top: offset.top - a.outerHeight() - 15,
+                    left: offset.left + a.outerWidth()/2 + 1
+                }).fadeIn(function() {
+                    var pop = $(this);
+                    setTimeout(function() {
+                        pop.remove();
+                    }, pop.text().length * 800);
+                });
+            }, function() {
+                $("#anchortitlecontainer").remove();
+            });
+        });
+    });
+</script>
+
+
+  </div>
+</body>
+</html>
