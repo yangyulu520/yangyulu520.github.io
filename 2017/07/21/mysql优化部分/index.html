@@ -8,10 +8,10 @@
   <meta name="description" content="mysql优化相关东西">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql优化部分">
-<meta property="og:url" content="http://yoursite.com/2017/06/21/mysql优化部分/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/mysql优化部分/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="mysql优化相关东西">
-<meta property="og:updated_time" content="2017-07-13T02:29:47.673Z">
+<meta property="og:updated_time" content="2017-07-31T09:31:28.585Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql优化部分">
 <meta name="twitter:description" content="mysql优化相关东西">
@@ -207,8 +207,8 @@
       <div class="body-wrap"><article id="post-mysql优化部分" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/06/21/mysql优化部分/" class="article-date">
-      <time datetime="2017-06-21T03:22:09.000Z" itemprop="datePublished">2017-06-21</time>
+      <a href="/2017/07/21/mysql优化部分/" class="article-date">
+      <time datetime="2017-07-21T03:22:09.000Z" itemprop="datePublished">2017-07-21</time>
 </a>
     </div>
   
@@ -247,7 +247,14 @@
       
           
         <h3 id="mysql语句执行顺序"><a href="#mysql语句执行顺序" class="headerlink" title="mysql语句执行顺序"></a>mysql语句执行顺序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">(7)     SELECT   </div><div class="line">(8)     DISTINCT &lt;select_list&gt;  </div><div class="line">(1)     FROM &lt;left_table&gt;  </div><div class="line">(3)     &lt;join_type&gt; JOIN &lt;right_table&gt;  </div><div class="line">(2)     ON &lt;join_condition&gt;  </div><div class="line">(4)     WHERE &lt;where_condition&gt;  </div><div class="line">(5)     GROUP BY &lt;group_by_list&gt;  </div><div class="line">(6)     HAVING &lt;having_condition&gt;  </div><div class="line">(9)     ORDER BY &lt;order_by_condition&gt;  </div><div class="line">(10)    LIMIT &lt;limit_number&gt;</div></pre></td></tr></table></figure>
-<h3 id="mysql索引失效"><a href="#mysql索引失效" class="headerlink" title="mysql索引失效"></a>mysql索引失效</h3>
+<h3 id="mysql索引"><a href="#mysql索引" class="headerlink" title="mysql索引"></a>mysql索引</h3><p>在有多个索引同时符合的情况下，优先使用颗粒度细的索引，而一般组合索引会比单索引颗粒度更细<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">idx(a,b,c)   where a=1 and b&gt;1 and c=1  </div><div class="line">--索引只能用到a,b字段</div><div class="line">idx(a,b,c)   where a=1 and c&lt;2 and b=1</div><div class="line">--abc都会用到，因为你C在索引中，在最后，这个索引位置，不是where中的位置,索引位置，是建表中的index的顺序</div></pre></td></tr></table></figure></p>
+<p>所有的范围条件都会导致后续索引失效</p>
+<h3 id="mysql开启慢查询日志"><a href="#mysql开启慢查询日志" class="headerlink" title="mysql开启慢查询日志"></a>mysql开启慢查询日志</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">--查看系统当前慢查询时间</div><div class="line">show variables like &apos;long%&apos;;</div><div class="line">--设置慢查询时间为1s</div><div class="line">set long_query_time=1;</div><div class="line"></div><div class="line">--查看系统当前慢查询设置</div><div class="line">show variables like &apos;slow%&apos;;</div><div class="line">--开启慢查询</div><div class="line">set global slow_query_log=&apos;ON&apos;;</div><div class="line">`</div></pre></td></tr></table></figure>
+<p>注：<br>slow_query_log //是否打开日志记录<br>slow_query_log_file //日志存放位置</p>
+<h3 id="explain"><a href="#explain" class="headerlink" title="explain"></a>explain</h3><p>使用：<br>explain sql语句<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">explain select * from book;</div><div class="line"></div><div class="line">return:</div><div class="line">id  selecttype  table  type possible_keys  key key_len  ref rows  extra</div></pre></td></tr></table></figure></p>
+<p>说明：<br>type=const表示通过索引一次就找到了;key=primary的话，表示使用了主键;<br>type=all,表示为全表扫描;key=null表示没用到索引;type=ref,因为这时认为是多个匹配行，在联合查询中，一般为REF;</p>
+<h3 id="show-profiles"><a href="#show-profiles" class="headerlink" title="show profiles"></a>show profiles</h3><p>查看语句的执行时间<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">show profiles;</div><div class="line">--如果为空，表示profiles功能是关闭的，开启命令</div><div class="line">set profiling=1</div></pre></td></tr></table></figure></p>
+
       
     </div>
     
@@ -255,13 +262,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/06/21/mysql优化部分/">mysql优化部分</a></p>
+        <p><span>本文标题:</span><a href="/2017/07/21/mysql优化部分/">mysql优化部分</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
-        <p><span>发布时间:</span>2017年06月21日 - 11时22分</p>
-        <p><span>最后更新:</span>2017年07月13日 - 10时29分</p>
+        <p><span>发布时间:</span>2017年07月21日 - 11时22分</p>
+        <p><span>最后更新:</span>2017年07月31日 - 17时31分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/06/21/mysql优化部分/" title="mysql优化部分">http://yoursite.com/2017/06/21/mysql优化部分/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/06/21/mysql优化部分/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/07/21/mysql优化部分/" title="mysql优化部分">http://yoursite.com/2017/07/21/mysql优化部分/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/21/mysql优化部分/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -274,18 +281,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/06/30/vuex初步理解/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/28/java配置spring/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          vuex初步理解
+          java配置spring
         
       </div>
     </a>
   
   
-    <a href="/2017/06/15/cas集成shiro单点登录/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">cas集成shiro单点登录</div>
+    <a href="/2017/07/13/java变量线程安全/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">java变量线程安全</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -296,7 +303,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql语句执行顺序"><span class="toc-number">1.</span> <span class="toc-text">mysql语句执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql索引失效"><span class="toc-number">2.</span> <span class="toc-text">mysql索引失效</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql语句执行顺序"><span class="toc-number">1.</span> <span class="toc-text">mysql语句执行顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql索引"><span class="toc-number">2.</span> <span class="toc-text">mysql索引</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#mysql开启慢查询日志"><span class="toc-number">3.</span> <span class="toc-text">mysql开启慢查询日志</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#explain"><span class="toc-number">4.</span> <span class="toc-text">explain</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#show-profiles"><span class="toc-number">5.</span> <span class="toc-text">show profiles</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -344,7 +351,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/06/21/mysql优化部分/" data-title="mysql优化部分" data-url="http://yoursite.com/2017/06/21/mysql优化部分/"></div>
+    <div class="ds-thread" data-thread-key="2017/07/21/mysql优化部分/" data-title="mysql优化部分" data-url="http://yoursite.com/2017/07/21/mysql优化部分/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -367,18 +374,18 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/06/30/vuex初步理解/" title="上一篇: vuex初步理解">
+            <a href="/2017/07/28/java配置spring/" title="上一篇: java配置spring">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/06/15/cas集成shiro单点登录/" title="下一篇: cas集成shiro单点登录">
+            <a href="/2017/07/13/java变量线程安全/" title="下一篇: java变量线程安全">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/redis注解开发和缓存策略/">redis注解开发和缓存策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/springboot配置druid连接池/">springboot配置druid连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/springboot配置mybatis和事务管理/">sb配置mybatis和事务管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/springboot学习总结/">springboot学习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/java配置spring/">java配置spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/java变量线程安全/">java变量线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/06/redis安装/">redis安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/04/数据类型的字节/">数据类型的字节</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/vuex初步理解/">vuex初步理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/21/mysql优化部分/">mysql优化部分</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/cas集成shiro单点登录/">cas集成shiro单点登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/java内存模型/">java内存模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/多线程基础/">多线程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/并发相关名词概念/">并发相关名词概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/jdk为tomcat配置ssl证书-linux/">jdk为tomcat配置ssl证书-linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/screen/">screen</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/nodejs搭建服务器/">nodejs搭建服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/es6新语法特性学习/">es6新语法特性学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/12/前后端分离解决之跨域-vue-shiro/">前后端分离解决之跨域-vue+shiro</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/10/centos系统初始化操作/">centos系统初始化操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/10/contos安装nginx/">contos安装nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/vue-elemment-小知识集锦/">vue+elemment-小知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/31/redis注解开发和缓存策略/">redis注解开发和缓存策略</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/springboot配置druid连接池/">springboot配置druid连接池</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/springboot配置mybatis和事务管理/">sb配置mybatis和事务管理</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/springboot学习总结/">springboot学习总结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/28/java配置spring/">java配置spring</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/21/mysql优化部分/">mysql优化部分</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/13/java变量线程安全/">java变量线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/06/redis安装/">redis安装</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/04/数据类型的字节/">数据类型的字节</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/30/vuex初步理解/">vuex初步理解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/15/cas集成shiro单点登录/">cas集成shiro单点登录</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/java内存模型/">java内存模型</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/多线程基础/">多线程基础</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/并发相关名词概念/">并发相关名词概念</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/09/jdk为tomcat配置ssl证书-linux/">jdk为tomcat配置ssl证书-linux</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/screen/">screen</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/15/nodejs搭建服务器/">nodejs搭建服务器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/14/es6新语法特性学习/">es6新语法特性学习</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/12/前后端分离解决之跨域-vue-shiro/">前后端分离解决之跨域-vue+shiro</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/10/centos系统初始化操作/">centos系统初始化操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/10/contos安装nginx/">contos安装nginx</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/05/vue-elemment-小知识集锦/">vue+elemment-小知识集锦</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/26/mybatis高级用法之association和collection/">mybatis高级用法之association和collection</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/25/vue-elementUI-form/">vue+elementUI-form</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/21/java注解/">java注解</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/19/jsp中外链js获取项目路径/">jsp中外链js获取项目路径</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/04/14/json和json请求/">json和json请求</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/表格/">表格</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/后端小技巧篇/">后端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/21/前端小技巧篇/">前端小技巧篇</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/多线程并发处理数据队列/">多线程并发处理数据队列</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql数据库操作/">mysql数据库操作</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-主从配置/">mysql主从数据库搭建-主从配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/mysql主从数据库搭建-基础环境/">mysql主从数据库搭建-基础环境</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/06/过程中使用到的多线程/">过程中使用到的多线程</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/02/MockMVC测试springMVC/">MockMVC测试springMVC</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的传播行为/">事务的传播行为</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/24/事务的隔离级别/">事务的隔离级别</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate缓存机制/">hibernate缓存机制</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/hibernate-session和http-session/">hibernate-session和http-session</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/22/restful架构/">restful架构</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/13/java过滤器和springMVC拦截器/">java过滤器和springMVC拦截器</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring单例与线程安全/">spring单例与线程安全</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/12/spring中scope的作用域/">spring中scope的作用域</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/JVM内存分配参数/">JVM内存分配参数</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/07/初探虚拟机/">初探虚拟机</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/sublime开发工具/">sublime开发工具</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/Nodejs之require/">Nodejs之require()</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/代理模式/">代理模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/19/spring中常用的两种事物配置/">spring中常用的两种事物配置</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/15/单例模式/">单例模式</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/12/hello-vue/">hello vue</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java编程规范/">java编程规范</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/10/java中的jdk版本/">java中的jdk版本</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/09/多字段下的excel数据导入/">多字段下的excel数据导入</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/拥有你的博客/">拥有你的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/hexo文章-编辑/">hexo文章-编辑</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/05/学习地址/">学习地址</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/03/前言/">前言</a></li></ul>
     <script src="https://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
     <script>
         $(".post-list").addClass("toc-article");
