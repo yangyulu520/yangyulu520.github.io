@@ -3,18 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>restful架构 | 杨雨露的博客世界</title>
+  <title>笔记-java特种兵 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="基于restful的开发架构">
+  <meta name="description" content="java特种兵学习笔记记录">
 <meta property="og:type" content="article">
-<meta property="og:title" content="restful架构">
-<meta property="og:url" content="http://yoursite.com/2017/02/22/restful架构/index.html">
+<meta property="og:title" content="笔记-java特种兵">
+<meta property="og:url" content="http://yoursite.com/2017/08/21/笔记-java特种兵/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
-<meta property="og:description" content="基于restful的开发架构">
-<meta property="og:updated_time" content="2017-07-13T02:30:19.189Z">
+<meta property="og:description" content="java特种兵学习笔记记录">
+<meta property="og:updated_time" content="2017-08-22T03:00:01.645Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="restful架构">
-<meta name="twitter:description" content="基于restful的开发架构">
+<meta name="twitter:title" content="笔记-java特种兵">
+<meta name="twitter:description" content="java特种兵学习笔记记录">
   
     <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
   
@@ -204,11 +204,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-restful架构" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-笔记-java特种兵" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/22/restful架构/" class="article-date">
-      <time datetime="2017-02-22T00:32:21.000Z" itemprop="datePublished">2017-02-22</time>
+      <a href="/2017/08/21/笔记-java特种兵/" class="article-date">
+      <time datetime="2017-08-21T02:29:27.000Z" itemprop="datePublished">2017-08-21</time>
 </a>
     </div>
   
@@ -221,7 +221,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      restful架构
+      笔记-java特种兵
     </h1>
   
 
@@ -236,7 +236,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -246,18 +246,11 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>RESTful–目前最流行的互联网软件架构。<br>REST(Representational State Transfer),即表现层状态转化。</p>
-<h3 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h3><p>REST的名称(表现层状态转化)中，省略了主语。”表现层”其实指的是”资源”的”表现层”。<br>所谓”资源”，就是网络上的一个实体，或者说是网络上的一个具体信息。它可以是一段文本，一张图片，一首歌曲，一种服务，总之就是一个具体的实在。你可以用一个URI（统一资源定位符）指向它，每种资源对应一个特定的URI。要获取这个资源，访问它的URI就可以，因此URI就成了每一个资源的地址或独一无二的识别符。</p>
-<h3 id="表现层"><a href="#表现层" class="headerlink" title="表现层"></a>表现层</h3><ol>
-<li>“资源”是一种信息实体，它可以有多种外在的表现形式。我们把资源具体呈现出来的形式，叫做它的表现层(Representation).</li>
-<li>比如，文本可以用txt格式表现，也可以用HTML格式、XML格式、JSON格式表现，甚至可以采用二进制格式；图片可以用JPG格式表现，也可以用PNG格式表现。</li>
-<li>URI只代表资源的实体，不代表它的形式，应该是名词。</li>
-</ol>
-<h3 id="状态转化"><a href="#状态转化" class="headerlink" title="状态转化"></a>状态转化</h3><p>访问一个网站，就代表了客户端和服务器的一个互动过程。在这过程中，就会涉及到数据和状态的变化。<br>HTTP协议是一个无状态协议，即所有状态都保存在服务器端。因此，如果客户端想要操作服务器，必须通过某种手段，让服务器端发生”状态转化”。而这种转化是建立在表现层上的，所以就是”表现层状态转化”。<br>客户端用到的手段只能是http协议，GET用来获取资源，POST用来新建资源（也可以用于更新资源），PUT用来更新资源，DELETE用来删除资源。</p>
-<h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><ol>
-<li>每一个URI代表一种资源</li>
-<li>客户端和服务器之间，传递这种资源的某种表现层。</li>
-<li>客户端通过四个HTTP动词，对服务器端资源进行操作，实现”表现层状态转化”。</li>
+        <h3 id="equals和hashcode"><a href="#equals和hashcode" class="headerlink" title="equals和hashcode"></a>equals和hashcode</h3><ol>
+<li>“==”对于原始类型而言，就是直接比较他们的值，如果是引用类型，则比较对象的引用值(逻辑地址).</li>
+<li>equals()是在Object中定义的方法，如果不去重写该方法，并且对应类其父类列表中都没有重写过该方法，则默认的功能就是比较逻辑地址。故而equals方法的存在，就是希望子类重写这个方法，实现对比值的功能。String类自己实现了。</li>
+<li>hashcode是为了算法快速定位数据而存在的，equals是为了对比真实值而存在的。hashcode的重写，决定它在hash相关数据结构中的分布情况(最好相对离散)。</li>
+<li>比较两个对象是否相等，用”==”,而不需要用hashcode,因为直接对比地址值比较靠谱</li>
 </ol>
 
       
@@ -267,13 +260,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/22/restful架构/">restful架构</a></p>
+        <p><span>本文标题:</span><a href="/2017/08/21/笔记-java特种兵/">笔记-java特种兵</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
-        <p><span>发布时间:</span>2017年02月22日 - 08时32分</p>
-        <p><span>最后更新:</span>2017年07月13日 - 10时30分</p>
+        <p><span>发布时间:</span>2017年08月21日 - 10时29分</p>
+        <p><span>最后更新:</span>2017年08月22日 - 11时00分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/22/restful架构/" title="restful架构">http://yoursite.com/2017/02/22/restful架构/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/22/restful架构/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/08/21/笔记-java特种兵/" title="笔记-java特种兵">http://yoursite.com/2017/08/21/笔记-java特种兵/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/08/21/笔记-java特种兵/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -286,18 +279,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/02/22/hibernate-session和http-session/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          hibernate-session和http-session
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/02/13/java过滤器和springMVC拦截器/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">java过滤器和springMVC拦截器</div>
+    <a href="/2017/08/10/tomcat线上日志调试技巧和项目日志级别/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">tomcat线上日志调试技巧和项目日志级别</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -308,7 +292,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#资源"><span class="toc-number">1.</span> <span class="toc-text">资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表现层"><span class="toc-number">2.</span> <span class="toc-text">表现层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#状态转化"><span class="toc-number">3.</span> <span class="toc-text">状态转化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#综述"><span class="toc-number">4.</span> <span class="toc-text">综述</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#equals和hashcode"><span class="toc-number">1.</span> <span class="toc-text">equals和hashcode</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -356,7 +340,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/02/22/restful架构/" data-title="restful架构" data-url="http://yoursite.com/2017/02/22/restful架构/"></div>
+    <div class="ds-thread" data-thread-key="2017/08/21/笔记-java特种兵/" data-title="笔记-java特种兵" data-url="http://yoursite.com/2017/08/21/笔记-java特种兵/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -379,13 +363,11 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/22/hibernate-session和http-session/" title="上一篇: hibernate-session和http-session">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/02/13/java过滤器和springMVC拦截器/" title="下一篇: java过滤器和springMVC拦截器">
+            <a href="/2017/08/10/tomcat线上日志调试技巧和项目日志级别/" title="下一篇: tomcat线上日志调试技巧和项目日志级别">
                 <i class="fa fa-angle-right"></i>
             </a>
         
