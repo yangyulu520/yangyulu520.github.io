@@ -138,7 +138,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <a href="/tags/blog/" style="font-size: 11.67px;">blog</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 18.33px;">linux</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 11.67px;">mysql</a> <a href="/tags/spring/" style="font-size: 16.67px;">spring</a> <a href="/tags/springboot/" style="font-size: 13.33px;">springboot</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/前端/" style="font-size: 18.33px;">前端</a> <a href="/tags/单点登录/" style="font-size: 11.67px;">单点登录</a> <a href="/tags/后端/" style="font-size: 11.67px;">后端</a> <a href="/tags/线程和并发/" style="font-size: 15px;">线程和并发</a> <a href="/tags/设计模式/" style="font-size: 11.67px;">设计模式</a>
+                        <a href="/tags/blog/" style="font-size: 12px;">blog</a> <a href="/tags/java/" style="font-size: 20px;">java</a> <a href="/tags/linux/" style="font-size: 18px;">linux</a> <a href="/tags/mybatis/" style="font-size: 10px;">mybatis</a> <a href="/tags/mysql/" style="font-size: 12px;">mysql</a> <a href="/tags/spring/" style="font-size: 18px;">spring</a> <a href="/tags/springboot/" style="font-size: 14px;">springboot</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/website/" style="font-size: 10px;">website</a> <a href="/tags/前端/" style="font-size: 18px;">前端</a> <a href="/tags/单点登录/" style="font-size: 12px;">单点登录</a> <a href="/tags/后端/" style="font-size: 12px;">后端</a> <a href="/tags/线程和并发/" style="font-size: 16px;">线程和并发</a> <a href="/tags/设计模式/" style="font-size: 12px;">设计模式</a>
                     </div>
                 </section>
                 
@@ -301,45 +301,28 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="spring模块-4-3-5-RELEASE为例"><a href="#spring模块-4-3-5-RELEASE为例" class="headerlink" title="spring模块(4.3.5.RELEASE为例)"></a>spring模块(4.3.5.RELEASE为例)</h2><h3 id="spring-aop"><a href="#spring-aop" class="headerlink" title="spring-aop"></a>spring-aop</h3><ol>
-<li>说明：包含在应用中使用springAOP特性时所需要的类(声明式事务等等)</li>
-<li>自动添加的依赖:spring-aop;spring-beans;<h3 id="spring-beans"><a href="#spring-beans" class="headerlink" title="spring-beans"></a>spring-beans</h3></li>
-<li>说明：所有应用都要用到的，包含访问配置文件、创建和管理bean以及进行依赖注入操作相关的所有类。</li>
-<li>自动添加的依赖:spring-beans;spring-core;commons-logging(1.2)</li>
-</ol>
-<h3 id="spring-context"><a href="#spring-context" class="headerlink" title="spring-context"></a>spring-context</h3><p>1.说明：为spring核心提供了大量扩展</p>
-<ol>
-<li>自动添加的依赖:spring-context;spring-aop;spring-expression;</li>
-</ol>
-<h3 id="spring-context-support"><a href="#spring-context-support" class="headerlink" title="spring-context-support"></a>spring-context-support</h3><p>1.自动添加的依赖:spring-context-support;spring-context;spring-aop;</p>
-<h3 id="spring-jdbc"><a href="#spring-jdbc" class="headerlink" title="spring-jdbc"></a>spring-jdbc</h3><ol>
-<li>自动添加的依赖:spring-jdbc;spring-beans;spring-tx;</li>
-</ol>
-<h3 id="spring-web"><a href="#spring-web" class="headerlink" title="spring-web"></a>spring-web</h3><p>1.自动添加的依赖：spring-web;spring-context;</p>
-<h3 id="spring-tx"><a href="#spring-tx" class="headerlink" title="spring-tx"></a>spring-tx</h3><p>1.自动添加的依赖:spring-tx;spring-beans;</p>
-<h3 id="spring-webmvc"><a href="#spring-webmvc" class="headerlink" title="spring-webmvc"></a>spring-webmvc</h3><ol>
-<li>自动添加的依赖:spring-webmvc;spring-web;</li>
-</ol>
-<h3 id="其他使用到的依赖"><a href="#其他使用到的依赖" class="headerlink" title="其他使用到的依赖"></a>其他使用到的依赖</h3><p>spring-aspects;spring-instrument;spring-instrument-tomcat;spring-orm;spring-oxm;spring-test;spring-webmvc-portlet;</p>
-<p>总结而言，非需要浏览器http访问，引入context和jdbc就行;如果需要浏览器http，就web和jdbc;如果需要视图相关，就webmvc+jdbc;</p>
-<h2 id="spring和其他模块整合"><a href="#spring和其他模块整合" class="headerlink" title="spring和其他模块整合"></a>spring和其他模块整合</h2><h3 id="和消息中间件mq-5-8-0-整合"><a href="#和消息中间件mq-5-8-0-整合" class="headerlink" title="和消息中间件mq(5.8.0)整合"></a>和消息中间件mq(5.8.0)整合</h3><ol>
-<li>spring-jms<br>自动添加的依赖：spring-jms;spring-context;spring-messaging;spring-tx;</li>
-<li>activemq-all<br>自动添加的依赖:activemq-all;activemq-amqp;activemq-broker;activemq-client;geronimo-j2ee-management;activemq-openwire-legacy;slf4j-api;proton-jms;proton;proton-api;bcpkix-jdk;bcprove-jdk;hawtbuf;</li>
-<li>activemq-pool<br>自动添加的依赖:activemq-pool;slf4j-api;activemq-client;geronimo-jms;hawtbuf;geronimo-j2ee;geronimo-jta;commons-pool;</li>
-<li>其他使用到的依赖<br>activemq-spring</li>
-</ol>
-<h3 id="和缓存redis的整合"><a href="#和缓存redis的整合" class="headerlink" title="和缓存redis的整合"></a>和缓存redis的整合</h3><ol>
-<li></li>
-</ol>
-
+              maven中jar包及其依赖
+          
       
     </div>
     
     <div class="article-info article-info-index">
       
       
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/后端/">后端</a>
+    </div>
+
 
       
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/spring/">spring</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a  href="/2017/09/09/maven中的jar包及其依赖/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
