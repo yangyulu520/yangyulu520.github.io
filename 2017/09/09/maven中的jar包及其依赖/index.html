@@ -3,18 +3,30 @@
 <head>
   <meta charset="utf-8">
   
-  <title>使用到的jdk1.8特性 | 杨雨露的博客世界</title>
+  <title>maven中的jar包及其依赖 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jdk1.8新特性">
+  <meta name="description" content="spring模块(4.3.5.RELEASE为例)spring-aop
+说明：包含在应用中使用springAOP特性时所需要的类(声明式事务等等)
+自动添加的依赖:spring-aop;spring-beans;spring-beans
+说明：所有应用都要用到的，包含访问配置文件、创建和管理bean以及进行依赖注入操作相关的所有类。
+自动添加的依赖:spring-beans;spring-core">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用到的jdk1.8特性">
-<meta property="og:url" content="http://yoursite.com/2017/03/03/使用到的jdk1-8特性/index.html">
+<meta property="og:title" content="maven中的jar包及其依赖">
+<meta property="og:url" content="http://yoursite.com/2017/09/09/maven中的jar包及其依赖/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
-<meta property="og:description" content="jdk1.8新特性">
-<meta property="og:updated_time" content="2017-06-12T09:18:55.016Z">
+<meta property="og:description" content="spring模块(4.3.5.RELEASE为例)spring-aop
+说明：包含在应用中使用springAOP特性时所需要的类(声明式事务等等)
+自动添加的依赖:spring-aop;spring-beans;spring-beans
+说明：所有应用都要用到的，包含访问配置文件、创建和管理bean以及进行依赖注入操作相关的所有类。
+自动添加的依赖:spring-beans;spring-core">
+<meta property="og:updated_time" content="2017-09-11T03:18:45.672Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用到的jdk1.8特性">
-<meta name="twitter:description" content="jdk1.8新特性">
+<meta name="twitter:title" content="maven中的jar包及其依赖">
+<meta name="twitter:description" content="spring模块(4.3.5.RELEASE为例)spring-aop
+说明：包含在应用中使用springAOP特性时所需要的类(声明式事务等等)
+自动添加的依赖:spring-aop;spring-beans;spring-beans
+说明：所有应用都要用到的，包含访问配置文件、创建和管理bean以及进行依赖注入操作相关的所有类。
+自动添加的依赖:spring-beans;spring-core">
   
     <link rel="alternative" href="/atom.xml" title="杨雨露的博客世界" type="application/atom+xml">
   
@@ -204,11 +216,11 @@
         </header>                
     </div>
 </nav>
-      <div class="body-wrap"><article id="post-使用到的jdk1-8特性" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-maven中的jar包及其依赖" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/03/使用到的jdk1-8特性/" class="article-date">
-      <time datetime="2017-03-03T01:40:59.000Z" itemprop="datePublished">2017-03-03</time>
+      <a href="/2017/09/09/maven中的jar包及其依赖/" class="article-date">
+      <time datetime="2017-09-09T15:49:39.000Z" itemprop="datePublished">2017-09-09</time>
 </a>
     </div>
   
@@ -221,7 +233,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用到的jdk1.8特性
+      maven中的jar包及其依赖
     </h1>
   
 
@@ -229,16 +241,8 @@
       
       <div class="article-info article-info-post">
         
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/后端/">后端</a>
-    </div>
-
 
         
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li></ul>
-    </div>
-
         <div class="clearfix"></div>
       </div>
       
@@ -246,25 +250,36 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="lambda表达式"><a href="#lambda表达式" class="headerlink" title="lambda表达式"></a>lambda表达式</h2><p>lambda表达式是匿名方法，它提供了轻量级的语法，从而解决了匿名内部类带来的“高度问题”。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(int x, int y) -&gt; x + y</div><div class="line">() -&gt; 42</div><div class="line">(String s) -&gt; &#123; System.out.println(s); &#125;</div></pre></td></tr></table></figure></p>
-<p>说明：第一个lambda表达式接收x和y这两个整形参数并返回它们的和；第二个lambda表达式不接收参数，返回整数’42’；第三个lambda表达式接收一个字符串并把它打印到控制台，不返回值。<br>lambda表达式的语法由参数列表、箭头符号、和函数体组成。函数体既可以是一个表达式，也可以是一个语句块：</p>
-<ol>
-<li>表达式：表达式会被执行，然后返回执行结果</li>
-<li>语句块：语句块中的语句会被依次执行，就像方法中的语句一样–return返回值。</li>
+        <h2 id="spring模块-4-3-5-RELEASE为例"><a href="#spring模块-4-3-5-RELEASE为例" class="headerlink" title="spring模块(4.3.5.RELEASE为例)"></a>spring模块(4.3.5.RELEASE为例)</h2><h3 id="spring-aop"><a href="#spring-aop" class="headerlink" title="spring-aop"></a>spring-aop</h3><ol>
+<li>说明：包含在应用中使用springAOP特性时所需要的类(声明式事务等等)</li>
+<li>自动添加的依赖:spring-aop;spring-beans;<h3 id="spring-beans"><a href="#spring-beans" class="headerlink" title="spring-beans"></a>spring-beans</h3></li>
+<li>说明：所有应用都要用到的，包含访问配置文件、创建和管理bean以及进行依赖注入操作相关的所有类。</li>
+<li>自动添加的依赖:spring-beans;spring-core;commons-logging(1.2)</li>
 </ol>
-<p>使用场景：<br>替代“内部匿名类”、可以对集合或者数组进行循环操作。<br>你在某处就真的只需要一个能做一件事情的函数而已，连它叫什么名字都无关紧要。 Lambda 表达式就可以用来做这件事。</p>
-<h2 id="Stream"><a href="#Stream" class="headerlink" title="Stream"></a>Stream</h2><p>Stream是元素的集合，这点让Stream看起来用些类似Iterator。可以支持顺序和并行的对原Stream进行汇聚的操作；<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">//Lists是Guava中的一个工具类</div><div class="line">List&lt;Integer&gt; nums = Lists.newArrayList(1,null,3,4,null,6);</div><div class="line">nums.stream().filter(num -&gt; num != null).count();</div></pre></td></tr></table></figure></p>
-<p>上面这段代码是获取一个List中，元素不为null的个数.<br>使用Stream的基本步骤:</p>
+<h3 id="spring-context"><a href="#spring-context" class="headerlink" title="spring-context"></a>spring-context</h3><p>1.说明：为spring核心提供了大量扩展</p>
 <ol>
-<li>创建Stream；</li>
-<li>转换Stream，每次转换原有Stream对象不改变，返回一个新的Stream对象（<strong>可以有多次转换</strong>）；</li>
-<li>对Stream进行聚合（Reduce）操作，获取想要的结果；<h3 id="创建Stream"><a href="#创建Stream" class="headerlink" title="创建Stream"></a>创建Stream</h3>通过Stream接口的静态工厂方法：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Stream&lt;Integer&gt; integerStream = Stream.of(1, 2, 3, 5);</div><div class="line">Stream&lt;String&gt; stringStream = Stream.of(&quot;taobao&quot;);</div><div class="line">Stream.generate(() -&gt; Math.random());</div></pre></td></tr></table></figure>
-</li>
+<li>自动添加的依赖:spring-context;spring-aop;spring-expression;</li>
 </ol>
-<p>通过Collection接口的默认方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">nums.stream();</div></pre></td></tr></table></figure></p>
-<h3 id="转换Stream"><a href="#转换Stream" class="headerlink" title="转换Stream"></a>转换Stream</h3><p>转换Stream其实就是把一个Stream通过某些行为转换成一个新的Stream。<br>distinct: 对于Stream中包含的元素进行去重操作（去重逻辑依赖元素的equals方法），新生成的Stream中没有重复的元素；<br>filter: 对于Stream中包含的元素使用给定的过滤函数进行过滤操作，新生成的Stream只包含符合条件的元素；<br>…</p>
-<h3 id="汇聚"><a href="#汇聚" class="headerlink" title="汇聚"></a>汇聚</h3><p>reduce()和collect()..等</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">// Java 7 的排序、取值实现</div><div class="line">List&lt;Transaction&gt; groceryTransactions = new Arraylist&lt;&gt;();</div><div class="line">for(Transaction t: transactions)&#123;</div><div class="line"> if(t.getType() == Transaction.GROCERY)&#123;</div><div class="line"> groceryTransactions.add(t);</div><div class="line"> &#125;</div><div class="line">&#125;</div><div class="line">Collections.sort(groceryTransactions, new Comparator()&#123;</div><div class="line"> public int compare(Transaction t1, Transaction t2)&#123;</div><div class="line"> return t2.getValue().compareTo(t1.getValue());</div><div class="line"> &#125;</div><div class="line">&#125;);</div><div class="line">List&lt;Integer&gt; transactionIds = new ArrayList&lt;&gt;();</div><div class="line">for(Transaction t: groceryTransactions)&#123;</div><div class="line"> transactionsIds.add(t.getId());</div><div class="line">&#125;</div><div class="line"> //Java 8 的排序、取值实现</div><div class="line"> List&lt;Integer&gt; transactionsIds = transactions.parallelStream().</div><div class="line"> filter(t -&gt; t.getType() == Transaction.GROCERY).</div><div class="line"> sorted(comparing(Transaction::getValue).reversed()).</div><div class="line"> map(transaction -&gt; getId()).</div><div class="line"> collect(Collectors.toList());</div><div class="line"></div><div class="line"> //对于变长参数列表转换</div><div class="line"> Arrays.stream(eventListenersClazz);</div></pre></td></tr></table></figure>
+<h3 id="spring-context-support"><a href="#spring-context-support" class="headerlink" title="spring-context-support"></a>spring-context-support</h3><p>1.自动添加的依赖:spring-context-support;spring-context;spring-aop;</p>
+<h3 id="spring-jdbc"><a href="#spring-jdbc" class="headerlink" title="spring-jdbc"></a>spring-jdbc</h3><ol>
+<li>自动添加的依赖:spring-jdbc;spring-beans;spring-tx;</li>
+</ol>
+<h3 id="spring-web"><a href="#spring-web" class="headerlink" title="spring-web"></a>spring-web</h3><p>1.自动添加的依赖：spring-web;spring-context;</p>
+<h3 id="spring-tx"><a href="#spring-tx" class="headerlink" title="spring-tx"></a>spring-tx</h3><p>1.自动添加的依赖:spring-tx;spring-beans;</p>
+<h3 id="spring-webmvc"><a href="#spring-webmvc" class="headerlink" title="spring-webmvc"></a>spring-webmvc</h3><ol>
+<li>自动添加的依赖:spring-webmvc;spring-web;</li>
+</ol>
+<h3 id="其他使用到的依赖"><a href="#其他使用到的依赖" class="headerlink" title="其他使用到的依赖"></a>其他使用到的依赖</h3><p>spring-aspects;spring-instrument;spring-instrument-tomcat;spring-orm;spring-oxm;spring-test;spring-webmvc-portlet;</p>
+<p>总结而言，非需要浏览器http访问，引入context和jdbc就行;如果需要浏览器http，就web和jdbc;如果需要视图相关，就webmvc+jdbc;</p>
+<h2 id="spring和其他模块整合"><a href="#spring和其他模块整合" class="headerlink" title="spring和其他模块整合"></a>spring和其他模块整合</h2><h3 id="和消息中间件mq-5-8-0-整合"><a href="#和消息中间件mq-5-8-0-整合" class="headerlink" title="和消息中间件mq(5.8.0)整合"></a>和消息中间件mq(5.8.0)整合</h3><ol>
+<li>spring-jms<br>自动添加的依赖：spring-jms;spring-context;spring-messaging;spring-tx;</li>
+<li>activemq-all<br>自动添加的依赖:activemq-all;activemq-amqp;activemq-broker;activemq-client;geronimo-j2ee-management;activemq-openwire-legacy;slf4j-api;proton-jms;proton;proton-api;bcpkix-jdk;bcprove-jdk;hawtbuf;</li>
+<li>activemq-pool<br>自动添加的依赖:activemq-pool;slf4j-api;activemq-client;geronimo-jms;hawtbuf;geronimo-j2ee;geronimo-jta;commons-pool;</li>
+<li>其他使用到的依赖<br>activemq-spring</li>
+</ol>
+<h3 id="和缓存redis的整合"><a href="#和缓存redis的整合" class="headerlink" title="和缓存redis的整合"></a>和缓存redis的整合</h3><ol>
+<li></li>
+</ol>
 
       
     </div>
@@ -273,13 +288,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/03/使用到的jdk1-8特性/">使用到的jdk1.8特性</a></p>
+        <p><span>本文标题:</span><a href="/2017/09/09/maven中的jar包及其依赖/">maven中的jar包及其依赖</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
-        <p><span>发布时间:</span>2017年03月03日 - 09时40分</p>
-        <p><span>最后更新:</span>2017年06月12日 - 17时18分</p>
+        <p><span>发布时间:</span>2017年09月09日 - 23时49分</p>
+        <p><span>最后更新:</span>2017年09月11日 - 11时18分</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/03/使用到的jdk1-8特性/" title="使用到的jdk1.8特性">http://yoursite.com/2017/03/03/使用到的jdk1-8特性/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/03/03/使用到的jdk1-8特性/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/09/09/maven中的jar包及其依赖/" title="maven中的jar包及其依赖">http://yoursite.com/2017/09/09/maven中的jar包及其依赖/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/09/09/maven中的jar包及其依赖/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script src="/js/clipboard.min.js"></script>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
@@ -292,18 +307,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2017/03/06/过程中使用到的多线程/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/09/14/2g2核心下的系统天花板-支持的并发极致级别-分析/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption"><</strong>
       <div class="article-nav-title">
         
-          过程中使用到的多线程
+          2g2核心下的系统天花板(支持的并发极致级别)分析
         
       </div>
     </a>
   
   
-    <a href="/2017/03/02/MockMVC测试springMVC/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MockMVC测试springMVC</div>
+    <a href="/2017/09/01/mycat配置mysql主从数据库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">mycat配置mysql主从数据库</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -314,7 +329,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#lambda表达式"><span class="toc-number">1.</span> <span class="toc-text">lambda表达式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stream"><span class="toc-number">2.</span> <span class="toc-text">Stream</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#创建Stream"><span class="toc-number">2.1.</span> <span class="toc-text">创建Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#转换Stream"><span class="toc-number">2.2.</span> <span class="toc-text">转换Stream</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#汇聚"><span class="toc-number">2.3.</span> <span class="toc-text">汇聚</span></a></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#spring模块-4-3-5-RELEASE为例"><span class="toc-number">1.</span> <span class="toc-text">spring模块(4.3.5.RELEASE为例)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-aop"><span class="toc-number">1.1.</span> <span class="toc-text">spring-aop</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-beans"><span class="toc-number">1.2.</span> <span class="toc-text">spring-beans</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-context"><span class="toc-number">1.3.</span> <span class="toc-text">spring-context</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-context-support"><span class="toc-number">1.4.</span> <span class="toc-text">spring-context-support</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-jdbc"><span class="toc-number">1.5.</span> <span class="toc-text">spring-jdbc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-web"><span class="toc-number">1.6.</span> <span class="toc-text">spring-web</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-tx"><span class="toc-number">1.7.</span> <span class="toc-text">spring-tx</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#spring-webmvc"><span class="toc-number">1.8.</span> <span class="toc-text">spring-webmvc</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#其他使用到的依赖"><span class="toc-number">1.9.</span> <span class="toc-text">其他使用到的依赖</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#spring和其他模块整合"><span class="toc-number">2.</span> <span class="toc-text">spring和其他模块整合</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#和消息中间件mq-5-8-0-整合"><span class="toc-number">2.1.</span> <span class="toc-text">和消息中间件mq(5.8.0)整合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#和缓存redis的整合"><span class="toc-number">2.2.</span> <span class="toc-text">和缓存redis的整合</span></a></li></ol></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
@@ -362,7 +377,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2017/03/03/使用到的jdk1-8特性/" data-title="使用到的jdk1.8特性" data-url="http://yoursite.com/2017/03/03/使用到的jdk1-8特性/"></div>
+    <div class="ds-thread" data-thread-key="2017/09/09/maven中的jar包及其依赖/" data-title="maven中的jar包及其依赖" data-url="http://yoursite.com/2017/09/09/maven中的jar包及其依赖/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -385,13 +400,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/03/06/过程中使用到的多线程/" title="上一篇: 过程中使用到的多线程">
+            <a href="/2017/09/14/2g2核心下的系统天花板-支持的并发极致级别-分析/" title="上一篇: 2g2核心下的系统天花板(支持的并发极致级别)分析">
                 <i class="fa fa-angle-left"></i>
             </a>
         
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
         
-            <a href="/2017/03/02/MockMVC测试springMVC/" title="下一篇: MockMVC测试springMVC">
+            <a href="/2017/09/01/mycat配置mysql主从数据库/" title="下一篇: mycat配置mysql主从数据库">
                 <i class="fa fa-angle-right"></i>
             </a>
         
