@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/11/27/java类的加载流程/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="类的加载流程">
-<meta property="og:updated_time" content="2017-11-27T04:33:18.836Z">
+<meta property="og:updated_time" content="2017-11-27T04:50:54.380Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java类的加载流程">
 <meta name="twitter:description" content="类的加载流程">
@@ -246,30 +246,30 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="类的加载"><a href="#类的加载" class="headerlink" title="类的加载"></a>类的加载</h3><p>类的加载过程细节化可分为类的加载和链接。</p>
-<ol>
-<li>加载<br>首先通过一个类的全限定名来获取此类的二进制字节流;其次将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构；最后在Java堆中生成一个代表这个类的Class对象</li>
-<li>链接<br> 验证：确保被加载类的正确性；<br>　　准备：在方法区中，为类的类变量(static修饰)分配内存，然后初始化其值，如果类变量是常量，则直接赋值为该常量值否则为java类型的默认的零值；<br>　　解析：将常量池内的符号引用替换为直接引用的过程。符号引用：符号引用以一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可。符号引用与虚拟机实现的内存布局无关，引用的目标并不一定已经加载到内存中。直接引用：直接引用可以是直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用是与虚拟机实现的内存布局相关的，如果有了直接引用，那么引用的目标必定已经在内存中存在。</li>
+        <h2 id="类的加载"><a href="#类的加载" class="headerlink" title="类的加载"></a>类的加载</h2><p>类的加载过程细节化可分为类的加载和链接。</p>
+<h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p> 首先通过一个类的全限定名来获取此类的二进制字节流;其次将这个字节流所代表的静态存储结构转化为方法区的运行时数据结构；最后在Java堆中生成一个代表这个类的Class对象<br>类的加载触发时机:<br>类的加载时机，即初始化的时机。初始化时，当类还未被加载进jvm时，会触发类的加载。</p>
+<h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><ol>
+<li>验证：确保被加载类的正确性;</li>
+<li>准备：在方法区中，为类的类变量(static修饰)分配内存，然后初始化其值，如果类变量是常量，则直接赋值为该常量值否则为java类型的默认的零值； </li>
+<li>解析：将常量池内的符号引用替换为直接引用的过程。符号引用：符号引用以一组符号来描述所引用的目标，符号可以是任何形式的字面量，只要使用时能无歧义地定位到目标即可。符号引用与虚拟机实现的内存布局无关，引用的目标并不一定已经加载到内存中。直接引用：直接引用可以是直接指向目标的指针、相对偏移量或是一个能间接定位到目标的句柄。直接引用是与虚拟机实现的内存布局相关的，如果有了直接引用，那么引用的目标必定已经在内存中存在。</li>
 </ol>
-<p>类的加载触发时机：<br>类的加载时机，即初始化的时机。初始化时，当类还未被加载进jvm时，会触发类的加载。</p>
-<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>类初始化是类加载过程的最后一步，前面类的加载过程，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由虚拟机主导和控制。到了初始化阶段，才真正开始执行类中定义的Java程序代码</p>
-<p>初始化的时机：</p>
-<ol>
+<h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>类初始化是类加载过程的最后一步，前面类的加载过程，除了在加载阶段用户应用程序可以通过自定义类加载器参与之外，其余动作完全由虚拟机主导和控制。到了初始化阶段，才真正开始执行类中定义的Java程序代码</p>
+<h3 id="初始化的时机"><a href="#初始化的时机" class="headerlink" title="初始化的时机"></a>初始化的时机</h3><ol>
 <li>new 对象时</li>
 <li>读取或设置类的静态字段(除了被final已在编译阶期把结果放入常量池的静态字段)或调用类的静态方法时</li>
 <li>用Java.lang.reflect包的方法对类进行反射调用没初始化过的类</li>
 <li>初始化一个类时发现其父类没初始化，则要先初始化其父类</li>
-<li>含main方法的那个类，jvm启动时，需要指定一个执行主类，jvm先初始化这个类其他对类的引用 称为被动引用，加载类时不会进行初始化动作。<br>以上情况称为对一个类进行”主动引用”，除此种情况以外，均不会触发类的初始化，称为”被动引用”<br>接口的加载过程与类的加载过程稍有不同。接口中不能使用static{}块，当一个接口在初始化时，并不要求其父接口全部都完成初始化，只有在真正使用到父接口时(例如引用接口中定义的常量)才会初始化</li>
+<li>含main方法的那个类，jvm启动时，需要指定一个执行主类，jvm先初始化这个类其他对类的引用 称为被动引用，加载类时不会进行初始化动作。</li>
 </ol>
-<p>被动引用的例子(即不会触发类的初始化):</p>
+<p>说明：以上情况称为对一个类进行”主动引用”，除此种情况以外，均不会触发类的初始化，称为”被动引用”<br>被动引用的例子(即不会触发类的初始化):</p>
 <ol>
 <li>子类调用父类的静态变量，子类不会被初始化。对于静态字段，只有直接定义这个字段的类才会被初始化</li>
 <li>通过数组定义来引用类，不会触发类的初始化</li>
 <li>访问类的常量，不会触发初始化</li>
 </ol>
-<p>初始化顺序-同等级的顺序执行初始化：<br>(静态变量、静态初始化块(static修饰))–&gt;(变量、初始化块)–&gt; 构造器；如果有父类，则顺序是：父类static方法 –&gt; 子类static方法 –&gt; 父类构造方法- -&gt; 子类构造方法</p>
-<h3 id="对象实例化"><a href="#对象实例化" class="headerlink" title="对象实例化"></a>对象实例化</h3><p>对象的建立是基于类加载时创建的Class对象而创建各自的对象实例。<br>这样可以解释清楚一个Class对象，n个对象实例</p>
-<h3 id="案例解析"><a href="#案例解析" class="headerlink" title="案例解析"></a>案例解析</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line">class SingleTon &#123;</div><div class="line">	private static SingleTon singleTon = new SingleTon();</div><div class="line">	public static int count1;</div><div class="line">	public static int count2 = 0;</div><div class="line"></div><div class="line">	private SingleTon() &#123;</div><div class="line">		count1++;</div><div class="line">		count2++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static SingleTon getInstance() &#123;</div><div class="line">		return singleTon;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		SingleTon singleTon = SingleTon.getInstance();</div><div class="line">		System.out.println(&quot;count1=&quot; + singleTon.count1);</div><div class="line">		System.out.println(&quot;count2=&quot; + singleTon.count2);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">结果：</div><div class="line">count1=1</div><div class="line">count2=0</div><div class="line">分析：</div><div class="line">SingleTon.getInstance();触发类的加载和初始化，加载的准备阶段会先把变量设置为0，初始化按顺序进行，所以先new对象(实例化对象)，再进行变量赋值，值被改变，导致该结果</div></pre></td></tr></table></figure>
+<h3 id="初始化顺序"><a href="#初始化顺序" class="headerlink" title="初始化顺序"></a>初始化顺序</h3><p>同等级的顺序执行初始化：<br>(静态变量、静态初始化块(static修饰))–&gt;(变量、初始化块)–&gt; 构造器；如果有父类，则顺序是：父类static方法 –&gt; 子类static方法 –&gt; 父类构造方法- -&gt; 子类构造方法</p>
+<h2 id="对象实例化"><a href="#对象实例化" class="headerlink" title="对象实例化"></a>对象实例化</h2><p>对象的建立是基于类加载时创建的Class对象而创建各自的对象实例。<br>这样可以解释清楚一个Class对象，n个对象实例</p>
+<h2 id="案例解析"><a href="#案例解析" class="headerlink" title="案例解析"></a>案例解析</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">class SingleTon &#123;</div><div class="line">	private static SingleTon singleTon = new SingleTon();</div><div class="line">	public static int count1;</div><div class="line">	public static int count2 = 0;</div><div class="line"></div><div class="line">	private SingleTon() &#123;</div><div class="line">		count1++;</div><div class="line">		count2++;</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	public static SingleTon getInstance() &#123;</div><div class="line">		return singleTon;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">public class Test &#123;</div><div class="line">	public static void main(String[] args) &#123;</div><div class="line">		SingleTon singleTon = SingleTon.getInstance();</div><div class="line">		System.out.println(&quot;count1=&quot; + singleTon.count1);</div><div class="line">		System.out.println(&quot;count2=&quot; + singleTon.count2);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">结果：</div><div class="line">count1=1</div><div class="line">count2=0</div><div class="line">分析：</div><div class="line">SingleTon.getInstance();触发类的加载和初始化，加载的准备阶段会先把变量设置为0，</div><div class="line">初始化按顺序进行，所以先new对象(实例化对象)，再进行变量赋值，值被改变，导致该结果</div></pre></td></tr></table></figure>
 <p>参考链接：<br><a href="https://www.cnblogs.com/javaee6/p/3714716.html" title="Class loader Link" target="_blank" rel="external">类的加载时机和过程</a></p>
 
       
@@ -282,7 +282,7 @@
         <p><span>本文标题:</span><a href="/2017/11/27/java类的加载流程/">java类的加载流程</a></p>
         <p><span>文章作者:</span><a href="/" title="访问 yangyl 的个人博客">yangyl</a></p>
         <p><span>发布时间:</span>2017年11月27日 - 13时41分</p>
-        <p><span>最后更新:</span>2017年11月27日 - 12时33分</p>
+        <p><span>最后更新:</span>2017年11月27日 - 12时50分</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2017/11/27/java类的加载流程/" title="java类的加载流程">http://yoursite.com/2017/11/27/java类的加载流程/</a>
             <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/11/27/java类的加载流程/　　作者: yangyl" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -311,7 +311,7 @@
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#类的加载"><span class="toc-number">1.</span> <span class="toc-text">类的加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化"><span class="toc-number">2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#对象实例化"><span class="toc-number">3.</span> <span class="toc-text">对象实例化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#案例解析"><span class="toc-number">4.</span> <span class="toc-text">案例解析</span></a></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#类的加载"><span class="toc-number">1.</span> <span class="toc-text">类的加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#加载"><span class="toc-number">1.1.</span> <span class="toc-text">加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#链接"><span class="toc-number">1.2.</span> <span class="toc-text">链接</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#初始化"><span class="toc-number">2.</span> <span class="toc-text">初始化</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化的时机"><span class="toc-number">2.1.</span> <span class="toc-text">初始化的时机</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化顺序"><span class="toc-number">2.2.</span> <span class="toc-text">初始化顺序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#对象实例化"><span class="toc-number">3.</span> <span class="toc-text">对象实例化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#案例解析"><span class="toc-number">4.</span> <span class="toc-text">案例解析</span></a></li></ol>
 </div>
 <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
 
