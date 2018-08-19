@@ -6,12 +6,14 @@
   <title>Nodejs之require() | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="使用vue过程中不得不了解的node">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nodejs之require()">
 <meta property="og:url" content="http://yoursite.com/2017/01/21/Nodejs之require/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="使用vue过程中不得不了解的node">
-<meta property="og:updated_time" content="2017-07-13T02:30:03.586Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-07-13T02:30:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodejs之require()">
 <meta name="twitter:description" content="使用vue过程中不得不了解的node">
@@ -266,13 +268,13 @@
 <p>例：/home/ry/projects/foo.js 执行了 require(‘bar’) ，这属于上述第三种情况</p>
 <ol>
 <li><p>首先，确定 x 的绝对路径可能是下面这些位置，依次搜索每一个目录。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/home/ry/projects/node_modules/bar</div><div class="line">/home/ry/node_modules/bar</div><div class="line">/home/node_modules/bar</div><div class="line">/node_modules/bar</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/home/ry/projects/node_modules/bar</span><br><span class="line">/home/ry/node_modules/bar</span><br><span class="line">/home/node_modules/bar</span><br><span class="line">/node_modules/bar</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>搜索时，Node 先将 bar 当成文件名，依次尝试加载下面这些文件，只要有一个成功就返回。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bar</div><div class="line">bar.js</div><div class="line">bar.json</div><div class="line">bar.node</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bar</span><br><span class="line">bar.js</span><br><span class="line">bar.json</span><br><span class="line">bar.node</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>如果都不成功，说明 bar 可能是目录名，于是依次尝试加载下面这些文件。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">bar/package.json（main字段）</div><div class="line">bar/index.js</div><div class="line">bar/index.json</div><div class="line">bar/index.node</div></pre></td></tr></table></figure></li>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bar/package.json（main字段）</span><br><span class="line">bar/index.js</span><br><span class="line">bar/index.json</span><br><span class="line">bar/index.node</span><br></pre></td></tr></table></figure></li>
 </ol>
 
       

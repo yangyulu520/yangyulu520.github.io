@@ -6,14 +6,16 @@
   <title>拥有你的博客 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="hexo快速搭建好博客，踩下的坑，我来帮你填">
+<meta name="keywords" content="blog">
 <meta property="og:type" content="article">
 <meta property="og:title" content="拥有你的博客">
 <meta property="og:url" content="http://yoursite.com/2017/01/06/拥有你的博客/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="hexo快速搭建好博客，踩下的坑，我来帮你填">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/img/git.png">
 <meta property="og:image" content="http://yoursite.com/img/yuming.png">
-<meta property="og:updated_time" content="2017-08-10T08:25:50.831Z">
+<meta property="og:updated_time" content="2017-08-10T08:25:50.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="拥有你的博客">
 <meta name="twitter:description" content="hexo快速搭建好博客，踩下的坑，我来帮你填">
@@ -249,9 +251,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/qq_15807167/article/details/51601234" title="Blog Link" target="_blank" rel="external">博客搭建整体流程</a><br><a href="http://luuman.github.io/2015/12/27/Hexo/GitHubHexo/" title="Blog Link" target="_blank" rel="external">博客搭建详细参数</a></p>
+        <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/qq_15807167/article/details/51601234" title="Blog Link" target="_blank" rel="noopener">博客搭建整体流程</a><br><a href="http://luuman.github.io/2015/12/27/Hexo/GitHubHexo/" title="Blog Link" target="_blank" rel="noopener">博客搭建详细参数</a></p>
 <p>快速搭建好自己的博客，其实网上有很多很多的教程，这里，我再写一遍，更多的是关注在，参考别人的经验时，自己搭建过程中碰到的问题。所以这里直接就先贴出我搭建博客时，参考的这篇教程，下面列出过程中碰到的诸多问题。</p>
-<h2 id="github注册"><a href="#github注册" class="headerlink" title="github注册"></a>github注册</h2><p>由于之前就注册了gitHub,但是一直没用，也是因为对英文的一点点反抗，就选择了国内提供的 <a href="https://git.oschina.net/" title="Code Link" target="_blank" rel="external">码云</a>作为自己的代码仓库。这次搭建需要使用github page就好好地弄了下。</p>
+<h2 id="github注册"><a href="#github注册" class="headerlink" title="github注册"></a>github注册</h2><p>由于之前就注册了gitHub,但是一直没用，也是因为对英文的一点点反抗，就选择了国内提供的 <a href="https://git.oschina.net/" title="Code Link" target="_blank" rel="noopener">码云</a>作为自己的代码仓库。这次搭建需要使用github page就好好地弄了下。</p>
 <h3 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h3><ol>
 <li>新建的工程，名字是有格式要求的，必须是 <em>你的用户名.github.io</em> ，默认新建的项目，会自动开启page</li>
 </ol>
@@ -264,7 +266,7 @@
 <h2 id="hexo的配置"><a href="#hexo的配置" class="headerlink" title="hexo的配置"></a>hexo的配置</h2><ol>
 <li><p>关于hexo的配置，首先是安装hexo，对于这个，网上有两三种不同的命令，在尝试后，还是 <br>‘’’$ npm install hexo-cli -g’’’ <br>命令可以。<br>然后就是等着hexo安装完成。</p>
 </li>
-<li><p>如果之后使用过程中碰到了<br> ```python error deployer not found:github ‘’’<br><br>就使用命令 ‘’’ npm install hexo-deployer-git –save ‘’’,然后即可。</p>
+<li><p>如果之后使用过程中碰到了<br> <code>`</code>python error deployer not found:github ‘’’<br><br>就使用命令 ‘’’ npm install hexo-deployer-git –save ‘’’,然后即可。</p>
 </li>
 <li><p>使用hexo，常用命令为：<br></p>
 </li>
@@ -276,14 +278,14 @@
 <li>hexo clean 清除编译的静态页面</li>
 <li>hexo d 将本地静态页面上传到git，该命令需要事先配置好_config.yml。–此时不需要用git push</li>
 </ul>
-<ol>
+<ol start="4">
 <li>配置_config.yml来通过 hexo d 上传静态页面，，具体配置参考上面第二个链接</li>
 </ol>
 <p>通过以上步骤基本上一个基本的博客搭建，就没有什么问题了。本人也是小菜，也刚接触hexo的方式来搭建博客，希望想搭建的朋友可以顺利成功。</p>
-<h2 id="附-主题和域名"><a href="#附-主题和域名" class="headerlink" title="附 主题和域名"></a>附 主题和域名</h2><h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>每一个博客都有个默认的主题，如果你不喜欢这个主题，可以到网上找一个自己喜欢的主题，进行替换，具体的流程度娘上一大堆。这儿提供一个我自己的主题切换的说明，个人感觉写的很详细 <a href="http://luuman.github.io/categories/Hexo/" title="changeTheme Link" target="_blank" rel="external">主题切换和插件使用</a><br></p>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>看着自己博客访问的网址是 xxx.github.io。心里总觉得有一千只草拟马奔腾，太不喜欢了，那就买个域名，绑定自己的网址，以后通过域名来访问自己的博客<br>。可以通过 <a href="https://sg.godaddy.com/" title="godaddy Link" target="_blank" rel="external">GoDaddy</a>来购买域名，看着美元转换成的高额的人民币，对于个人的博客，我还是最终选择了阿里云来购买自己的域名，3元，你值得拥有。<br>买好了后，需要两步：</p>
+<h2 id="附-主题和域名"><a href="#附-主题和域名" class="headerlink" title="附 主题和域名"></a>附 主题和域名</h2><h3 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h3><p>每一个博客都有个默认的主题，如果你不喜欢这个主题，可以到网上找一个自己喜欢的主题，进行替换，具体的流程度娘上一大堆。这儿提供一个我自己的主题切换的说明，个人感觉写的很详细 <a href="http://luuman.github.io/categories/Hexo/" title="changeTheme Link" target="_blank" rel="noopener">主题切换和插件使用</a><br></p>
+<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>看着自己博客访问的网址是 xxx.github.io。心里总觉得有一千只草拟马奔腾，太不喜欢了，那就买个域名，绑定自己的网址，以后通过域名来访问自己的博客<br>。可以通过 <a href="https://sg.godaddy.com/" title="godaddy Link" target="_blank" rel="noopener">GoDaddy</a>来购买域名，看着美元转换成的高额的人民币，对于个人的博客，我还是最终选择了阿里云来购买自己的域名，3元，你值得拥有。<br>买好了后，需要两步：</p>
 <ol>
-<li><p>在本地博客文件的source目录下，新建一个CNAME的文件。文件的内容只有 : 你的域名地址(例: www.yangyl520.site)</p>
+<li><p>在本地博客文件的source目录下，新建一个CNAME的文件。文件的内容只有 : 你的域名地址(例: <a href="http://www.yangyl520.site" target="_blank" rel="noopener">www.yangyl520.site</a>)</p>
 </li>
 <li><p>在域名设置中，配置域名解析，带www或者不带的都可以解析到你的博客地址，这里不多说，直接贴上我的配置。<br></p>
 </li>

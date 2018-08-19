@@ -6,12 +6,14 @@
   <title>spring中scope的作用域 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="spring中scope的作用域">
+<meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="spring中scope的作用域">
 <meta property="og:url" content="http://yoursite.com/2017/02/12/spring中scope的作用域/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="spring中scope的作用域">
-<meta property="og:updated_time" content="2017-02-12T12:04:16.020Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-02-12T12:04:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="spring中scope的作用域">
 <meta name="twitter:description" content="spring中scope的作用域">
@@ -246,7 +248,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>spring中scope的作用域默认是单例模式，即scope=”singleton”。另外scope还有prototype、request、session作用域。request、session使用的时候需要先在web.xml中配置ContextListener.<br>使用spring的作用域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;bean id=&quot;role&quot; class=&quot;spring.chapter2.maryGame.Role&quot; scope=&quot;singleton&quot;/&gt;</div></pre></td></tr></table></figure></p>
+        <p>spring中scope的作用域默认是单例模式，即scope=”singleton”。另外scope还有prototype、request、session作用域。request、session使用的时候需要先在web.xml中配置ContextListener.<br>使用spring的作用域<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;bean id=&quot;role&quot; class=&quot;spring.chapter2.maryGame.Role&quot; scope=&quot;singleton&quot;/&gt;</span><br></pre></td></tr></table></figure></p>
 <ol>
 <li>singleton作用域<br>当一个bean的作用域被设置成singleton，那么springIOC容器中只会存在一个共享的bean实例（springIOC容器只会创建该bean定义的唯一实例），并且所有对bean的请求，只要id与该bean定义相匹配，则只会返回bean的同一实例。这个单一实例会被存储到单例缓存(singleton cache)中，并且所有针对该bean的后续请求和引用都将返回被缓存的对象实例。<br>让spring容器释放被singleton作用域bean占用资源的一种可行方式是，通过使用bean的后置处理器，该处理器持有要被清除的bean的引用。</li>
 <li>prototype<br>prototype作用域部署的bean，每一次请求都会产生一个新的bean实例，相当于一个new操作，对于prototype作用域的bean，有一点非常重要，spring不能对一个prototypebean的整个生命周期负责，容器在初始化、配置装饰或者是装饰完一个prototype实例后，将它交给客户端，随后就对该prototype实例不闻不问了。<br>不管何种作用域，容器都会调用所有对象的初始化生命周期回调方法，而对于prototype而言，任何配置好的构析生命周期回调方法都将不会被调用。清除prototype作用域对象并释放任何prototypebean所持有的的昂贵资源，都是客户端代码的职责。</li>

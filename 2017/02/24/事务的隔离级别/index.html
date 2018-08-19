@@ -6,13 +6,15 @@
   <title>事务的隔离级别 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="事务的隔离级别">
+<meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="事务的隔离级别">
 <meta property="og:url" content="http://yoursite.com/2017/02/24/事务的隔离级别/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="事务的隔离级别">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/img/transaction.png">
-<meta property="og:updated_time" content="2017-02-24T07:04:11.077Z">
+<meta property="og:updated_time" content="2017-02-24T07:04:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="事务的隔离级别">
 <meta name="twitter:description" content="事务的隔离级别">
@@ -274,7 +276,7 @@
 <li>不可重复读<br>在一次事务之间，进行了两次读取，但是结果不一样，可能第一次id为1的人叫“李三”，第二次读id为1的人就叫了“李四”。因为读取操作不会阻止其他事务。</li>
 <li>幻读<br>可重复读阻止的写事务包括update和delete（只给存在的表加上了锁），但是不包括insert（新行不存在，所以没有办法加锁），所以一个事务第一次读取可能读取到了10条记录，但是第二次可能读取到11条，这就是幻读。</li>
 </ul>
-<p>参考：<a href="http://blog.csdn.net/gaopu12345/article/details/50868501" title="ioslation_level" target="_blank" rel="external">数据库四种隔离级别</a> <a href="http://blog.sina.com.cn/s/blog_56fd58ab0100qerr.html" title="transaction" target="_blank" rel="external">spring事务对性能的影响</a></p>
+<p>参考：<a href="http://blog.csdn.net/gaopu12345/article/details/50868501" title="ioslation_level" target="_blank" rel="noopener">数据库四种隔离级别</a> <a href="http://blog.sina.com.cn/s/blog_56fd58ab0100qerr.html" title="transaction" target="_blank" rel="noopener">spring事务对性能的影响</a></p>
 
       
     </div>

@@ -6,12 +6,14 @@
   <title>nginx安装 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="nginx的安装和使用说明">
+<meta name="keywords" content="nginx">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx安装">
 <meta property="og:url" content="http://yoursite.com/2017/09/29/nginx安装/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="nginx的安装和使用说明">
-<meta property="og:updated_time" content="2017-09-29T08:28:37.236Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-29T08:28:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx安装">
 <meta name="twitter:description" content="nginx的安装和使用说明">
@@ -248,24 +250,24 @@
           
         <h3 id="nginx的安装"><a href="#nginx的安装" class="headerlink" title="nginx的安装"></a>nginx的安装</h3><ol>
 <li><p>预安装nginx依赖环境</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake</div><div class="line">yum -y install wget httpd-tools vim</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum -y install gcc gcc-c++ autoconf pcre pcre-devel make automake</span><br><span class="line">yum -y install wget httpd-tools vim</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>初始化目录</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cd /opt;mkdir app download logs work backup</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /opt;mkdir app download logs work backup</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>登录Nginx官网-&gt;下载-&gt;stable version，检索自己系统对应的配置,以centos为例：在/etc/yum.repos.d下新建nginx.repo并编辑</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">[nginx]</div><div class="line">name=nginx repo</div><div class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line"></div><div class="line">#说明</div><div class="line">OS换成自己对应的系统(centos),OSRELEASE换成系统的版本(7)</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[nginx]</span><br><span class="line">name=nginx repo</span><br><span class="line">baseurl=http://nginx.org/packages/OS/OSRELEASE/$basearch/</span><br><span class="line">gpgcheck=0</span><br><span class="line">enabled=1</span><br><span class="line"></span><br><span class="line">#说明</span><br><span class="line">OS换成自己对应的系统(centos),OSRELEASE换成系统的版本(7)</span><br></pre></td></tr></table></figure>
+<ol start="4">
 <li><p>nginx 安装</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">yum install nginx</div><div class="line"></div><div class="line">#说明</div><div class="line">使用yum安装的软件，都会自动在/usr/lib/systemd/system下产生service.service脚本.如果使用编译安装，则需要自己设置。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">yum install nginx</span><br><span class="line"></span><br><span class="line">#说明</span><br><span class="line">使用yum安装的软件，都会自动在/usr/lib/systemd/system下产生service.service脚本.如果使用编译安装，则需要自己设置。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>nginx启动(yum安装方式)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">systemctl (start/stop/reload/restart) nginx.service</div><div class="line">或</div><div class="line">nginx -c /etc/nginx/nginx.conf</div><div class="line">nginx -s reload -c /etc/nginx/nginx.conf</div><div class="line"></div><div class="line"># 说明：也可以直接用`nginx`来启动,会读取默认的配置文件位置。</div><div class="line">使用yum安装需要给/var/run/nginx.pid赋权限777</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">systemctl (start/stop/reload/restart) nginx.service</span><br><span class="line">或</span><br><span class="line">nginx -c /etc/nginx/nginx.conf</span><br><span class="line">nginx -s reload -c /etc/nginx/nginx.conf</span><br><span class="line"></span><br><span class="line"># 说明：也可以直接用`nginx`来启动,会读取默认的配置文件位置。</span><br><span class="line">使用yum安装需要给/var/run/nginx.pid赋权限777</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h3 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">#查看nginx版本</div><div class="line">nginx -v</div><div class="line">#查看nginx配置参数</div><div class="line">nginx -V</div><div class="line">#检查nginx配置文件是否正确</div><div class="line">nginx -tc /etc/nginx/nginx.conf</div></pre></td></tr></table></figure>
+<h3 id="nginx命令"><a href="#nginx命令" class="headerlink" title="nginx命令"></a>nginx命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#查看nginx版本</span><br><span class="line">nginx -v</span><br><span class="line">#查看nginx配置参数</span><br><span class="line">nginx -V</span><br><span class="line">#检查nginx配置文件是否正确</span><br><span class="line">nginx -tc /etc/nginx/nginx.conf</span><br></pre></td></tr></table></figure>
       
     </div>
     

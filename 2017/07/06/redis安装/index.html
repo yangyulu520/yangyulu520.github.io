@@ -6,12 +6,14 @@
   <title>redis安装 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="centos下redis的安装">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="redis安装">
 <meta property="og:url" content="http://yoursite.com/2017/07/06/redis安装/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="centos下redis的安装">
-<meta property="og:updated_time" content="2017-09-06T07:36:20.382Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-06T07:36:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="redis安装">
 <meta name="twitter:description" content="centos下redis的安装">
@@ -246,9 +248,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="下载所需要的redis-并上传-share目录-解压"><a href="#下载所需要的redis-并上传-share目录-解压" class="headerlink" title="下载所需要的redis,并上传(share目录),解压"></a>下载所需要的redis,并上传(share目录),解压</h3><h3 id="编译和安装所需要的包"><a href="#编译和安装所需要的包" class="headerlink" title="编译和安装所需要的包"></a>编译和安装所需要的包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install gcc tcl</div></pre></td></tr></table></figure>
-<h3 id="在-usr-local下创建redis目录。"><a href="#在-usr-local下创建redis目录。" class="headerlink" title="在/usr/local下创建redis目录。"></a>在/usr/local下创建redis目录。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mkdir redis</div></pre></td></tr></table></figure>
-<h3 id="进入redis解压的目录-share目录-安装到指定的目录-安装完成后会看到-usr-local-redis目录下有一个bin目录，bin目录-里就是redis的命令脚本"><a href="#进入redis解压的目录-share目录-安装到指定的目录-安装完成后会看到-usr-local-redis目录下有一个bin目录，bin目录-里就是redis的命令脚本" class="headerlink" title="进入redis解压的目录(share目录),安装到指定的目录.安装完成后会看到/usr/local/redis目录下有一个bin目录，bin目录 里就是redis的命令脚本"></a>进入redis解压的目录(share目录),安装到指定的目录.安装完成后会看到/usr/local/redis目录下有一个bin目录，bin目录 里就是redis的命令脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">make PREFIX=/usr/local/redis install</div></pre></td></tr></table></figure>
+        <h3 id="下载所需要的redis-并上传-share目录-解压"><a href="#下载所需要的redis-并上传-share目录-解压" class="headerlink" title="下载所需要的redis,并上传(share目录),解压"></a>下载所需要的redis,并上传(share目录),解压</h3><h3 id="编译和安装所需要的包"><a href="#编译和安装所需要的包" class="headerlink" title="编译和安装所需要的包"></a>编译和安装所需要的包</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install gcc tcl</span><br></pre></td></tr></table></figure>
+<h3 id="在-usr-local下创建redis目录。"><a href="#在-usr-local下创建redis目录。" class="headerlink" title="在/usr/local下创建redis目录。"></a>在/usr/local下创建redis目录。</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir redis</span><br></pre></td></tr></table></figure>
+<h3 id="进入redis解压的目录-share目录-安装到指定的目录-安装完成后会看到-usr-local-redis目录下有一个bin目录，bin目录-里就是redis的命令脚本"><a href="#进入redis解压的目录-share目录-安装到指定的目录-安装完成后会看到-usr-local-redis目录下有一个bin目录，bin目录-里就是redis的命令脚本" class="headerlink" title="进入redis解压的目录(share目录),安装到指定的目录.安装完成后会看到/usr/local/redis目录下有一个bin目录，bin目录 里就是redis的命令脚本"></a>进入redis解压的目录(share目录),安装到指定的目录.安装完成后会看到/usr/local/redis目录下有一个bin目录，bin目录 里就是redis的命令脚本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">make PREFIX=/usr/local/redis install</span><br></pre></td></tr></table></figure>
 <h3 id="将redis配置成服务"><a href="#将redis配置成服务" class="headerlink" title="将redis配置成服务"></a>将redis配置成服务</h3><ol>
 <li><p>在/usr/local/redis目录下新建conf目录，并把~/share/redis/redis.conf配置文件复制到conf目录下，重命名为6379.conf(6379是redis端口号)</p>
 </li>
@@ -256,25 +258,25 @@
 </li>
 </ol>
 <p>3.修改配置文件redis </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#脚本第一行下面添加一行(如果不添加,在注册服务时，会提示redis不支持chkconfig)</div><div class="line">#chkconfig: 2345 80 90</div><div class="line">EXEC=/usr/local/bin/redis-server 改为 EXEC=/usr/local/redis/bin/redis-server</div><div class="line"></div><div class="line">CLIEXEC=/usr/local/bin/redis-cli 改为 CLIEXEC=/usr/local/redis/bin/redis-cli</div><div class="line"></div><div class="line">CONF=&quot;/etc/redis/$&#123;REDISPORT&#125;.conf&quot; 改为 CONF=&quot;/usr/local/redis/conf/$&#123;REDISPORT&#125;.conf&quot;</div><div class="line"></div><div class="line">$EXEC $CONF 改为 $EXEC $CONF &amp;</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#脚本第一行下面添加一行(如果不添加,在注册服务时，会提示redis不支持chkconfig)</span><br><span class="line">#chkconfig: 2345 80 90</span><br><span class="line">EXEC=/usr/local/bin/redis-server 改为 EXEC=/usr/local/redis/bin/redis-server</span><br><span class="line"></span><br><span class="line">CLIEXEC=/usr/local/bin/redis-cli 改为 CLIEXEC=/usr/local/redis/bin/redis-cli</span><br><span class="line"></span><br><span class="line">CONF=&quot;/etc/redis/$&#123;REDISPORT&#125;.conf&quot; 改为 CONF=&quot;/usr/local/redis/conf/$&#123;REDISPORT&#125;.conf&quot;</span><br><span class="line"></span><br><span class="line">$EXEC $CONF 改为 $EXEC $CONF &amp;</span><br></pre></td></tr></table></figure>
+<ol start="4">
 <li><p>将redis注册成服务<br>chkconfig –add redis<br>systemctl enable redis</p>
 </li>
 <li><p>修改conf下的redis的配置文件(6379.conf)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">daemonize no 改为&gt; daemonize yes</div><div class="line"></div><div class="line">pidfile /var/run/redis.pid 改为&gt; pidfile /var/run/redis_6379.pid</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">daemonize no 改为&gt; daemonize yes</span><br><span class="line"></span><br><span class="line">pidfile /var/run/redis.pid 改为&gt; pidfile /var/run/redis_6379.pid</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>将redis添加到环境变量中</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">vi /etc/profile</div><div class="line"></div><div class="line"># 最后面添加</div><div class="line"></div><div class="line">#redis env</div><div class="line">export PATH=$PATH:/usr/local/redis/bin</div><div class="line"></div><div class="line">source /etc/profile</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line"># 最后面添加</span><br><span class="line"></span><br><span class="line">#redis env</span><br><span class="line">export PATH=$PATH:/usr/local/redis/bin</span><br><span class="line"></span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+<ol start="7">
 <li><p>redis启动和关闭</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">service redis start</div><div class="line">service redis stop</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service redis start</span><br><span class="line">service redis stop</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>redis开启远程访问</p>
 </li>
 </ol>
-<p>redis.conf修改配置文件：注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">bind 127.0.0.1</div><div class="line"></div><div class="line">会出现报错Redis is running in protected mode</div><div class="line">设置</div><div class="line">protected-mode no</div><div class="line">--给redis设置密码</div><div class="line">config set requirepass 123 -&gt;123是密码</div></pre></td></tr></table></figure></p>
+<p>redis.conf修改配置文件：注释<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">bind 127.0.0.1</span><br><span class="line"></span><br><span class="line">会出现报错Redis is running in protected mode</span><br><span class="line">设置</span><br><span class="line">protected-mode no</span><br><span class="line">--给redis设置密码</span><br><span class="line">config set requirepass 123 -&gt;123是密码</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

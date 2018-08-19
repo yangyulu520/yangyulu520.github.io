@@ -6,16 +6,18 @@
   <title>docker-jekins部署 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="docker-jekins持续部署">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="docker-jekins部署">
 <meta property="og:url" content="http://yoursite.com/2018/01/10/docker-jekins部署/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="docker-jekins持续部署">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/img/global.png">
 <meta property="og:image" content="http://yoursite.com/img/jdk.png">
 <meta property="og:image" content="http://yoursite.com/img/gitconfig.png">
 <meta property="og:image" content="http://yoursite.com/img/maven.png">
-<meta property="og:updated_time" content="2018-01-12T08:07:43.062Z">
+<meta property="og:updated_time" content="2018-01-12T08:07:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="docker-jekins部署">
 <meta name="twitter:description" content="docker-jekins持续部署">
@@ -251,8 +253,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="构建文件"><a href="#构建文件" class="headerlink" title="构建文件"></a>构建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">FROM jenkins/jenkins:lts</div><div class="line"># 一定要用官方提供的镜像，docker search里的其他镜像不靠谱</div><div class="line">USER root</div><div class="line">ADD docker-latest.tgz /opt</div><div class="line">RUN  cp /opt/docker/docker /usr/local/bin/ \</div><div class="line">    &amp;&amp; rm -rf /opt/docker /opt/docker-latest.tgz</div><div class="line"># 将 `jenkins` 用户的组 ID 改为宿主 `docker` 组的组ID，从而具有执行 `docker` 命令的权限。</div><div class="line">ARG DOCKER_GID=0</div><div class="line">USER jenkins:$&#123;DOCKER_GID&#125;</div></pre></td></tr></table></figure>
-<h3 id="容器编译和执行命令-为了让容器内也可以执行docker命令"><a href="#容器编译和执行命令-为了让容器内也可以执行docker命令" class="headerlink" title="容器编译和执行命令(为了让容器内也可以执行docker命令)"></a>容器编译和执行命令(为了让容器内也可以执行docker命令)</h3><p>maven和docker由宿主机上部署并挂载进容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">docker build -t jenkins-yangyl:v1 -f ./Dockerfile .</div><div class="line"></div><div class="line">docker run -itd --name jekins-yangyl -p 8082:8080 -u 0 -v /opt/front_backend/jekins/jekins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /usr/local/apache-maven-3.5.2:/usr/local/apache-maven-3.5.2 -v /opt/repo:/opt/repo -v /usr/local/jdk1.8.0_131:/usr/local/jdk1.8.0_131 jenkins-yangyl:v1</div></pre></td></tr></table></figure></p>
+        <h3 id="构建文件"><a href="#构建文件" class="headerlink" title="构建文件"></a>构建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">FROM jenkins/jenkins:lts</span><br><span class="line"># 一定要用官方提供的镜像，docker search里的其他镜像不靠谱</span><br><span class="line">USER root</span><br><span class="line">ADD docker-latest.tgz /opt</span><br><span class="line">RUN  cp /opt/docker/docker /usr/local/bin/ \</span><br><span class="line">    &amp;&amp; rm -rf /opt/docker /opt/docker-latest.tgz</span><br><span class="line"># 将 `jenkins` 用户的组 ID 改为宿主 `docker` 组的组ID，从而具有执行 `docker` 命令的权限。</span><br><span class="line">ARG DOCKER_GID=0</span><br><span class="line">USER jenkins:$&#123;DOCKER_GID&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="容器编译和执行命令-为了让容器内也可以执行docker命令"><a href="#容器编译和执行命令-为了让容器内也可以执行docker命令" class="headerlink" title="容器编译和执行命令(为了让容器内也可以执行docker命令)"></a>容器编译和执行命令(为了让容器内也可以执行docker命令)</h3><p>maven和docker由宿主机上部署并挂载进容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker build -t jenkins-yangyl:v1 -f ./Dockerfile .</span><br><span class="line"></span><br><span class="line">docker run -itd --name jekins-yangyl -p 8082:8080 -u 0 -v /opt/front_backend/jekins/jekins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker -v /usr/local/apache-maven-3.5.2:/usr/local/apache-maven-3.5.2 -v /opt/repo:/opt/repo -v /usr/local/jdk1.8.0_131:/usr/local/jdk1.8.0_131 jenkins-yangyl:v1</span><br></pre></td></tr></table></figure></p>
 <p>说明：从宿主机上挂载了maven，maven的中央仓库，jdk，jenkins的配置存档目录，以及docker的命令。-u(0)设置为root用户</p>
 <h3 id="jekins配置-插件安装"><a href="#jekins配置-插件安装" class="headerlink" title="jekins配置-插件安装"></a>jekins配置-插件安装</h3><ol>
 <li>Maven Integration plugin</li>
@@ -262,10 +264,10 @@
 <li>创建maven项目</li>
 <li>源码管理-&gt;git-&gt;Credentials-&gt;add-&gt;只输入用户名和密码，其他默认</li>
 <li><p>build-&gt;Goals and options:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">clean package -Dmaven.test.skip=true</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">clean package -Dmaven.test.skip=true</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>post steps -&gt;run only if build succeedss-&gt;Execute shell:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker build -t helloworld $&#123;WORKSPACE&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t helloworld $&#123;WORKSPACE&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>说明：${WORKSPACE}表示拉取项目的目录</p>

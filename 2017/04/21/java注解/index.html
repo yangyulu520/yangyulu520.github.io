@@ -6,12 +6,14 @@
   <title>java注解 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="以spring的transaction注解来看注解的实现和相关细节">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java注解">
 <meta property="og:url" content="http://yoursite.com/2017/04/21/java注解/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="以spring的transaction注解来看注解的实现和相关细节">
-<meta property="og:updated_time" content="2017-04-21T03:08:01.046Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-04-21T03:08:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java注解">
 <meta name="twitter:description" content="以spring的transaction注解来看注解的实现和相关细节">
@@ -246,7 +248,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="类及类上声明说明"><a href="#类及类上声明说明" class="headerlink" title="类及类上声明说明"></a>类及类上声明说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">@Target(&#123;java.lang.annotation.ElementType.METHOD, java.lang.annotation.ElementType.TYPE&#125;)</div><div class="line">@Retention(RetentionPolicy.RUNTIME)</div><div class="line">@Inherited</div><div class="line">@Documented</div><div class="line">public @interface Transactional</div></pre></td></tr></table></figure>
+        <h3 id="类及类上声明说明"><a href="#类及类上声明说明" class="headerlink" title="类及类上声明说明"></a>类及类上声明说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Target(&#123;java.lang.annotation.ElementType.METHOD, java.lang.annotation.ElementType.TYPE&#125;)</span><br><span class="line">@Retention(RetentionPolicy.RUNTIME)</span><br><span class="line">@Inherited</span><br><span class="line">@Documented</span><br><span class="line">public @interface Transactional</span><br></pre></td></tr></table></figure>
 <p>说明：</p>
 <ol>
 <li><p>@target:表示该注解可以使用的范围，这里标明可以在方法和类级别上使用该注解。具体范围如下：<br>@Target(ElementType.TYPE) //接口、类、枚举、注解<br>@Target(ElementType.FIELD)//字段、枚举的常量<br>@Target(ElementType.METHOD)//方法<br>@Target(ElementType.PARAMETER)//方法参数<br>@Target(ElementType.CONSTRUCTOR) //构造函数<br>@Target(ElementType.LOCAL_VARIABLE)//局部变量<br>@Target(ElementType.ANNOTATION_TYPE)//注解<br>@Target(ElementType.PACKAGE) ///包   </p>
@@ -260,7 +262,7 @@
 <li><p>@interface:声明类为注解类</p>
 </li>
 </ol>
-<h3 id="类下说明"><a href="#类下说明" class="headerlink" title="类下说明"></a>类下说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">@AliasFor(&quot;transactionManager&quot;)</div><div class="line">  String value() default &quot;&quot;;</div><div class="line">  </div><div class="line">@AliasFor(&quot;value&quot;)</div><div class="line">String transactionManager() default &quot;&quot;;</div><div class="line"></div><div class="line">Propagation propagation() default Propagation.REQUIRED;</div><div class="line"></div><div class="line">Isolation isolation() default Isolation.DEFAULT;</div></pre></td></tr></table></figure>
+<h3 id="类下说明"><a href="#类下说明" class="headerlink" title="类下说明"></a>类下说明</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@AliasFor(&quot;transactionManager&quot;)</span><br><span class="line">  String value() default &quot;&quot;;</span><br><span class="line">  </span><br><span class="line">@AliasFor(&quot;value&quot;)</span><br><span class="line">String transactionManager() default &quot;&quot;;</span><br><span class="line"></span><br><span class="line">Propagation propagation() default Propagation.REQUIRED;</span><br><span class="line"></span><br><span class="line">Isolation isolation() default Isolation.DEFAULT;</span><br></pre></td></tr></table></figure>
 <p>说明：</p>
 <ol>
 <li>AliasFor：给注解的属性起别名(比如给value属性起别名, 更容易让人理解)</li>

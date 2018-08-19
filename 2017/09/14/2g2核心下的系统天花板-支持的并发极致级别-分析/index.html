@@ -6,12 +6,14 @@
   <title>2g2核心下的系统天花板(支持的并发极致级别)分析 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="系统性能分析">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="2g2核心下的系统天花板(支持的并发极致级别)分析">
 <meta property="og:url" content="http://yoursite.com/2017/09/14/2g2核心下的系统天花板-支持的并发极致级别-分析/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="系统性能分析">
-<meta property="og:updated_time" content="2017-09-15T10:19:33.084Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-15T10:19:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="2g2核心下的系统天花板(支持的并发极致级别)分析">
 <meta name="twitter:description" content="系统性能分析">
@@ -247,7 +249,7 @@
       
           
         <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>以往在项目开发中，很少考虑硬件资源限制下的优化，如果限制了带宽或者有限的资源下进行极致的性能优化。这里做初步的补充式的分析，弥补以前的知识漏洞。</p>
-<h2 id="知识补漏"><a href="#知识补漏" class="headerlink" title="知识补漏"></a>知识补漏</h2><h3 id="带宽、宽带和下载速度"><a href="#带宽、宽带和下载速度" class="headerlink" title="带宽、宽带和下载速度"></a>带宽、宽带和下载速度</h3><p>带宽:是量词，指的是网速的大小，比如1Mbps的意思是一兆比特每秒，这个数值就是指带宽。<br>宽带:是名词，说明网络的传输速率速很高。日常说的带宽和宽带的数值代表同一个意思。<br>带宽和下载速度：带宽一般说的是按照比特(bit)计算每秒的，比如20M带宽，是指传输速度能达到20Mbit/s.而我们平时的下载速度是按照字节(byte)每秒计算的。MB/s 的含义是兆字节每秒，Mb/s的含义是兆比特每秒，前者是指每秒传输的字节数量，后者是指每秒传输的比特位数。两者的换算关系为1Byte=8bit.<br>即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">1B=8b 		--------1B/s=8b/s(或1bps=8bps)</div><div class="line">1KB=1024B	--------1KB/s=1024B/s</div><div class="line">1MB=1024KB	--------1MB/s=1024KB/s</div></pre></td></tr></table></figure></p>
+<h2 id="知识补漏"><a href="#知识补漏" class="headerlink" title="知识补漏"></a>知识补漏</h2><h3 id="带宽、宽带和下载速度"><a href="#带宽、宽带和下载速度" class="headerlink" title="带宽、宽带和下载速度"></a>带宽、宽带和下载速度</h3><p>带宽:是量词，指的是网速的大小，比如1Mbps的意思是一兆比特每秒，这个数值就是指带宽。<br>宽带:是名词，说明网络的传输速率速很高。日常说的带宽和宽带的数值代表同一个意思。<br>带宽和下载速度：带宽一般说的是按照比特(bit)计算每秒的，比如20M带宽，是指传输速度能达到20Mbit/s.而我们平时的下载速度是按照字节(byte)每秒计算的。MB/s 的含义是兆字节每秒，Mb/s的含义是兆比特每秒，前者是指每秒传输的字节数量，后者是指每秒传输的比特位数。两者的换算关系为1Byte=8bit.<br>即：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1B=8b 		--------1B/s=8b/s(或1bps=8bps)</span><br><span class="line">1KB=1024B	--------1KB/s=1024B/s</span><br><span class="line">1MB=1024KB	--------1MB/s=1024KB/s</span><br></pre></td></tr></table></figure></p>
 <p>综上：带宽和下载速度的转换为(理论值)：下载速度*8或者带宽/8。</p>
 <h3 id="每次请求的数据量大小"><a href="#每次请求的数据量大小" class="headerlink" title="每次请求的数据量大小"></a>每次请求的数据量大小</h3><p>当用户请求某个接口返回数据时，返回数据的大小是固定的，具体可通过调试时看到请求的返回数据大小和响应时间</p>
 <h3 id="请求响应时间"><a href="#请求响应时间" class="headerlink" title="请求响应时间"></a>请求响应时间</h3><ol>
@@ -263,7 +265,7 @@
 <li>CPU<br>硬件层考虑：与CPU的好坏和磁盘读取速度有关。–1核和2核的处理差距<br>软件层考虑：读写瓶颈，CPU是用来计算的，不是读写的。大部分由于慢查询或者访问量太大导致<br>同一时间点请求多，这个查询还慢，db线程就会不停的运算</li>
 </ol>
 <p>说明：慢查询是由于io慢导致的(比如说有100w条数据，查询条件没有落到索引上或者查询的条件让索引失效了，于是就得全表扫描，即把表的数据全部读一遍，input一遍，那么io就会一直占用CPU扫描处理，直到查出最后结果读取进内存。这样就会导致CPU上去了)<br>CPU过高会导致程序运行很慢</p>
-<ol>
+<ol start="2">
 <li>内存<br>mysql内存过高，不是慢查询的原因，慢查询会导致CPU过高，mysql占多大内存是靠buffer-size=8默认配置的<br>说明：mysql如果采用默认配置，基本不会导致太高的内存，高内存不一定是坏事，mysql一般都会设置服务器的内存去做它自己的缓存。<br>java线程内存过高，可能由于程序的问题或者内存溢出，导致tomcat直接挂掉</li>
 </ol>
 <h3 id="数据库概述"><a href="#数据库概述" class="headerlink" title="数据库概述"></a>数据库概述</h3><ol>

@@ -6,12 +6,14 @@
   <title>项目参数的配置化 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="关于项目中硬编码配置的抽离">
+<meta name="keywords" content="spring">
 <meta property="og:type" content="article">
 <meta property="og:title" content="项目参数的配置化">
 <meta property="og:url" content="http://yoursite.com/2017/08/03/项目参数的配置化/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="关于项目中硬编码配置的抽离">
-<meta property="og:updated_time" content="2017-08-03T10:13:02.068Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-08-03T10:13:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="项目参数的配置化">
 <meta name="twitter:description" content="关于项目中硬编码配置的抽离">
@@ -247,7 +249,7 @@
       
           
         <h3 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h3><p>一般项目过程中，会使用到很多的配置，比如访问第三方接口的url,比如系统的一些配置，这些在使用的过程中，会根据不同的系统环境或者需求进行变更。如果硬编码在代码中，或者代码中定义的常量表中，则每次都需要修改代码。此时，可以把这些配置文件抽离成properties文件或者xml文件，这样，直接修改该文件，可以完成配置的修改。</p>
-<h3 id="properties配置的方式"><a href="#properties配置的方式" class="headerlink" title="properties配置的方式"></a>properties配置的方式</h3><p>把需要的配置参数放在properties配置文件中，在spring启动的时候进行扫描加载，然后在需要使用的额时候进行属性注入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">--*.properties</div><div class="line">supplier.interface = http://192.168.1.200:5210</div><div class="line">--java service</div><div class="line">@Value(&quot;$&#123;supplier.interface&#125;&quot;)</div><div class="line">private String orderInterface;</div><div class="line">--java constant</div><div class="line">@Value(&quot;$&#123;supplier.interface&#125;&quot;)</div><div class="line">public static String ORDER_INTERFACE;</div></pre></td></tr></table></figure></p>
+<h3 id="properties配置的方式"><a href="#properties配置的方式" class="headerlink" title="properties配置的方式"></a>properties配置的方式</h3><p>把需要的配置参数放在properties配置文件中，在spring启动的时候进行扫描加载，然后在需要使用的额时候进行属性注入。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">--*.properties</span><br><span class="line">supplier.interface = http://192.168.1.200:5210</span><br><span class="line">--java service</span><br><span class="line">@Value(&quot;$&#123;supplier.interface&#125;&quot;)</span><br><span class="line">private String orderInterface;</span><br><span class="line">--java constant</span><br><span class="line">@Value(&quot;$&#123;supplier.interface&#125;&quot;)</span><br><span class="line">public static String ORDER_INTERFACE;</span><br></pre></td></tr></table></figure></p>
 <h3 id="xml配置的方式"><a href="#xml配置的方式" class="headerlink" title="xml配置的方式"></a>xml配置的方式</h3><p>使用XMLConfiguration来装配xml</p>
 
       

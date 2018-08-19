@@ -6,15 +6,17 @@
   <title>多线程基础 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="包含多线程的基础操作和方法使用">
+<meta name="keywords" content="线程和并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="多线程基础">
 <meta property="og:url" content="http://yoursite.com/2017/06/12/多线程基础/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="包含多线程的基础操作和方法使用">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/img/thread.png">
 <meta property="og:image" content="http://yoursite.com/img/lock.png">
 <meta property="og:image" content="http://yoursite.com/img/suspend.png">
-<meta property="og:updated_time" content="2017-07-13T02:26:11.655Z">
+<meta property="og:updated_time" content="2017-07-13T02:26:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="多线程基础">
 <meta name="twitter:description" content="包含多线程的基础操作和方法使用">
@@ -252,38 +254,38 @@
           
         <h3 id="线程的状态"><a href="#线程的状态" class="headerlink" title="线程的状态"></a>线程的状态</h3><p><img src="/img/thread.png" alt="Markdown"></p>
 <p>说明：<br>runnable:线程调用start方法后，被启动。表示线程可以执行，一切准备就绪(锁，资源申请，调度合理)，但不表示一定在CPU上执行，由CPU调度分时间片来执行，对于上层而言，可以认为在执行。<br>terminated:表示线程任务执行结束<br>blocked:线程执行过程中，需要申请某些锁，申请某些对象的监视器，该监视器或锁可能目前正在被其他线程占用，无法拿到，此时，线程会被挂起<br>waiting:线程执行过程中调用了wait方法。由其他线程notify通知来继续执行。等待有有限期等待(等待时间到了后，无需通知，就会被唤醒)和无限期等待。</p>
-<h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Thread t1 = new Thread();</div><div class="line">Thread t2 = new Thread(</div><div class="line">	@overwrite</div><div class="line">	public void run() &#123;</div><div class="line">	xxx;</div><div class="line">&#125;</div><div class="line">Thread t3 = new Thread(new myRunnable());</div></pre></td></tr></table></figure>
+<h3 id="线程的创建"><a href="#线程的创建" class="headerlink" title="线程的创建"></a>线程的创建</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Thread t1 = new Thread();</span><br><span class="line">Thread t2 = new Thread(</span><br><span class="line">	@overwrite</span><br><span class="line">	public void run() &#123;</span><br><span class="line">	xxx;</span><br><span class="line">&#125;</span><br><span class="line">Thread t3 = new Thread(new myRunnable());</span><br></pre></td></tr></table></figure>
 <h3 id="线程的基本操作"><a href="#线程的基本操作" class="headerlink" title="线程的基本操作"></a>线程的基本操作</h3><p>说明：Thread里的静态方法调用时，Thread.xx()和Thread.currentThread().xx();效果是一样的，都是对当前线程执行操作。对于非静态方法，则只能用后者了。</p>
 <ol>
 <li>终止线程-Thread.stop()</li>
 </ol>
 <p>不推荐使用，太过暴力，它会释放占用的所有monitor(锁).<br>如果当前线程正在写数据时，由于stop，会释放锁，造成数据没写完成，读出错误数据。<br><img src="/img/lock.png" alt="Markdown"></p>
-<ol>
+<ol start="2">
 <li><p>中断线程-优雅的停止线程执行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public void Thread.interrupt();//中断线程</div><div class="line">public boolean Thread.isInterrupted();//判断是否被中断</div><div class="line">public static boolean Thead.interrupted();//判断是否被中断，并清除当前中断状态</div><div class="line"></div><div class="line">t1.interrupt();</div><div class="line"></div><div class="line">//让当前线程响应自身被中断,同时在执行过程中，响应其他线程的中断招呼</div><div class="line">public void run() &#123;</div><div class="line">	while(true) &#123;</div><div class="line">		if(Thread.currentThread.isInterrupted()) &#123;</div><div class="line">			break;</div><div class="line">		&#125;</div><div class="line">		try &#123;</div><div class="line">			Thread.sleep(2000);</div><div class="line">		&#125; catch (InterruptedException e) &#123;</div><div class="line">			//设置中断状态，抛出异常后会清除中断标记位</div><div class="line">			Thread.currentThread.interrupt();</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">public void Thread.interrupt();//中断线程</span><br><span class="line">public boolean Thread.isInterrupted();//判断是否被中断</span><br><span class="line">public static boolean Thead.interrupted();//判断是否被中断，并清除当前中断状态</span><br><span class="line"></span><br><span class="line">t1.interrupt();</span><br><span class="line"></span><br><span class="line">//让当前线程响应自身被中断,同时在执行过程中，响应其他线程的中断招呼</span><br><span class="line">public void run() &#123;</span><br><span class="line">	while(true) &#123;</span><br><span class="line">		if(Thread.currentThread.isInterrupted()) &#123;</span><br><span class="line">			break;</span><br><span class="line">		&#125;</span><br><span class="line">		try &#123;</span><br><span class="line">			Thread.sleep(2000);</span><br><span class="line">		&#125; catch (InterruptedException e) &#123;</span><br><span class="line">			//设置中断状态，抛出异常后会清除中断标记位</span><br><span class="line">			Thread.currentThread.interrupt();</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>挂起(suspend)和继续执行(resume)-不推荐使用</p>
 </li>
 </ol>
 <p>如果目标线程占用了锁或者临界区资源，挂起会导致资源不被释放，其他线程则无法使用资源或锁，除非该线程被resume<br><img src="/img/suspend.png" alt="Markdown"></p>
-<ol>
+<ol start="4">
 <li>等待线程结束(join)和谦让(yield)</li>
 </ol>
 <p>不知道开出去的线程什么时候执行完毕，然而需要等待线程的某些信息才能进行下一步操作，就使用join。at.join:主线程会等at线程结束再一起执行。</p>
-<ol>
+<ol start="5">
 <li>守护线程</li>
 </ol>
 <p>在后台默默地完成一些系统性的服务，比如垃圾回收线程。当一个java应用内，只有守护线程时，java虚拟机就会自然退出。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Thread t = new Thread();</div><div class="line">t.setDaemon(true);</div><div class="line">t.start();</div></pre></td></tr></table></figure>
-<ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Thread t = new Thread();</span><br><span class="line">t.setDaemon(true);</span><br><span class="line">t.start();</span><br></pre></td></tr></table></figure>
+<ol start="6">
 <li>线程优先级</li>
 </ol>
 <p>thread.setPriority();<br>高优先级线程更容易在竞争中获胜</p>
-<ol>
+<ol start="7">
 <li>基本的线程同步操作</li>
 </ol>
 <p>synchronized-锁，或者说是监视器(monitor)<br>    -指定加锁对象：对给定对象加锁，进入同步代码前要获得给定对象的锁<br>    -直接作用于实例方法：相当于对当前实例加锁，进入同步代码前要获得当前实例的锁 –必须要是同一个对象实例，不同对象实例获取的是不同的锁<br>    -直接作用于静态方法：相当于对当前类加锁，进入同步代码前要获得当前类的锁 –static成为静态方法，则会锁在类上，这时将不会区分对象实例<br>调用需要先拿到锁，才能进行执行。</p>
-<ol>
+<ol start="8">
 <li>Object.wait()，Object.notify()<br>Object.wait()表示线程等待在当前对象上<br>Object.notify()表示通知等待在Object对象上的线程，让它在wait函数中返回</li>
 </ol>
 <p>使用wait操作必须要拿到当前对象的锁才行，不然会报错，所以需要搭配synchronized使用</p>

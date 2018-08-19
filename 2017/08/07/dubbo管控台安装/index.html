@@ -6,12 +6,14 @@
   <title>dubbo管控台安装 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="centos下dubbo控制台的安装">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="dubbo管控台安装">
 <meta property="og:url" content="http://yoursite.com/2017/08/07/dubbo管控台安装/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="centos下dubbo控制台的安装">
-<meta property="og:updated_time" content="2017-08-07T07:39:23.667Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-08-07T07:39:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="dubbo管控台安装">
 <meta name="twitter:description" content="centos下dubbo控制台的安装">
@@ -247,7 +249,7 @@
       
           
         <p>dubbo控制台可以对注册到zookeeper注册中心的服务或服务消费进行管理，单管理台是否正常对dubbo服务没有影响，因此可以但节点部署。</p>
-<h3 id="上传dubbo-admin-war到tomcat下"><a href="#上传dubbo-admin-war到tomcat下" class="headerlink" title="上传dubbo-admin.war到tomcat下"></a>上传dubbo-admin.war到tomcat下</h3><h3 id="删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT"><a href="#删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT" class="headerlink" title="删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT"></a>删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">unzip dubbo-admin-2.5.4.war -d ROOT</div></pre></td></tr></table></figure>
+<h3 id="上传dubbo-admin-war到tomcat下"><a href="#上传dubbo-admin-war到tomcat下" class="headerlink" title="上传dubbo-admin.war到tomcat下"></a>上传dubbo-admin.war到tomcat下</h3><h3 id="删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT"><a href="#删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT" class="headerlink" title="删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT"></a>删除tomcat的webapp下的ROOT项目，解压并重命名为ROOT</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip dubbo-admin-2.5.4.war -d ROOT</span><br></pre></td></tr></table></figure>
 <h3 id="修改dubbo-properties配置文件-配置zookeeper的连接地址"><a href="#修改dubbo-properties配置文件-配置zookeeper的连接地址" class="headerlink" title="修改dubbo.properties配置文件,配置zookeeper的连接地址"></a>修改dubbo.properties配置文件,配置zookeeper的连接地址</h3><p>注意：dubbo-admin下载支持jdk1.8的版本，不然启动会报错误</p>
 <h3 id="dubbo-adin默认的用户名和密码都为root"><a href="#dubbo-adin默认的用户名和密码都为root" class="headerlink" title="dubbo-adin默认的用户名和密码都为root"></a>dubbo-adin默认的用户名和密码都为root</h3>
       

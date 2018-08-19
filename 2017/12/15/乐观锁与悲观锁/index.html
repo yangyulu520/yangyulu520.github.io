@@ -6,12 +6,14 @@
   <title>乐观锁与悲观锁 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="乐观锁与悲观锁">
+<meta name="keywords" content="线程和并发">
 <meta property="og:type" content="article">
 <meta property="og:title" content="乐观锁与悲观锁">
 <meta property="og:url" content="http://yoursite.com/2017/12/15/乐观锁与悲观锁/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="乐观锁与悲观锁">
-<meta property="og:updated_time" content="2017-12-15T05:37:40.428Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-15T05:37:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="乐观锁与悲观锁">
 <meta name="twitter:description" content="乐观锁与悲观锁">
@@ -246,7 +248,7 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>每次拿数据的时候都觉得数据会被人修改，所以拿数据的时候就把这条记录锁掉，这样别人就没法修改这条数据了。具有强烈的独占和排他特性。一直到你释放锁(事务提交)<br>一般悲观锁的实现往往依靠数据库提供的锁机制(也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据)。<br>典型的实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">select * from account where name=”张三” for update</div><div class="line">#sql锁住所有符合name为张三的记录，本次事务提交之前(事务提交时会释放事务过程中的锁),外界无法修改这些记录。</div></pre></td></tr></table></figure></p>
+        <h3 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h3><p>每次拿数据的时候都觉得数据会被人修改，所以拿数据的时候就把这条记录锁掉，这样别人就没法修改这条数据了。具有强烈的独占和排他特性。一直到你释放锁(事务提交)<br>一般悲观锁的实现往往依靠数据库提供的锁机制(也只有数据库层提供的锁机制才能真正保证数据访问的排他性，否则即使在本系统中实现了加锁机制，也无法保证外部系统不会修改数据)。<br>典型的实现方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">select * from account where name=”张三” for update</span><br><span class="line">#sql锁住所有符合name为张三的记录，本次事务提交之前(事务提交时会释放事务过程中的锁),外界无法修改这些记录。</span><br></pre></td></tr></table></figure></p>
 <h3 id="悲观锁的优劣"><a href="#悲观锁的优劣" class="headerlink" title="悲观锁的优劣"></a>悲观锁的优劣</h3><p>如果使用悲观锁，也就意味着整个操作过程中(从操作员读出数据、开始修改直至提交修改结果的全过程),数据库记录始终属于加锁状态，在并发情况下，很影响系统性能。</p>
 <h3 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h3><p>拿数据的时候总觉得不会有人更改数据，等到更新的时候再判断这个数据有没有被人更改，有人更改了则本次更新失败。<br>乐观锁的实现可以通过在表中添加一个版本号的形式或者更新时间戳。也就是查询的时候获取到这个版本号或者时间戳，修改数据后，版本号加一或者时间戳设置为最新。保存到数据库时，验证时间戳或者版本号是否是查询时的那个。</p>
 

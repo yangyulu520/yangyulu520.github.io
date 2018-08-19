@@ -6,14 +6,16 @@
   <title>分布式事务-可靠消息最终一致性1 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="可靠消息最终一致性-消息发送一致性">
+<meta name="keywords" content="可靠消息">
 <meta property="og:type" content="article">
 <meta property="og:title" content="分布式事务-可靠消息最终一致性1">
 <meta property="og:url" content="http://yoursite.com/2017/09/20/分布式事务-可靠消息最终一致性1/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="可靠消息最终一致性-消息发送一致性">
+<meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/img/queue.png">
 <meta property="og:image" content="http://yoursite.com/img/queueprocess.png">
-<meta property="og:updated_time" content="2017-11-18T12:10:24.300Z">
+<meta property="og:updated_time" content="2017-11-18T12:10:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="分布式事务-可靠消息最终一致性1">
 <meta name="twitter:description" content="可靠消息最终一致性-消息发送一致性">
@@ -252,8 +254,8 @@
         <h3 id="消息中间件的应用"><a href="#消息中间件的应用" class="headerlink" title="消息中间件的应用"></a>消息中间件的应用</h3><p>消息中间件在分布式系统中的主要作用是：异步通讯、解耦、并发缓冲(缓冲在消息队列中)</p>
 <p>消息发送和投递的不可靠性–消息中间件由于网络原因，可能无法返回接收成功标志。</p>
 <p>消息发送一致性：是指产生消息的业务动作与消息发送的一致。(也就是说，如果业务操作成功，那么由这个业务操作所产生的消息一定要成功投递出去，否则就会丢消息。                    )</p>
-<h3 id="消息发送一致性的保障"><a href="#消息发送一致性的保障" class="headerlink" title="消息发送一致性的保障"></a>消息发送一致性的保障</h3><p>处理一：发送消息在业务处理之后(为处理不一致，添加人工处理后，可采取该种措施，考虑失败率)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**支付订单处理**/</div><div class="line">@Transaction</div><div class="line">public void completeOrder() &#123;</div><div class="line">	//订单处理，单独事务，成功则执行发送消息，失败则不执行下面动作</div><div class="line">	orderBiz.process();</div><div class="line">	//发送会计消息</div><div class="line">	sendAccountingMessage();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>可能产生问题：业务操作成功，但消息系统故障或网络故障，会导致消息发不出去。<br>注：公司目前采用这种方式，假如消息发送失败，则该订单一直是处理中状态，则由人工处理，重新发送消息处理。这样来处理订单和消息的不一致性。<br>处理二：发送消息在业务处理之前(不可取)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**支付订单处理**/</div><div class="line">@Transaction</div><div class="line">public void completeOrder() &#123;</div><div class="line">	//发送会计消息</div><div class="line">	sendAccountingMessage();</div><div class="line">	//订单处理</div><div class="line">	orderBiz.process();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="消息发送一致性的保障"><a href="#消息发送一致性的保障" class="headerlink" title="消息发送一致性的保障"></a>消息发送一致性的保障</h3><p>处理一：发送消息在业务处理之后(为处理不一致，添加人工处理后，可采取该种措施，考虑失败率)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**支付订单处理**/</span><br><span class="line">@Transaction</span><br><span class="line">public void completeOrder() &#123;</span><br><span class="line">	//订单处理，单独事务，成功则执行发送消息，失败则不执行下面动作</span><br><span class="line">	orderBiz.process();</span><br><span class="line">	//发送会计消息</span><br><span class="line">	sendAccountingMessage();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>可能产生问题：业务操作成功，但消息系统故障或网络故障，会导致消息发不出去。<br>注：公司目前采用这种方式，假如消息发送失败，则该订单一直是处理中状态，则由人工处理，重新发送消息处理。这样来处理订单和消息的不一致性。<br>处理二：发送消息在业务处理之前(不可取)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">/**支付订单处理**/</span><br><span class="line">@Transaction</span><br><span class="line">public void completeOrder() &#123;</span><br><span class="line">	//发送会计消息</span><br><span class="line">	sendAccountingMessage();</span><br><span class="line">	//订单处理</span><br><span class="line">	orderBiz.process();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>可能产生问题：消息发送出去了，业务失败了</p>
 <h3 id="消息发送一致性变通做法-为达到自动化处理，业务处理时需要发送两次消息，同时需要线程进行待发送消息确认。需要一张消息表配合操作"><a href="#消息发送一致性变通做法-为达到自动化处理，业务处理时需要发送两次消息，同时需要线程进行待发送消息确认。需要一张消息表配合操作" class="headerlink" title="消息发送一致性变通做法(为达到自动化处理，业务处理时需要发送两次消息，同时需要线程进行待发送消息确认。需要一张消息表配合操作)"></a>消息发送一致性变通做法(为达到自动化处理，业务处理时需要发送两次消息，同时需要线程进行待发送消息确认。需要一张消息表配合操作)</h3><ol>
 <li>主动方应用先把消息发给消息中间件，消息状态标记位”待确认”.</li>

@@ -6,12 +6,14 @@
   <title>es6新语法特性学习 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="es6最新特性学习">
+<meta name="keywords" content="前端">
 <meta property="og:type" content="article">
 <meta property="og:title" content="es6新语法特性学习">
 <meta property="og:url" content="http://yoursite.com/2017/05/14/es6新语法特性学习/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="es6最新特性学习">
-<meta property="og:updated_time" content="2017-07-13T02:27:00.289Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-07-13T02:27:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6新语法特性学习">
 <meta name="twitter:description" content="es6最新特性学习">
@@ -249,13 +251,13 @@
         <h2 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h2><h3 id="es6的模块引入和js引入的区别和优势"><a href="#es6的模块引入和js引入的区别和优势" class="headerlink" title="es6的模块引入和js引入的区别和优势"></a>es6的模块引入和js引入的区别和优势</h3><p>es6的模块不是对象，而是通过export命令显示指定输出的代码，再通过import命令输入。</p>
 <h3 id="export命令"><a href="#export命令" class="headerlink" title="export命令"></a>export命令</h3><p>export命令用于规定模块的对外接口。一个模块就是一个独立的文件，该文件内部的所有变量，外部无法获取。如果希望外部能够读取模块内部的某个变量，就必须使用export关键字输出该变量。</p>
 <p>写法1：export 变量/函数/类</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">export var firstName = &apos;Michael&apos;;</div><div class="line">export function multiply(x, y) &#123;</div><div class="line">  return x * y;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">export var firstName = &apos;Michael&apos;;</span><br><span class="line">export function multiply(x, y) &#123;</span><br><span class="line">  return x * y;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>写法2：export {n,n as m,}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function v1() &#123; ... &#125;</div><div class="line">var lastName = &apos;Jackson&apos;;</div><div class="line">export &#123;v1,lastName as name&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">function v1() &#123; ... &#125;</span><br><span class="line">var lastName = &apos;Jackson&apos;;</span><br><span class="line">export &#123;v1,lastName as name&#125;</span><br></pre></td></tr></table></figure>
 <p>注：export命令规定的是对外的接口，必须与模块内部的变量建立一对一对应关系。如果不使用写法1的方式，就一定要加{}.包裹变量。</p>
-<h3 id="import命令"><a href="#import命令" class="headerlink" title="import命令"></a>import命令</h3><p>使用export命令定义了模块的对外接口后，其他js文件就可以听过import命令加载该模块.import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径。.js路径可以省略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">import &#123;firstName, lastName, year&#125; from &apos;./profile&apos;;</div><div class="line">import &#123; lastName as surname &#125; from &apos;./profile&apos;;</div></pre></td></tr></table></figure></p>
+<h3 id="import命令"><a href="#import命令" class="headerlink" title="import命令"></a>import命令</h3><p>使用export命令定义了模块的对外接口后，其他js文件就可以听过import命令加载该模块.import后面的from指定模块文件的位置，可以是相对路径，也可以是绝对路径。.js路径可以省略<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123;firstName, lastName, year&#125; from &apos;./profile&apos;;</span><br><span class="line">import &#123; lastName as surname &#125; from &apos;./profile&apos;;</span><br></pre></td></tr></table></figure></p>
 <h3 id="export-default命令"><a href="#export-default命令" class="headerlink" title="export default命令"></a>export default命令</h3><p>使用import命令的时候，用户需要知道所加载的变量名或函数名，否则无法加载。export default默认输出的是一个函数，其他模块加载该模块时，import命令可以为该匿名函数指定任意名字。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">export default function foo() &#123;</div><div class="line">  console.log(&apos;foo&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 或者写成</div><div class="line"></div><div class="line">function foo() &#123;</div><div class="line">  console.log(&apos;foo&apos;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">export default foo;</div><div class="line"></div><div class="line">import foo from &apos;MyClass&apos;;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">export default function foo() &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 或者写成</span><br><span class="line"></span><br><span class="line">function foo() &#123;</span><br><span class="line">  console.log(&apos;foo&apos;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">export default foo;</span><br><span class="line"></span><br><span class="line">import foo from &apos;MyClass&apos;;</span><br></pre></td></tr></table></figure>
 
       
     </div>

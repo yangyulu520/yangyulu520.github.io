@@ -6,12 +6,14 @@
   <title>springboot学习总结 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="springboot构建项目中遇到的问题">
+<meta name="keywords" content="springboot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="springboot学习总结">
 <meta property="og:url" content="http://yoursite.com/2017/07/28/springboot学习总结/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="springboot构建项目中遇到的问题">
-<meta property="og:updated_time" content="2017-07-28T10:29:13.894Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-07-28T10:29:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="springboot学习总结">
 <meta name="twitter:description" content="springboot构建项目中遇到的问题">
@@ -246,10 +248,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="sb项目添加devtools后，启动项目会报类型转换错误"><a href="#sb项目添加devtools后，启动项目会报类型转换错误" class="headerlink" title="sb项目添加devtools后，启动项目会报类型转换错误"></a>sb项目添加devtools后，启动项目会报类型转换错误</h3><p>这是由于同一个类由不同的类加载器加载造成的。处理:配置属性META-INF\spring-devtools.properties<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">restart.include.mapper=/mapper-[\\w-\\.]+jar</div><div class="line">restart.include.pagehelper=/pagehelper-[\\w-\\.]+jar</div></pre></td></tr></table></figure></p>
+        <h3 id="sb项目添加devtools后，启动项目会报类型转换错误"><a href="#sb项目添加devtools后，启动项目会报类型转换错误" class="headerlink" title="sb项目添加devtools后，启动项目会报类型转换错误"></a>sb项目添加devtools后，启动项目会报类型转换错误</h3><p>这是由于同一个类由不同的类加载器加载造成的。处理:配置属性META-INF\spring-devtools.properties<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">restart.include.mapper=/mapper-[\\w-\\.]+jar</span><br><span class="line">restart.include.pagehelper=/pagehelper-[\\w-\\.]+jar</span><br></pre></td></tr></table></figure></p>
 <h3 id="sb自动数据源装载"><a href="#sb自动数据源装载" class="headerlink" title="sb自动数据源装载"></a>sb自动数据源装载</h3><p>springboot会默认把spring.dataSource开头的信息收纳，进行dataSource对象的配置，进而进行sqlSessionFactory的配置等相关数据库连接的配置</p>
-<h3 id="sb项目创建时选择数据源-mysql-启动报错"><a href="#sb项目创建时选择数据源-mysql-启动报错" class="headerlink" title="sb项目创建时选择数据源(mysql),启动报错"></a>sb项目创建时选择数据源(mysql),启动报错</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Cannot determine embedded database driver class for database type NONE</div><div class="line"></div><div class="line">Action:</div><div class="line"></div><div class="line">If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).</div></pre></td></tr></table></figure>
-<p>说明：springboot声明的项目启动时会自动注入数据源，而此时在配置中并没有配置数据源信息，因此导致<br>解决：如果暂时不需要数据源，可将pom文件中的mysql和mybatis(或其他数据源)注释掉，即可正常启动，或者配置数据源，或者<br>@SpringBootApplication中排除其注入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">@SpringBootApplication(exclude=&#123;DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class&#125;)</div></pre></td></tr></table></figure></p>
+<h3 id="sb项目创建时选择数据源-mysql-启动报错"><a href="#sb项目创建时选择数据源-mysql-启动报错" class="headerlink" title="sb项目创建时选择数据源(mysql),启动报错"></a>sb项目创建时选择数据源(mysql),启动报错</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Cannot determine embedded database driver class for database type NONE</span><br><span class="line"></span><br><span class="line">Action:</span><br><span class="line"></span><br><span class="line">If you want an embedded database please put a supported one on the classpath. If you have database settings to be loaded from a particular profile you may need to active it (no profiles are currently active).</span><br></pre></td></tr></table></figure>
+<p>说明：springboot声明的项目启动时会自动注入数据源，而此时在配置中并没有配置数据源信息，因此导致<br>解决：如果暂时不需要数据源，可将pom文件中的mysql和mybatis(或其他数据源)注释掉，即可正常启动，或者配置数据源，或者<br>@SpringBootApplication中排除其注入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication(exclude=&#123;DataSourceAutoConfiguration.class,HibernateJpaAutoConfiguration.class&#125;)</span><br></pre></td></tr></table></figure></p>
 
       
     </div>

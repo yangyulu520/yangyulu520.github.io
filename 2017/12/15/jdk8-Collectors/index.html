@@ -6,12 +6,14 @@
   <title>jdk8-Collectors | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="jdk1.8的stream.collect()汇聚用法">
+<meta name="keywords" content="jdk8">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jdk8-Collectors">
 <meta property="og:url" content="http://yoursite.com/2017/12/15/jdk8-Collectors/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="jdk1.8的stream.collect()汇聚用法">
-<meta property="og:updated_time" content="2017-12-15T03:48:05.090Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-15T03:48:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jdk8-Collectors">
 <meta name="twitter:description" content="jdk1.8的stream.collect()汇聚用法">
@@ -246,26 +248,26 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="常见使用-用在collect-内"><a href="#常见使用-用在collect-内" class="headerlink" title="常见使用,用在collect()内"></a>常见使用,用在collect()内</h3><p>此操作用于对于集合的增强<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Map&lt;String,Object&gt; result = list.stream().collect(Collectors.toMap(code -&gt; Integer.toString(code.getId()), v -&gt; v));</div></pre></td></tr></table></figure></p>
+        <h3 id="常见使用-用在collect-内"><a href="#常见使用-用在collect-内" class="headerlink" title="常见使用,用在collect()内"></a>常见使用,用在collect()内</h3><p>此操作用于对于集合的增强<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String,Object&gt; result = list.stream().collect(Collectors.toMap(code -&gt; Integer.toString(code.getId()), v -&gt; v));</span><br></pre></td></tr></table></figure></p>
 <p>说明：toMap表示集合转换成map.返回的Map中有几个参数，则toMap里需要返回几个-&gt;逗号前面的作为key的String返回，后面的对象返回。V,code皆表示集合中的一个对象</p>
 <h3 id="Collectors常用方法说明"><a href="#Collectors常用方法说明" class="headerlink" title="Collectors常用方法说明"></a>Collectors常用方法说明</h3><ol>
 <li><p>toMap()<br>说明：将集合转换为map返回，返回的map中的key和value可以自定义集合中的某个元素<br>返回:Map<br>使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">list.stream().collect(Collectors.toMap(code::code.getId(), v -&gt; v)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">list.stream().collect(Collectors.toMap(code::code.getId(), v -&gt; v)</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>toList();<br>说明：将处理后的集合转换为list<br>返回：List<br>使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">List&lt;String&gt; list = people.stream().map(Person::getName).collect(Collectors.toList());</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">List&lt;String&gt; list = people.stream().map(Person::getName).collect(Collectors.toList());</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>toCollection(TreeSet::new)<br>说明：将处理后的结果转换为指定的类型<br>返回:指定<br>使用:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Set&lt;String&gt; set = people.stream().map(Person::getName).collect(Collectors.toCollection(TreeSet::new));</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Set&lt;String&gt; set = people.stream().map(Person::getName).collect(Collectors.toCollection(TreeSet::new));</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>joining(“,”)<br>说明：将处理后的结果转换为String，并指定各项之间的分隔符<br>返回：String<br>使用:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">String joined = things.stream().map(Object::toString).collect(Collectors.joining(&quot;, &quot;));</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">String joined = things.stream().map(Object::toString).collect(Collectors.joining(&quot;, &quot;));</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>groupingBy()<br>说明：将集合按指定字段进行分组<br>返回:Map<key,value>；key为分组的条件，value为分组后的集合<br>使用：</key,value></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">Map&lt;Department, List&lt;Employee&gt;&gt; byDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));</div><div class="line">#如果分组条件是组合条件，则在domain中定义组合条件的方法，再进行调用即可</div><div class="line">// 设置分组的key，这里就是把你想要分组的key拼起来</div><div class="line">public String groupKey()&#123;</div><div class="line">    return this.distributor_id+&quot;_&quot;+this.sku_id;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<li><p>groupingBy()<br>说明：将集合按指定字段进行分组<br>返回:Map&lt;key,value&gt;；key为分组的条件，value为分组后的集合<br>使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Department, List&lt;Employee&gt;&gt; byDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment));</span><br><span class="line">#如果分组条件是组合条件，则在domain中定义组合条件的方法，再进行调用即可</span><br><span class="line">// 设置分组的key，这里就是把你想要分组的key拼起来</span><br><span class="line">public String groupKey()&#123;</span><br><span class="line">    return this.distributor_id+&quot;_&quot;+this.sku_id;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>summingInt()<br>说明：将集合的指定字段进行求和<br>返回：Map<br>使用：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Map&lt;Department, Integer&gt; totalByDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,</div><div class="line">Collectors.summingInt(Employee::getSalary)));</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Department, Integer&gt; totalByDept = employees.stream().collect(Collectors.groupingBy(Employee::getDepartment,</span><br><span class="line">Collectors.summingInt(Employee::getSalary)));</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 

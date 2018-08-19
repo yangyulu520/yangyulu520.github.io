@@ -6,12 +6,14 @@
   <title>数据类型的字节 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="各种数据类型归纳">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="数据类型的字节">
 <meta property="og:url" content="http://yoursite.com/2017/07/04/数据类型的字节/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="各种数据类型归纳">
-<meta property="og:updated_time" content="2017-07-04T08:23:57.592Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-07-04T08:23:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据类型的字节">
 <meta name="twitter:description" content="各种数据类型归纳">
@@ -246,9 +248,9 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="java类型和字节"><a href="#java类型和字节" class="headerlink" title="java类型和字节"></a>java类型和字节</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">类型		字节		位数(0或1为1位)</div><div class="line">int			4字节		4*8</div><div class="line">short		2字节		2*8</div><div class="line">long		8字节		8*8</div><div class="line">byte		1字节		1*8</div><div class="line"></div><div class="line">float		4字节		4*8</div><div class="line">double		8字节		8*8</div><div class="line"></div><div class="line">char		2字节		2*8</div><div class="line"></div><div class="line">boolean		1字节		1*8</div></pre></td></tr></table></figure>
+        <h3 id="java类型和字节"><a href="#java类型和字节" class="headerlink" title="java类型和字节"></a>java类型和字节</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">类型		字节		位数(0或1为1位)</span><br><span class="line">int			4字节		4*8</span><br><span class="line">short		2字节		2*8</span><br><span class="line">long		8字节		8*8</span><br><span class="line">byte		1字节		1*8</span><br><span class="line"></span><br><span class="line">float		4字节		4*8</span><br><span class="line">double		8字节		8*8</span><br><span class="line"></span><br><span class="line">char		2字节		2*8</span><br><span class="line"></span><br><span class="line">boolean		1字节		1*8</span><br></pre></td></tr></table></figure>
 <p>说明：java中，字符占一个字节，汉子占两个字节</p>
-<h3 id="mysql类型和字节"><a href="#mysql类型和字节" class="headerlink" title="mysql类型和字节"></a>mysql类型和字节</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">类型		字节</div><div class="line">tinyint		1</div><div class="line">smallint	2 </div><div class="line">mediumint	3</div><div class="line">int 		4</div><div class="line">bigint		8</div><div class="line">float		4</div><div class="line">double		8</div></pre></td></tr></table></figure>
+<h3 id="mysql类型和字节"><a href="#mysql类型和字节" class="headerlink" title="mysql类型和字节"></a>mysql类型和字节</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">类型		字节</span><br><span class="line">tinyint		1</span><br><span class="line">smallint	2 </span><br><span class="line">mediumint	3</span><br><span class="line">int 		4</span><br><span class="line">bigint		8</span><br><span class="line">float		4</span><br><span class="line">double		8</span><br></pre></td></tr></table></figure>
 <p>mysql 的varchar(50)在5.0以后，无论存放数字，字母，还是utf8汉字(每个汉字3个字节)，都可以存放50个.</p>
 
       

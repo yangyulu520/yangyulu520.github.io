@@ -6,12 +6,14 @@
   <title>tomcat线上日志调试技巧和项目日志级别 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="tomcat线上调试">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="tomcat线上日志调试技巧和项目日志级别">
 <meta property="og:url" content="http://yoursite.com/2017/08/10/tomcat线上日志调试技巧和项目日志级别/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="tomcat线上调试">
-<meta property="og:updated_time" content="2017-09-18T09:35:33.172Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-09-18T09:35:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="tomcat线上日志调试技巧和项目日志级别">
 <meta name="twitter:description" content="tomcat线上调试">
@@ -251,14 +253,14 @@
 <li>tomcat/logs/catalina.out</li>
 </ol>
 <p>说明:记录了tomcat所有的执行日志(根据日志级别，显示不同的日志内容)</p>
-<ol>
+<ol start="2">
 <li>tomcat/logs/localhost.yyyy-mm-dd.log</li>
 </ol>
 <p>说明:记录了tomcat执行项目时，所有的报错</p>
-<ol>
+<ol start="3">
 <li>往往这两个文件内容都很长，需要根据某些关键词快速定位相对应的执行日志内容，就需要命令vim配合使用</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">--查看即时日志</div><div class="line">tail -f catalina.out</div><div class="line">--vim命令</div><div class="line">-翻页移动</div><div class="line">&quot;ctrl+f&quot;:前一页;&quot;ctrl+b&quot;:后一页;&quot;ctrl+u&quot;:前半页;&quot;ctrl+d&quot;:后半页</div><div class="line">-文件内行间跳转</div><div class="line">&quot;:set nu&quot;:显示行号;&quot;:set nonu&quot;:取消行号;&quot;#G&quot;:跳转到第#行;&quot;G&quot;:跳转到末尾行</div><div class="line">-查找与替换</div><div class="line">&quot;/word&quot;:自上而下查找指定字符串;&quot;n&quot;:查找下一个(自上而下);&quot;N&quot;:反向查找下一个(自下而上)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">--查看即时日志</span><br><span class="line">tail -f catalina.out</span><br><span class="line">--vim命令</span><br><span class="line">-翻页移动</span><br><span class="line">&quot;ctrl+f&quot;:前一页;&quot;ctrl+b&quot;:后一页;&quot;ctrl+u&quot;:前半页;&quot;ctrl+d&quot;:后半页</span><br><span class="line">-文件内行间跳转</span><br><span class="line">&quot;:set nu&quot;:显示行号;&quot;:set nonu&quot;:取消行号;&quot;#G&quot;:跳转到第#行;&quot;G&quot;:跳转到末尾行</span><br><span class="line">-查找与替换</span><br><span class="line">&quot;/word&quot;:自上而下查找指定字符串;&quot;n&quot;:查找下一个(自上而下);&quot;N&quot;:反向查找下一个(自下而上)</span><br></pre></td></tr></table></figure>
 <h2 id="项目日志级别"><a href="#项目日志级别" class="headerlink" title="项目日志级别"></a>项目日志级别</h2><p>debug:debug和info级别的日志都能够显示<br>info:只有info级别的日志能够显示</p>
 <p>生产线上的日志级别往往都设置成info级别，所以在程序代码中，关键代码出用info标明流程，方便生产上出现问题时，进行日志追踪</p>
 <h2 id="修改项目配置文件"><a href="#修改项目配置文件" class="headerlink" title="修改项目配置文件"></a>修改项目配置文件</h2><p>如果需要修改项目中jar包中的配置文件，可以通过vim该jar包，然后查找里面需要修改的配置文件，保存即可</p>

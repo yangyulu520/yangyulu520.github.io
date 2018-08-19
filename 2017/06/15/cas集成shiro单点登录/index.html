@@ -6,12 +6,14 @@
   <title>cas集成shiro单点登录 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="cas集成shiro做单点登录过程中踩到的坑">
+<meta name="keywords" content="单点登录">
 <meta property="og:type" content="article">
 <meta property="og:title" content="cas集成shiro单点登录">
 <meta property="og:url" content="http://yoursite.com/2017/06/15/cas集成shiro单点登录/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="cas集成shiro做单点登录过程中踩到的坑">
-<meta property="og:updated_time" content="2017-07-13T02:26:39.337Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-07-13T02:26:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="cas集成shiro单点登录">
 <meta name="twitter:description" content="cas集成shiro做单点登录过程中踩到的坑">
@@ -248,7 +250,7 @@
           
         <h3 id="跳转cas登录成功后，报No-subject-alternative-names-present错误"><a href="#跳转cas登录成功后，报No-subject-alternative-names-present错误" class="headerlink" title="跳转cas登录成功后，报No subject alternative names present错误"></a>跳转cas登录成功后，报No subject alternative names present错误</h3><p>错误的原因是，服务端生成数字证书时，里面的cn配的不对。首先cas要求不能用ip进行请求，所以要在客户端对ip进行域名的映射，而生成数字证书里的cn必须为服务器的域名，不然会报这个错误</p>
 <h3 id="cas，无法接收客户端http请求"><a href="#cas，无法接收客户端http请求" class="headerlink" title="cas，无法接收客户端http请求"></a>cas，无法接收客户端http请求</h3><p>修改cas服务器端的WEB-INF/classes/services下的HTTPSandIMAPS-10000001.json文件。修改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;serviceId&quot; :&quot;^(https|imaps|http)://.*&quot;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&quot;serviceId&quot; :&quot;^(https|imaps|http)://.*&quot;</span><br></pre></td></tr></table></figure>
 <h3 id="坑了我几天的问题：每次请求接口总是到cas认证，然后重定向到首页"><a href="#坑了我几天的问题：每次请求接口总是到cas认证，然后重定向到首页" class="headerlink" title="坑了我几天的问题：每次请求接口总是到cas认证，然后重定向到首页"></a>坑了我几天的问题：每次请求接口总是到cas认证，然后重定向到首页</h3><p>客户端的访问要用ip地址，IP地址，不能用localhost，这两种方式请求时完全不同的结果。最好把客户端的ip也用域名来指定。</p>
 
       

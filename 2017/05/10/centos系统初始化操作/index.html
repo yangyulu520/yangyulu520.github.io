@@ -6,12 +6,14 @@
   <title>centos系统初始化操作 | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="刚装上centos7系统后的一些初始化工作">
+<meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos系统初始化操作">
 <meta property="og:url" content="http://yoursite.com/2017/05/10/centos系统初始化操作/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="刚装上centos7系统后的一些初始化工作">
-<meta property="og:updated_time" content="2017-08-24T08:17:30.829Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-08-24T08:17:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos系统初始化操作">
 <meta name="twitter:description" content="刚装上centos7系统后的一些初始化工作">
@@ -253,15 +255,15 @@
 <li><p>进入系统中，执行ip addr命令，查看网卡名称(2:后面的是)</p>
 </li>
 <li><p>修改/etc/sysconfig/network-scripts/ifcfg-网卡名称</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">HWADDR=&quot;00:0C:29:47:6D:30&quot; #修改mac地址为本机的mac地址</div><div class="line">BOOTPROTO=&quot;static&quot; #设置为静态IP</div><div class="line">ONBOOT=&quot;yes&quot;</div><div class="line">IPADDR=192.168.1.116 #设置IP地址</div><div class="line">PREFIX=16 #设置子网掩码:等同于255.255.255.0</div><div class="line">GATEWAY=&quot;192.168.1.1&quot; #根据本机联网信息设置网关</div><div class="line">DNS1=&quot;192.168.1.1&quot; #根据本机联网信息设置域名解析(ipconfig-all可看到)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">HWADDR=&quot;00:0C:29:47:6D:30&quot; #修改mac地址为本机的mac地址</span><br><span class="line">BOOTPROTO=&quot;static&quot; #设置为静态IP</span><br><span class="line">ONBOOT=&quot;yes&quot;</span><br><span class="line">IPADDR=192.168.1.116 #设置IP地址</span><br><span class="line">PREFIX=16 #设置子网掩码:等同于255.255.255.0</span><br><span class="line">GATEWAY=&quot;192.168.1.1&quot; #根据本机联网信息设置网关</span><br><span class="line">DNS1=&quot;192.168.1.1&quot; #根据本机联网信息设置域名解析(ipconfig-all可看到)</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>注意：固定的ip地址先ping一下，是否已经被使用，如果已经被使用，则无法修改成功。</p>
 <h2 id="开放防火墙指定端口。"><a href="#开放防火墙指定端口。" class="headerlink" title="开放防火墙指定端口。"></a>开放防火墙指定端口。</h2><p>如果对防火墙不做处理的话，系统默认是拦截掉所有外来请求。</p>
-<p>永久开放指定端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</div></pre></td></tr></table></figure></p>
-<p>查看防火墙状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">firewall-cmd --state</div></pre></td></tr></table></figure></p>
-<h2 id="打开关闭防火墙"><a href="#打开关闭防火墙" class="headerlink" title="打开关闭防火墙"></a>打开关闭防火墙</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">开启防火墙(重启后永久生效)：systemctl enable iptables.service</div><div class="line"></div><div class="line">关闭防火墙(重启后永久生效)：systemctl disable firewalld.service</div><div class="line"></div><div class="line">开启防火墙(即时生效，重启后失效)：systemctl start firewalld.service</div><div class="line"></div><div class="line">关闭防火墙(即时生效，重启后失效)：systemctl stop firewalld.service </div><div class="line"></div><div class="line">重启防火墙:service iptables restartd</div></pre></td></tr></table></figure>
-<h2 id="文件传送功能"><a href="#文件传送功能" class="headerlink" title="文件传送功能"></a>文件传送功能</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">yum install lrzsz</div></pre></td></tr></table></figure>
+<p>永久开放指定端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br></pre></td></tr></table></figure></p>
+<p>查看防火墙状态<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure></p>
+<h2 id="打开关闭防火墙"><a href="#打开关闭防火墙" class="headerlink" title="打开关闭防火墙"></a>打开关闭防火墙</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">开启防火墙(重启后永久生效)：systemctl enable iptables.service</span><br><span class="line"></span><br><span class="line">关闭防火墙(重启后永久生效)：systemctl disable firewalld.service</span><br><span class="line"></span><br><span class="line">开启防火墙(即时生效，重启后失效)：systemctl start firewalld.service</span><br><span class="line"></span><br><span class="line">关闭防火墙(即时生效，重启后失效)：systemctl stop firewalld.service </span><br><span class="line"></span><br><span class="line">重启防火墙:service iptables restartd</span><br></pre></td></tr></table></figure>
+<h2 id="文件传送功能"><a href="#文件传送功能" class="headerlink" title="文件传送功能"></a>文件传送功能</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install lrzsz</span><br></pre></td></tr></table></figure>
       
     </div>
     

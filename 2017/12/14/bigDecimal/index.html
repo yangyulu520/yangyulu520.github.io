@@ -6,12 +6,14 @@
   <title>bigDecimal | 杨雨露的博客世界</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="精度化的计算bigDecimal">
+<meta name="keywords" content="java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="bigDecimal">
 <meta property="og:url" content="http://yoursite.com/2017/12/14/bigDecimal/index.html">
 <meta property="og:site_name" content="杨雨露的博客世界">
 <meta property="og:description" content="精度化的计算bigDecimal">
-<meta property="og:updated_time" content="2017-12-14T05:01:45.929Z">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2017-12-14T05:01:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bigDecimal">
 <meta name="twitter:description" content="精度化的计算bigDecimal">
@@ -255,19 +257,19 @@
 <p>结论：如果必须用到double精确计算，并且需要用double构造bigdecimal，则先转String，然后用String构造bigdecimal.<br>另外在实际生产中，由于jdbc没有bigdecimal映射，如果要求精确计算，则数据库用decimal，在用double接收后转化为decimal来计算。</p>
 <h3 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h3><ol>
 <li><p>加法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</div><div class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</div><div class="line">a.add(b);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</span><br><span class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</span><br><span class="line">a.add(b);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>减法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</div><div class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</div><div class="line">a.add(b);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</span><br><span class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</span><br><span class="line">a.add(b);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>乘法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</div><div class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</div><div class="line">a.multiply(b);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</span><br><span class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</span><br><span class="line">a.multiply(b);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>除法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</div><div class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</div><div class="line">div(a,b,DEF_DIV_SCALE) #提供（相对）精确的除法运算，当发生除不尽的情况时，精确到小数点以后10位，以后的数字四舍五入。</div><div class="line">b.divide(one,scale,BigDecimal.ROUND_HALF_UP).doubleValue(); #提供精确的小数位四舍五入处理。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</span><br><span class="line">BigDecimal b =new BigDecimal(&quot;2.22&quot;);</span><br><span class="line">div(a,b,DEF_DIV_SCALE) #提供（相对）精确的除法运算，当发生除不尽的情况时，精确到小数点以后10位，以后的数字四舍五入。</span><br><span class="line">b.divide(one,scale,BigDecimal.ROUND_HALF_UP).doubleValue(); #提供精确的小数位四舍五入处理。</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>保存指定小数位数</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</div><div class="line">a.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue()</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">BigDecimal a =new BigDecimal(&quot;1.22&quot;);</span><br><span class="line">a.setScale(2,BigDecimal.ROUND_HALF_UP).doubleValue()</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p>注：加减乘除最终返回的都是一个新的BigDecimal对象，因为BigInteger与BigDecimal都是不可变的，在进行每一步运算时都会产生一个新的对象，所以a.add(b)虽然做了加法操作，但a并没有保存加操作后的值，正确的用法应该是a=a.add(b);</p>
@@ -276,7 +278,7 @@
 <li>尽量使用参数类型为String的构造函数</li>
 <li>BigDecimal都是不可变的（immutable）的，在进行每一步运算时，都会产生一个新的对象，所以在做加减乘除运算时千万要保存操作后的值。</li>
 </ol>
-<p>参考：<a href="http://blog.csdn.net/jackiehff/article/details/8582449" title="bigDecimal Link" target="_blank" rel="external">bigDecimal详解</a></p>
+<p>参考：<a href="http://blog.csdn.net/jackiehff/article/details/8582449" title="bigDecimal Link" target="_blank" rel="noopener">bigDecimal详解</a></p>
 
       
     </div>
